@@ -65,6 +65,37 @@ export function Sidebar({ isOpen = false, onClose }: SidebarProps) {
               </ul>
             </div>
           ))}
+
+          <div className="border-t border-slate-200 pt-6 dark:border-slate-800 lg:hidden">
+            <div className="flex items-center gap-2 mb-2">
+              <h5 className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                Demo
+              </h5>
+            </div>
+            <a
+              href="https://cortexui-demo.llcortex.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onClose}
+              className="flex items-center justify-between gap-3 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-brand-400 hover:text-brand-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-brand-400"
+            >
+              <span>Demo</span>
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M7 17 17 7" />
+                <path d="M8 7h9v9" />
+              </svg>
+            </a>
+          </div>
         </div>
       </aside>
     </>
