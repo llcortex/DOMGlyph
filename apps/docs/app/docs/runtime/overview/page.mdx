@@ -1,10 +1,10 @@
 # Runtime Overview
 
-The CortexUI runtime is the bridge between the semantic HTML attributes your components declare and the structured API that AI agents, automated testing tools, and devtools consume. Instead of forcing agents to scrape the DOM and infer intent, the runtime reads your `data-ai-*` annotations and exposes them as a clean, typed JavaScript API under `window.__CORTEX_UI__`.
+The DOMglyph runtime is the bridge between the semantic HTML attributes your components declare and the structured API that AI agents, automated testing tools, and devtools consume. Instead of forcing agents to scrape the DOM and infer intent, the runtime reads your `data-ai-*` annotations and exposes them as a clean, typed JavaScript API under `window.__DOMGLYPH__`.
 
 ## What the Runtime Does
 
-When a user loads a CortexUI-annotated page, the runtime scans the live DOM, collects every element with a recognized `data-ai-*` attribute, and assembles a structured context object. That context object is then exposed through five methods on a global `window.__CORTEX_UI__` namespace.
+When a user loads a DOMglyph-annotated page, the runtime scans the live DOM, collects every element with a recognized `data-ai-*` attribute, and assembles a structured context object. That context object is then exposed through five methods on a global `window.__DOMGLYPH__` namespace.
 
 The key insight: the runtime is a **read-only introspection layer**. It does not modify the DOM, does not intercept events, and does not change how your app behaves. It simply makes the implicit structure of your page explicit and machine-readable.
 
@@ -26,15 +26,15 @@ The scanner runs once on initial mount and then maintains a lightweight Mutation
 
 ### With CortexProvider (Recommended)
 
-If you are already using `CortexProvider` from `@cortexui/components`, the runtime is installed automatically. No additional setup is required.
+If you are already using `CortexProvider` from `@domglyph/components`, the runtime is installed automatically. No additional setup is required.
 
 ```tsx
-import { CortexProvider } from '@cortexui/components';
+import { CortexProvider } from '@domglyph/components';
 
 export default function App() {
   return (
     <CortexProvider>
-      {/* window.__CORTEX_UI__ is now available */}
+      {/* window.__DOMGLYPH__ is now available */}
       <YourApp />
     </CortexProvider>
   );
@@ -46,24 +46,24 @@ export default function App() {
 If you are using the runtime without the React component library — for example in a vanilla JS project or a legacy codebase — install it explicitly:
 
 ```bash
-npm install @cortexui/runtime
+npm install @domglyph/runtime
 ```
 
-Then call `installCortexUIRuntime` once at application startup:
+Then call `installDOMglyphRuntime` once at application startup:
 
 ```ts
-import { installCortexUIRuntime } from '@cortexui/runtime';
+import { installDOMglyphRuntime } from '@domglyph/runtime';
 
-installCortexUIRuntime(window);
+installDOMglyphRuntime(window);
 
-// window.__CORTEX_UI__ is now available
+// window.__DOMGLYPH__ is now available
 ```
 
 <Callout type="note">
-`installCortexUIRuntime` is idempotent. Calling it multiple times will not install duplicate listeners or overwrite an existing installation. If `CortexProvider` has already installed the runtime, calling `installCortexUIRuntime` manually is a no-op.
+`installDOMglyphRuntime` is idempotent. Calling it multiple times will not install duplicate listeners or overwrite an existing installation. If `CortexProvider` has already installed the runtime, calling `installDOMglyphRuntime` manually is a no-op.
 </Callout>
 
-## The Global API: `window.__CORTEX_UI__`
+## The Global API: `window.__DOMGLYPH__`
 
 Once installed, the runtime exposes five methods:
 
@@ -79,11 +79,11 @@ All five methods are **synchronous** and return plain JavaScript objects. They r
 
 ```ts
 // Available in browser console or agent code
-const ctx = window.__CORTEX_UI__.getScreenContext();
-const actions = window.__CORTEX_UI__.getAvailableActions();
-const form = window.__CORTEX_UI__.getFormSchema('edit-profile-form');
-const entities = window.__CORTEX_UI__.getVisibleEntities();
-const events = window.__CORTEX_UI__.getRecentEvents();
+const ctx = window.__DOMGLYPH__.getScreenContext();
+const actions = window.__DOMGLYPH__.getAvailableActions();
+const form = window.__DOMGLYPH__.getFormSchema('edit-profile-form');
+const entities = window.__DOMGLYPH__.getVisibleEntities();
+const events = window.__DOMGLYPH__.getRecentEvents();
 ```
 
 ## When to Use the Runtime vs Reading the DOM Directly
@@ -94,7 +94,7 @@ You might wonder: why not just use `document.querySelector('[data-ai-action]')` 
 
 **Aggregation.** Methods like `getAvailableActions()` collect all matching elements across the entire DOM in a single call and filter out disabled or hidden elements automatically.
 
-**Consistency.** The runtime applies the same parsing rules as CortexUI components. Custom attribute formats, nested element handling, and edge cases are handled for you.
+**Consistency.** The runtime applies the same parsing rules as DOMglyph components. Custom attribute formats, nested element handling, and edge cases are handled for you.
 
 **Future-proofing.** If the underlying attribute format ever changes, the runtime abstracts that change away. Agent code that calls `getAvailableActions()` does not need to be updated.
 
@@ -106,7 +106,7 @@ Use the runtime API in agent code and tests. Use direct `querySelector` only whe
 
 ### AI Agents
 
-Browser-based AI agents — whether built on Claude, GPT-4o, or any other model — can call `window.__CORTEX_UI__` methods to understand the current UI state without relying on screenshot analysis or fragile CSS selectors. The runtime is the foundation of reliable AI automation on CortexUI-annotated pages.
+Browser-based AI agents — whether built on Claude, GPT-4o, or any other model — can call `window.__DOMGLYPH__` methods to understand the current UI state without relying on screenshot analysis or fragile CSS selectors. The runtime is the foundation of reliable AI automation on DOMglyph-annotated pages.
 
 ### Automated Testing
 
@@ -114,7 +114,7 @@ Testing frameworks can use the runtime to assert on semantic state rather than i
 
 ### Devtools
 
-The CortexUI devtools extension uses the runtime to power its AI contract inspector panel. Every panel update is driven by polling the same five methods available to agents.
+The DOMglyph devtools extension uses the runtime to power its AI contract inspector panel. Every panel update is driven by polling the same five methods available to agents.
 
 ### Analytics and Observability
 
@@ -124,23 +124,23 @@ The CortexUI devtools extension uses the runtime to power its AI contract inspec
 
 ```ts
 // Get the current screen
-window.__CORTEX_UI__.getScreenContext()
+window.__DOMGLYPH__.getScreenContext()
 // → { screen: 'user-profile', entity: 'user', entityId: 'user-123', sections: [...] }
 
 // Get all available actions
-window.__CORTEX_UI__.getAvailableActions()
+window.__DOMGLYPH__.getAvailableActions()
 // → [{ id: 'save-profile', action: 'save-profile', state: 'idle', section: 'profile-form' }]
 
 // Get a form's schema
-window.__CORTEX_UI__.getFormSchema('edit-profile-form')
+window.__DOMGLYPH__.getFormSchema('edit-profile-form')
 // → { formId: 'edit-profile-form', fields: [{ id: '...', fieldType: '...', ... }] }
 
 // Get all visible entities
-window.__CORTEX_UI__.getVisibleEntities()
+window.__DOMGLYPH__.getVisibleEntities()
 // → [{ entity: 'user', entityId: 'user-123', section: 'header' }]
 
 // Get recent events
-window.__CORTEX_UI__.getRecentEvents()
+window.__DOMGLYPH__.getRecentEvents()
 // → [{ type: 'action_triggered', actionId: 'save-profile', timestamp: 1700000001 }]
 ```
 

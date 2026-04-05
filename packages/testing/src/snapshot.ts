@@ -1,4 +1,4 @@
-import { extractAIAttributes } from "@cortexui/ai-contract";
+import { extractAIAttributes } from "@domglyph/ai-contract";
 
 import type { MetadataSnapshot } from "./types";
 

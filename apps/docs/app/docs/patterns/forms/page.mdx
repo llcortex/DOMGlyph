@@ -6,7 +6,7 @@ AI agents can't reliably fill forms without knowing their schema. Traditional fo
 
 ## Solution
 
-Annotate every form with a complete AI contract. CortexUI's FormField and Input components do this automatically. The runtime exposes the schema via `getFormSchema()`.
+Annotate every form with a complete AI contract. DOMglyph's FormField and Input components do this automatically. The runtime exposes the schema via `getFormSchema()`.
 
 ## Create Form Pattern
 
@@ -78,11 +78,11 @@ function CreateUserForm() {
 
 ```js
 // Agent filling the create user form
-const schema = window.__CORTEX_UI__.getFormSchema('create-user-form');
+const schema = window.__DOMGLYPH__.getFormSchema('create-user-form');
 // Fill each field...
 // Click create-user action...
 // Wait for action_completed event...
-const events = window.__CORTEX_UI__.getRecentEvents();
+const events = window.__DOMGLYPH__.getRecentEvents();
 const success = events.find(e => e.actionId === 'create-user' && e.type === 'action_completed');
 ```
 

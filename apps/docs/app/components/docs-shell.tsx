@@ -46,7 +46,7 @@ export function DocsShell({
         >
           <Link href="/" style={{ display: "block", marginBottom: "24px" }}>
             <div style={{ fontSize: "0.8rem", letterSpacing: "0.16em", textTransform: "uppercase" }}>
-              CortexUI
+              DOMglyph
             </div>
             <div style={{ fontSize: "1.75rem", fontWeight: 700, marginTop: "8px" }}>
               AI-native interfaces

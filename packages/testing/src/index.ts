@@ -19,6 +19,6 @@ export type {
 import type { TestHarness } from "./types";
 
 export const harness: TestHarness = {
-  name: "cortexui-ai-testkit",
+  name: "domglyph-ai-testkit",
   runner: "vitest"
 };

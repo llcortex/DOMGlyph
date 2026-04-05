@@ -4,7 +4,7 @@ import {
   DATA_AI_STATE,
   extractAIAttributes,
   validateAIAttributes
-} from "@cortexui/ai-contract";
+} from "@domglyph/ai-contract";
 
 import type {
   ComplianceCheckOptions,

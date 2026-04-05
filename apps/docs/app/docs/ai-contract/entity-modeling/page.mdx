@@ -169,7 +169,7 @@ Entities can nest. An order contains order-items. A project contains tasks. A ti
 The runtime scans the DOM for all entity containers currently visible and returns them as a structured list:
 
 ```js
-const entities = window.__CORTEX_UI__.getVisibleEntities();
+const entities = window.__DOMGLYPH__.getVisibleEntities();
 
 /*
 [
@@ -218,7 +218,7 @@ Entity context is critical for disambiguation. Consider a CRM with multiple deal
 ```ts
 async function updateDealValue(dealId: string, newValue: number) {
   // Step 1: Confirm the deal is visible
-  const entities = window.__CORTEX_UI__.getVisibleEntities();
+  const entities = window.__DOMGLYPH__.getVisibleEntities();
   const deal = entities.find(e => e.entity === "deal" && e.entityId === dealId);
 
   if (!deal) {

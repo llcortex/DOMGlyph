@@ -1,6 +1,6 @@
 # Your First Component
 
-This tutorial walks you through building a simple but complete AI-native button with CortexUI. By the end you will have a working component, understand the required props, and know how to verify the AI contract using DevTools and the runtime API.
+This tutorial walks you through building a simple but complete AI-native button with DOMglyph. By the end you will have a working component, understand the required props, and know how to verify the AI contract using DevTools and the runtime API.
 
 ## Prerequisites
 
@@ -18,10 +18,10 @@ We will build a "Save Profile" button that:
 
 ## Step 1: Import ActionButton
 
-`ActionButton` is the core interactive component in CortexUI. It renders a button with the full AI semantic layer built in.
+`ActionButton` is the core interactive component in DOMglyph. It renders a button with the full AI semantic layer built in.
 
 ```tsx
-import { ActionButton } from "@cortexui/components";
+import { ActionButton } from "@domglyph/components";
 ```
 
 ## Step 2: Understanding the Required Props
@@ -71,8 +71,8 @@ The AI contract is only useful if it reflects actual component state. Connect `a
 
 ```tsx
 import { useState } from "react";
-import { ActionButton } from "@cortexui/components";
-import type { AIState } from "@cortexui/ai-contract";
+import { ActionButton } from "@domglyph/components";
+import type { AIState } from "@domglyph/ai-contract";
 
 function SaveProfileButton({ userId }: { userId: string }) {
   const [saveState, setSaveState] = useState<AIState>("idle");
@@ -119,7 +119,7 @@ Add the component to a page that has screen context set:
 // app/settings/page.tsx (Next.js App Router)
 "use client";
 
-import { ScreenProvider, SectionProvider } from "@cortexui/runtime";
+import { ScreenProvider, SectionProvider } from "@domglyph/runtime";
 import { SaveProfileButton } from "./SaveProfileButton";
 
 export default function SettingsPage() {
@@ -171,7 +171,7 @@ Open the browser Console tab. The runtime API lets you query and interact with t
 ### List all available actions
 
 ```javascript
-window.__CORTEX_UI__.getAvailableActions()
+window.__DOMGLYPH__.getAvailableActions()
 ```
 
 Expected output:
@@ -194,7 +194,7 @@ Expected output:
 ### Get a specific action by name
 
 ```javascript
-window.__CORTEX_UI__.getAction("save-profile")
+window.__DOMGLYPH__.getAction("save-profile")
 ```
 
 Expected output:
@@ -211,14 +211,14 @@ Expected output:
 ### Trigger the action programmatically
 
 ```javascript
-window.__CORTEX_UI__.trigger("save-profile")
+window.__DOMGLYPH__.trigger("save-profile")
 // This is exactly what an AI agent does — no CSS selectors, no text matching
 ```
 
 ### Observe state changes
 
 ```javascript
-window.__CORTEX_UI__.onStateChange("save-profile-btn", (event) => {
+window.__DOMGLYPH__.onStateChange("save-profile-btn", (event) => {
   console.log(`State changed: ${event.previousState} → ${event.newState}`);
 });
 ```
@@ -234,8 +234,8 @@ Here is the full, working implementation in a single file for reference:
 "use client";
 
 import { useState } from "react";
-import { ActionButton } from "@cortexui/components";
-import type { AIState } from "@cortexui/ai-contract";
+import { ActionButton } from "@domglyph/components";
+import type { AIState } from "@domglyph/ai-contract";
 
 interface SaveProfileButtonProps {
   userId: string;
@@ -289,7 +289,7 @@ export function SaveProfileButton({ userId, onSave }: SaveProfileButtonProps) {
 // app/settings/page.tsx
 "use client";
 
-import { ScreenProvider, SectionProvider } from "@cortexui/runtime";
+import { ScreenProvider, SectionProvider } from "@domglyph/runtime";
 import { SaveProfileButton } from "@/components/SaveProfileButton";
 
 async function saveProfile(userId: string) {
@@ -326,10 +326,10 @@ You have now built your first AI-native component. It looks and behaves exactly 
 - How to connect `aiState` to real component state for live contract reflection
 - How to add screen, section, and entity context for a complete contract
 - How to inspect the contract in DevTools and see it update in real time
-- How to use `window.__CORTEX_UI__` to query and trigger actions programmatically
+- How to use `window.__DOMGLYPH__` to query and trigger actions programmatically
 
 ## Next Steps
 
 - [React integration patterns and the useAIState hook](/docs/getting-started/react)
 - [Vanilla JS integration](/docs/getting-started/vanilla-js)
-- [CortexUI philosophy](/docs/introduction/philosophy)
+- [DOMglyph philosophy](/docs/introduction/philosophy)

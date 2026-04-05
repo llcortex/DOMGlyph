@@ -19,7 +19,7 @@ Every AI agent that operates a web interface needs to be able to reliably target
 
 **The cost:** Every deployment is a potential breakage event. Automation suites require continuous maintenance not because the application's logic changed, but because its appearance changed. Teams spend engineering time maintaining selectors rather than extending functionality. Agent reliability degrades continuously.
 
-CortexUI's solution: `data-ai-id` provides a stable, semantic, developer-assigned identity that survives refactors, redesigns, and i18n. It is the element's contract name, not its visual label.
+DOMglyph's solution: `data-ai-id` provides a stable, semantic, developer-assigned identity that survives refactors, redesigns, and i18n. It is the element's contract name, not its visual label.
 
 ## Problem 2: State Is Inferred, Not Declared
 
@@ -35,7 +35,7 @@ An AI agent operating such an interface must guess. It applies heuristics: if th
 The most dangerous failure mode is not the agent crashing — it is the agent succeeding at the wrong thing. Submitting a partially-filled form, clicking a disabled action that somehow accepts the click, retrying an already-in-progress operation: these produce real errors with real consequences.
 </Callout>
 
-CortexUI's solution: `data-ai-state` declares the element's current state explicitly and consistently: `idle`, `loading`, `disabled`, `error`, `success`. No inference required.
+DOMglyph's solution: `data-ai-state` declares the element's current state explicitly and consistently: `idle`, `loading`, `disabled`, `error`, `success`. No inference required.
 
 ## Problem 3: Actions Are Implied, Not Explicit
 
@@ -47,7 +47,7 @@ An agent has no prior experience. It sees a button with the text "Save" and must
 
 **The cost:** Agents misidentify actions and click the wrong thing. In an e-commerce checkout with buttons for "Save for Later," "Save Address," and "Save & Continue," an agent attempting to complete checkout might interact with the wrong save action, producing unexpected results ranging from harmless (item saved to wishlist) to consequential (address overwritten, checkout state lost).
 
-CortexUI's solution: `data-ai-action` names the action explicitly: `complete-checkout`, `save-shipping-address`, `save-for-later`. No inference required.
+DOMglyph's solution: `data-ai-action` names the action explicitly: `complete-checkout`, `save-shipping-address`, `save-for-later`. No inference required.
 
 ## Problem 4: Context Is Visual, Not Semantic
 
@@ -59,7 +59,7 @@ This problem compounds in applications where a single page contains multiple ent
 
 **The cost:** Agents confuse context and apply actions to the wrong entities. An agent tasked with "remove the inactive user" might click a remove button associated with the wrong user if it cannot reliably determine which entity each button belongs to.
 
-CortexUI's solution: `data-ai-entity` and `data-ai-entity-id` on page sections and tables declare what entity is in scope. Sections declare their boundaries. The runtime exposes structured entity context through `getScreenContext()`.
+DOMglyph's solution: `data-ai-entity` and `data-ai-entity-id` on page sections and tables declare what entity is in scope. Sections declare their boundaries. The runtime exposes structured entity context through `getScreenContext()`.
 
 ## Problem 5: Outcomes Are Observed, Not Contracted
 
@@ -71,11 +71,11 @@ Failure is even harder to detect. An error might produce a red border on a field
 
 **The cost:** Agents cannot reliably detect outcomes, leading to retry loops and double-submissions. An agent that cannot confirm a form submission succeeded will retry — potentially submitting the same order twice, triggering the same payment twice, creating duplicate records. The consequences range from user annoyance to financial error.
 
-CortexUI's solution: The `action_completed` event in the runtime event log provides a structured outcome: `{ type: 'action_completed', actionId: 'save-profile', result: 'success' | 'error', message?: string }`. No DOM scraping required.
+DOMglyph's solution: The `action_completed` event in the runtime event log provides a structured outcome: `{ type: 'action_completed', actionId: 'save-profile', result: 'success' | 'error', message?: string }`. No DOM scraping required.
 
 ## Summary
 
-| Problem | Current State | Impact | CortexUI Solution |
+| Problem | Current State | Impact | DOMglyph Solution |
 |---------|--------------|--------|-------------------|
 | No stable identity | CSS classes, text, XPath all break | Automation breaks on every deployment | `data-ai-id` stable semantic identifier |
 | State is inferred | Visual properties vary by component | Agents miss disabled states, trigger wrong actions | `data-ai-state` explicit state declaration |
@@ -84,7 +84,7 @@ CortexUI's solution: The `action_completed` event in the runtime event log provi
 | Outcomes are observed | Success/failure expressed visually | Retry loops, double-submissions | `action_completed` event with structured result |
 
 <Callout type="important">
-These five problems do not require AI to fix them. They require web developers and designers to adopt a richer contract for the interfaces they build. CortexUI provides that contract — as a set of HTML attributes, a component library, and a runtime that makes the contract queryable and observable.
+These five problems do not require AI to fix them. They require web developers and designers to adopt a richer contract for the interfaces they build. DOMglyph provides that contract — as a set of HTML attributes, a component library, and a runtime that makes the contract queryable and observable.
 </Callout>
 
 Each of these problems is solvable without any changes to how the UI looks or how humans interact with it. The solutions are additive: structured attributes alongside the visual design, not instead of it. The interface gains a second layer — readable by machines — while remaining exactly what it is for humans.

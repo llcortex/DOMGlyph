@@ -6,9 +6,9 @@ import {
   DataTable,
   FormField,
   StatusBanner
-} from "@cortexui/components";
-import { Box, Stack, Text } from "@cortexui/primitives";
-import { CORTEX_UI, CORTEX_UI_DEVTOOLS, installCortexUIDevtools } from "@cortexui/runtime";
+} from "@domglyph/components";
+import { Box, Stack, Text } from "@domglyph/primitives";
+import { CORTEX_UI, CORTEX_UI_DEVTOOLS, installDOMglyphDevtools } from "@domglyph/runtime";
 import { useEffect, useState } from "react";
 
 type PersonRow = {
@@ -25,7 +25,7 @@ const rows: readonly PersonRow[] = [
 ];
 
 export function PlaygroundDemo(): JSX.Element {
-  const [email, setEmail] = useState("mina@cortexui.dev");
+  const [email, setEmail] = useState("mina@domglyph.dev");
   const [status, setStatus] = useState<"success" | "error" | "info">("info");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [devtoolsOpen, setDevtoolsOpen] = useState(false);
@@ -121,7 +121,7 @@ export function PlaygroundDemo(): JSX.Element {
                 aiState={devtoolsOpen ? "selected" : "idle"}
                 onClick={() => {
                   const devtools =
-                    CORTEX_UI_DEVTOOLS ?? window.CORTEX_UI_DEVTOOLS ?? installCortexUIDevtools(window);
+                    CORTEX_UI_DEVTOOLS ?? window.CORTEX_UI_DEVTOOLS ?? installDOMglyphDevtools(window);
                   const nextState = devtools?.toggle() ?? false;
                   setDevtoolsOpen(nextState);
                 }}

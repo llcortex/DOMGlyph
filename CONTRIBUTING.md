@@ -1,6 +1,6 @@
-# Contributing to CortexUI
+# Contributing to DOMglyph
 
-Thank you for your interest in contributing to CortexUI. Whether you are fixing a bug, improving documentation, adding a new component, or improving tooling — contributions of all kinds are welcome and appreciated.
+Thank you for your interest in contributing to DOMglyph. Whether you are fixing a bug, improving documentation, adding a new component, or improving tooling — contributions of all kinds are welcome and appreciated.
 
 This guide covers everything you need to get started.
 
@@ -8,7 +8,7 @@ This guide covers everything you need to get started.
 
 ## Code of Conduct
 
-We are committed to making CortexUI a welcoming project for everyone. Please follow these principles in all interactions:
+We are committed to making DOMglyph a welcoming project for everyone. Please follow these principles in all interactions:
 
 - Be respectful and constructive in code reviews, issues, and discussions
 - Assume good intent; ask for clarification before assuming malice
@@ -25,7 +25,7 @@ If you experience or witness unacceptable behaviour, please open a private GitHu
 - New components that follow the AI contract compliance checklist
 - Improvements to existing component APIs
 - Documentation fixes and improvements
-- New test utilities in `@cortexui/testing`
+- New test utilities in `@domglyph/testing`
 - Design token additions or adjustments
 - Build tooling improvements
 
@@ -41,19 +41,19 @@ cortexui/
     docs/           # Next.js 14 documentation site (port 3001)
     playground/     # Development playground for manual testing
   packages/
-    ai-contract/    # @cortexui/ai-contract — data-ai-* spec, types, validators
-    components/     # @cortexui/components  — React components
-    primitives/     # @cortexui/primitives  — Base accessible primitives
-    runtime/        # @cortexui/runtime     — window.__CORTEX_UI__ browser API
-    testing/        # @cortexui/testing     — Contract validation + vitest matchers
-    tokens/         # @cortexui/tokens      — Design tokens
+    ai-contract/    # @domglyph/ai-contract — data-ai-* spec, types, validators
+    components/     # @domglyph/components  — React components
+    primitives/     # @domglyph/primitives  — Base accessible primitives
+    runtime/        # @domglyph/runtime     — window.__CORTEX_UI__ browser API
+    testing/        # @domglyph/testing     — Contract validation + vitest matchers
+    tokens/         # @domglyph/tokens      — Design tokens
   tooling/
     eslint/         # Shared ESLint config
     tsconfig/       # Shared TypeScript configs
     prettier/       # Shared Prettier config
 ```
 
-Each package under `packages/` is independently versioned and published to npm under the `@cortexui` scope. The monorepo is managed with pnpm workspaces and built with Turbo.
+Each package under `packages/` is independently versioned and published to npm under the `@domglyph` scope. The monorepo is managed with pnpm workspaces and built with Turbo.
 
 ---
 
@@ -87,7 +87,7 @@ pnpm dev
 ### Start docs only (port 3001)
 
 ```bash
-pnpm --filter @cortexui/docs dev
+pnpm --filter @domglyph/docs dev
 ```
 
 ### Run all tests
@@ -118,13 +118,13 @@ Source files live in `src/`. The package is built with `tsup`.
 
 ```bash
 # Watch-build a specific package during development
-pnpm --filter @cortexui/components dev
+pnpm --filter @domglyph/components dev
 
 # Run tests for a specific package
-pnpm --filter @cortexui/components test
+pnpm --filter @domglyph/components test
 
 # Type check a specific package
-pnpm --filter @cortexui/components typecheck
+pnpm --filter @domglyph/components typecheck
 ```
 
 Write tests alongside your changes. Tests for a package live in `packages/<name>/tests/` or co-located with source files. Use vitest.
@@ -138,7 +138,7 @@ Write tests alongside your changes. Tests for a package live in `packages/<name>
 To preview docs changes:
 
 ```bash
-pnpm --filter @cortexui/docs dev
+pnpm --filter @domglyph/docs dev
 # Open http://localhost:3001
 ```
 
@@ -183,7 +183,7 @@ PRs without passing tests, type errors, or missing changesets (for package chang
 
 ## Commit Convention
 
-CortexUI follows [Conventional Commits](https://www.conventionalcommits.org/).
+DOMglyph follows [Conventional Commits](https://www.conventionalcommits.org/).
 
 | Prefix | Use for |
 |---|---|
@@ -210,7 +210,7 @@ Keep the subject line under 72 characters. Add a body if the change requires exp
 
 ## Changesets
 
-CortexUI uses [Changesets](https://github.com/changesets/changesets) to manage package versioning and changelogs.
+DOMglyph uses [Changesets](https://github.com/changesets/changesets) to manage package versioning and changelogs.
 
 Every pull request that changes a package must include a changeset.
 
@@ -236,7 +236,7 @@ If your PR only changes docs or tooling with no effect on published packages, yo
 
 ## AI Contract Compliance
 
-This is the most important contribution requirement. Every component in CortexUI — new or modified — must correctly implement the AI contract.
+This is the most important contribution requirement. Every component in DOMglyph — new or modified — must correctly implement the AI contract.
 
 ### Required attributes
 
@@ -252,10 +252,10 @@ Any new component MUST include:
 
 ### Validation
 
-Every component must pass `validateAIContractNode()` from `@cortexui/testing`. A test must verify this explicitly:
+Every component must pass `validateAIContractNode()` from `@domglyph/testing`. A test must verify this explicitly:
 
 ```ts
-import { validateAIContractNode } from '@cortexui/testing';
+import { validateAIContractNode } from '@domglyph/testing';
 import { render, screen } from '@testing-library/react';
 import { describe, test, expect } from 'vitest';
 import { MyComponent } from '../src/MyComponent';
@@ -285,7 +285,7 @@ PRs that modify or add components without these tests will not be merged.
 
 ## Adding a New Component
 
-Follow this checklist when adding a component to `@cortexui/components`:
+Follow this checklist when adding a component to `@domglyph/components`:
 
 - [ ] Create `packages/components/src/MyComponent.tsx`
 - [ ] Export from `packages/components/src/index.ts`
@@ -301,13 +301,13 @@ Follow this checklist when adding a component to `@cortexui/components`:
 - [ ] Add the component to the sidebar in `apps/docs/lib/navigation.ts`
 - [ ] Create a changeset with `pnpm changeset`
 
-New components must be built on primitives from `@cortexui/primitives` or on standard HTML elements. Do not introduce new dependencies to the components package without prior discussion.
+New components must be built on primitives from `@domglyph/primitives` or on standard HTML elements. Do not introduce new dependencies to the components package without prior discussion.
 
 ---
 
 ## Code Style
 
-CortexUI enforces the following conventions. The ESLint and Prettier configs in `tooling/` handle most of this automatically.
+DOMglyph enforces the following conventions. The ESLint and Prettier configs in `tooling/` handle most of this automatically.
 
 - **TypeScript strict mode** is on for all packages
 - **Named exports only** — no default exports
@@ -343,7 +343,7 @@ ActionButton.displayName = 'ActionButton';
 - Every component test must include:
   - An AI contract validation test (`validateAIContractNode`)
   - State transition tests for every `AIState` the component accepts
-  - An accessibility test using `runAccessibilityChecks` from `@cortexui/testing`
+  - An accessibility test using `runAccessibilityChecks` from `@domglyph/testing`
 - Target 100% coverage of `data-ai-*` attribute paths
 
 ---
@@ -352,7 +352,7 @@ ActionButton.displayName = 'ActionButton';
 
 Please use GitHub Issues. A good bug report includes:
 
-- The package name and version (e.g., `@cortexui/components@1.1.0`)
+- The package name and version (e.g., `@domglyph/components@1.1.0`)
 - A minimal reproduction — a single file or a StackBlitz link
 - What you expected to happen
 - What actually happened
@@ -368,4 +368,4 @@ Open a [GitHub Discussion](https://github.com/cortexui/cortexui/discussions) for
 
 ---
 
-Thank you for contributing to CortexUI.
+Thank you for contributing to DOMglyph.

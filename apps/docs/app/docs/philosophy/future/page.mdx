@@ -9,7 +9,7 @@ What happens next is not mysterious — the trajectory is already visible in how
 
 **Browser automation tools adopt `data-ai-*` as a first-class selector strategy.**
 
-Playwright, Puppeteer, and Selenium already support custom attribute selectors. The step from "supported" to "first-class" is a matter of adoption and tooling. As CortexUI patterns prove out in production and teams begin publishing stable AI contracts alongside their visual designs, automation tools will build native support for contract-based targeting — syntax sugar, type definitions, helper methods that make `[data-ai-action]` as natural as `getByRole` or `getByTestId`.
+Playwright, Puppeteer, and Selenium already support custom attribute selectors. The step from "supported" to "first-class" is a matter of adoption and tooling. As DOMglyph patterns prove out in production and teams begin publishing stable AI contracts alongside their visual designs, automation tools will build native support for contract-based targeting — syntax sugar, type definitions, helper methods that make `[data-ai-action]` as natural as `getByRole` or `getByTestId`.
 
 **Design tools generate AI contracts alongside visual specs.**
 
@@ -17,7 +17,7 @@ Figma already exports component specifications to developers. The next version o
 
 **Testing frameworks use contract validation as a first-class feature.**
 
-The `@cortexui/testing` library provides the foundation. As teams adopt it, test suites shift from "find the element by visual heuristic" to "verify the contract is honored." CI pipelines include a contract validation step that fails the build if interactive elements lack required `data-ai-*` attributes or if action events are missing from the runtime event log.
+The `@domglyph/testing` library provides the foundation. As teams adopt it, test suites shift from "find the element by visual heuristic" to "verify the contract is honored." CI pipelines include a contract validation step that fails the build if interactive elements lack required `data-ai-*` attributes or if action events are missing from the runtime event log.
 
 **Companies publish AI-readable specs alongside their visual design systems.**
 
@@ -35,14 +35,14 @@ Rather than an agent sending instructions to an external orchestration layer tha
 
 **Multi-agent coordination: different agents own different sections simultaneously.**
 
-Complex tasks decompose naturally along section boundaries. One agent handles the navigation — finding the right page, maintaining session state, managing authentication. Another handles data entry — filling forms, managing field validation. Another handles verification — confirming that operations completed successfully, detecting error states. CortexUI's section-based architecture makes this decomposition explicit and reliable. Agents can operate simultaneously on different `data-ai-section` regions without interference.
+Complex tasks decompose naturally along section boundaries. One agent handles the navigation — finding the right page, maintaining session state, managing authentication. Another handles data entry — filling forms, managing field validation. Another handles verification — confirming that operations completed successfully, detecting error states. DOMglyph's section-based architecture makes this decomposition explicit and reliable. Agents can operate simultaneously on different `data-ai-section` regions without interference.
 
 **"AI-audited" becomes a UX quality mark alongside "WCAG compliant."**
 
 Accessibility compliance is now a standard requirement for production web applications. The industry recognized that designing for assistive technology users is both ethically required and legally mandated. The equivalent recognition for AI operability is coming. An "AI-audited" certification — verifying that an application exposes a complete, correct machine-readable interaction contract — becomes a quality mark that enterprises require of software vendors, that government procurement standards include, and that users can look for as a signal that the application supports AI-assisted operation.
 
 <Callout type="important">
-CortexUI's vision: Every web app exposes a machine-readable interaction contract as naturally as it exposes a URL structure. The same way you don't think twice about every page having a URL, you won't think twice about every action having a contract name.
+DOMglyph's vision: Every web app exposes a machine-readable interaction contract as naturally as it exposes a URL structure. The same way you don't think twice about every page having a URL, you won't think twice about every action having a contract name.
 </Callout>
 
 ## Long Term: The Infrastructure Layer
@@ -59,9 +59,9 @@ Currently, contracts flow one direction: the developer writes the contract, the 
 
 The endpoint of this trajectory is the web as infrastructure for autonomous operation. Not a parallel "machine web" separate from the human web — the same web, with the same interfaces, but with a complete and standardized contract layer that makes every application operable by any sufficiently capable agent. The web's original promise — universal access to information — extends to universal access to operation.
 
-## CortexUI's Role
+## DOMglyph's Role
 
-CortexUI's contribution is to the beginning of this arc, which is the most important part. The vocabulary and patterns established now will shape what the ecosystem converges on. The concept being proved in production now provides the evidence that browser vendors, design tool makers, and testing framework maintainers need to invest in native support.
+DOMglyph's contribution is to the beginning of this arc, which is the most important part. The vocabulary and patterns established now will shape what the ecosystem converges on. The concept being proved in production now provides the evidence that browser vendors, design tool makers, and testing framework maintainers need to invest in native support.
 
 Building the ecosystem means making it easy for any team to adopt the contract, any tool to read it, and any agent to use it. The more applications that adopt the pattern, the more tools can be built that rely on it. The more tools that rely on it, the more valuable the pattern becomes. This is how technical standards achieve critical mass.
 

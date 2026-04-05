@@ -20,7 +20,7 @@ export default function HomePage() {
             <span className="text-brand-600">humans and machines</span>
           </h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
-            CortexUI is a design system built for the AI era. Every component exposes a machine-readable contract — making your UI deterministically operable by AI agents.
+            DOMglyph is a design system built for the AI era. Every component exposes a machine-readable contract — making your UI deterministically operable by AI agents.
           </p>
           <div className="flex items-center justify-center gap-4">
             <Link href="/docs/introduction/what-is-cortexui" className="px-6 py-3 bg-brand-600 text-white rounded-lg font-medium hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/20">
@@ -51,7 +51,7 @@ export default function HomePage() {
               {
                 icon: "◉",
                 title: "Runtime inspection API",
-                desc: "window.__CORTEX_UI__ gives agents structured access to screen context, forms, and events."
+                desc: "window.__DOMGLYPH__ gives agents structured access to screen context, forms, and events."
               }
             ].map((f) => (
               <div key={f.title} className="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
@@ -70,7 +70,7 @@ export default function HomePage() {
           <div>
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Every element is a contract</h2>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-              Traditional UI is built for eyes. CortexUI is built for eyes and agents. Every interactive element declares its identity, intent, and state — in a format both humans and AI can trust.
+              Traditional UI is built for eyes. DOMglyph is built for eyes and agents. Every interactive element declares its identity, intent, and state — in a format both humans and AI can trust.
             </p>
             <Link href="/docs/ai-contract/attributes" className="text-brand-600 dark:text-brand-400 font-medium hover:underline text-sm">
               Explore data-ai-* attributes →
@@ -102,7 +102,7 @@ export default function HomePage() {
       <section className="py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <blockquote className="text-2xl font-light text-slate-700 dark:text-slate-300 leading-relaxed">
-            &ldquo;The web was built for humans. The next generation of software is being operated by AI. CortexUI is the bridge — a design system where every pixel has a machine-readable meaning.&rdquo;
+            &ldquo;The web was built for humans. The next generation of software is being operated by AI. DOMglyph is the bridge — a design system where every pixel has a machine-readable meaning.&rdquo;
           </blockquote>
           <div className="mt-8 flex items-center justify-center gap-4">
             <Link href="/docs/philosophy/evolution" className="text-sm text-brand-600 dark:text-brand-400 hover:underline">Read the philosophy →</Link>

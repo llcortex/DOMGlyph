@@ -1,11 +1,11 @@
 # Philosophy
 
-CortexUI is built around a single foundational premise: **UI is an interface contract, not just a visual layer.** Every design decision, every API choice, and every component behavior follows from this premise. When you understand the philosophy, the specific APIs become obvious rather than arbitrary.
+DOMglyph is built around a single foundational premise: **UI is an interface contract, not just a visual layer.** Every design decision, every API choice, and every component behavior follows from this premise. When you understand the philosophy, the specific APIs become obvious rather than arbitrary.
 
-This page walks through the six core principles that define how CortexUI thinks about interface design. For each principle, we show what it looks like in code, why it matters, and what the anti-pattern looks like.
+This page walks through the six core principles that define how DOMglyph thinks about interface design. For each principle, we show what it looks like in code, why it matters, and what the anti-pattern looks like.
 
 <Callout type="important">
-These principles are not guidelines — they are architectural constraints. CortexUI enforces them through its component APIs. Components that violate these principles cannot express themselves correctly through the semantic layer.
+These principles are not guidelines — they are architectural constraints. DOMglyph enforces them through its component APIs. Components that violate these principles cannot express themselves correctly through the semantic layer.
 </Callout>
 
 ## Principle 1: Dual Layer
@@ -17,7 +17,7 @@ The visual layer and the semantic layer are co-equal. Neither is an afterthought
 ### What it looks like
 
 ```tsx
-// CortexUI ActionButton ships both layers:
+// DOMglyph ActionButton ships both layers:
 <ActionButton
   aiId="delete-account"
   action="delete-account"
@@ -67,7 +67,7 @@ The `data-testid` approach treats machine legibility as a testing concern rather
 
 **AI-UI interactions must be deterministic. The same query must always return the same element. The same trigger must always perform the same action.**
 
-Non-determinism in UI interaction comes from relying on element structure, visual position, or text content. CortexUI replaces all of these with stable, explicit identifiers. `data-ai-id` values are assigned by the developer and are treated as stable contracts — changing them is a breaking change, just as renaming an API endpoint is a breaking change.
+Non-determinism in UI interaction comes from relying on element structure, visual position, or text content. DOMglyph replaces all of these with stable, explicit identifiers. `data-ai-id` values are assigned by the developer and are treated as stable contracts — changing them is a breaking change, just as renaming an API endpoint is a breaking change.
 
 ### What it looks like
 
@@ -84,7 +84,7 @@ Non-determinism in UI interaction comes from relying on element structure, visua
 
 ```tsx
 // An AI agent targets the action deterministically:
-const action = window.__CORTEX_UI__.getAction("submit-order");
+const action = window.__DOMGLYPH__.getAction("submit-order");
 // Returns the element regardless of what text is currently displayed,
 // what CSS classes are applied, or how the DOM is structured around it.
 ```
@@ -170,7 +170,7 @@ An AI agent watching this element can observe the state transition from `idle` �
 
 **Every interactive element must have a stable, developer-assigned identity that does not change with re-renders, style changes, or DOM restructuring.**
 
-Auto-generated IDs, hash-based identifiers, and positional selectors are all unstable. They couple identity to implementation. CortexUI requires `data-ai-id` to be explicitly set by the developer. This is intentional friction — it forces the developer to make a deliberate decision about the semantic identity of each interactive element.
+Auto-generated IDs, hash-based identifiers, and positional selectors are all unstable. They couple identity to implementation. DOMglyph requires `data-ai-id` to be explicitly set by the developer. This is intentional friction — it forces the developer to make a deliberate decision about the semantic identity of each interactive element.
 
 ### What it looks like
 
@@ -213,7 +213,7 @@ Think of `data-ai-id` the same way you think of REST API paths. `/api/orders/:id
 
 **The interface must describe what it does, not just what it is.**
 
-ARIA describes structure and role: "this is a button," "this is a checkbox." CortexUI describes action and intent: "this triggers `submit-order`," "this triggers `toggle-notification-preference`." The distinction is the difference between a noun and a verb. AI agents need verbs — they need to know what actions are available and what each action does.
+ARIA describes structure and role: "this is a button," "this is a checkbox." DOMglyph describes action and intent: "this triggers `submit-order`," "this triggers `toggle-notification-preference`." The distinction is the difference between a noun and a verb. AI agents need verbs — they need to know what actions are available and what each action does.
 
 ### What it looks like
 
@@ -269,7 +269,7 @@ An AI agent operating on a complex application may encounter the same component 
 
 ```tsx
 // Agent queries by screen context:
-const checkoutActions = window.__CORTEX_UI__.getActionsByScreen("checkout");
+const checkoutActions = window.__DOMGLYPH__.getActionsByScreen("checkout");
 // Returns only actions available on the checkout screen,
 // not actions from a sidebar, modal, or background route.
 ```
@@ -292,11 +292,11 @@ The design principle is: **never make a machine infer what you can declare.**
 
 When state is explicit, agents do not need to interpret spinners. When identity is stable, agents do not need to re-discover elements after re-renders. When actions are named, agents do not need to parse button text. When screen context is declared, agents do not need to infer location from URL structure.
 
-This is the discipline that makes CortexUI an interaction contract rather than just a component library. The contract is the commitment to explicit, stable, machine-readable declarations throughout your interface.
+This is the discipline that makes DOMglyph an interaction contract rather than just a component library. The contract is the commitment to explicit, stable, machine-readable declarations throughout your interface.
 
 ## Next Steps
 
 - [What AI-native UI means](/docs/introduction/ai-native-ui)
-- [CortexUI vs traditional design systems](/docs/introduction/comparison)
-- [Your first CortexUI component](/docs/getting-started/first-component)
+- [DOMglyph vs traditional design systems](/docs/introduction/comparison)
+- [Your first DOMglyph component](/docs/getting-started/first-component)
 - [Project setup guide](/docs/getting-started/project-setup)

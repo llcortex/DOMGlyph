@@ -2,12 +2,12 @@ import {
   AIRole,
   AIState,
   createAIAttributes
-} from "@cortexui/ai-contract";
+} from "@domglyph/ai-contract";
 import { describe, expect, it } from "vitest";
 
 import { createVirtualElement, runComponentComplianceChecks } from "../src/index";
 
-describe("@cortexui/testing component compliance", () => {
+describe("@domglyph/testing component compliance", () => {
   it("fails components that omit required AI attributes", () => {
     const element = createVirtualElement({
       attributes: {

@@ -2,16 +2,16 @@
 
 ## Overview
 
-The CortexUI devtools provide a visual overlay and structured API for inspecting the AI contract on any page.
+The DOMglyph devtools provide a visual overlay and structured API for inspecting the AI contract on any page.
 
 ## Installation
 
 ```ts
-import { installCortexUIDevtools } from '@cortexui/runtime';
+import { installDOMglyphDevtools } from '@domglyph/runtime';
 
 // In your app's entry point (dev only)
 if (process.env.NODE_ENV === 'development') {
-  installCortexUIDevtools(window);
+  installDOMglyphDevtools(window);
 }
 ```
 
@@ -41,5 +41,5 @@ window.__CORTEX_UI_DEVTOOLS__ = {
 `enableOverlay()` adds visual badges to all elements with data-ai-* attributes, showing their role and state.
 
 <Callout type="note">
-The AI View toggle in the CortexUI docs uses this same overlay concept. Toggle it with the "AI View" button in the header.
+The AI View toggle in the DOMglyph docs uses this same overlay concept. Toggle it with the "AI View" button in the header.
 </Callout>

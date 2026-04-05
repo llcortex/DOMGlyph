@@ -5,7 +5,7 @@
 ## Signature
 
 ```ts
-window.__CORTEX_UI__.getAvailableActions(): Action[]
+window.__DOMGLYPH__.getAvailableActions(): Action[]
 ```
 
 ## Return Type
@@ -77,7 +77,7 @@ The filter is based on DOM visibility at the moment you call the method. If a mo
 
 ```ts
 function isActionAvailable(actionName: string): boolean {
-  const actions = window.__CORTEX_UI__.getAvailableActions();
+  const actions = window.__DOMGLYPH__.getAvailableActions();
   return actions.some(a => a.action === actionName && a.state === 'idle');
 }
 
@@ -97,7 +97,7 @@ A typical agent discovery loop looks like this:
 
 ```ts
 async function discoverAndAct(targetAction: string) {
-  const actions = window.__CORTEX_UI__.getAvailableActions();
+  const actions = window.__DOMGLYPH__.getAvailableActions();
   const action = actions.find(a => a.action === targetAction);
 
   if (!action) {
@@ -127,7 +127,7 @@ Use `action.section` to disambiguate when the same logical action appears in mul
 ## Annotating Actions in Components
 
 ```tsx
-import { ActionButton } from '@cortexui/components';
+import { ActionButton } from '@domglyph/components';
 
 function ProfileForm() {
   const [state, setState] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -155,7 +155,7 @@ When a page has many actions, you may want to scope your query to a specific sec
 
 ```ts
 function getActionsInSection(section: string): Action[] {
-  return window.__CORTEX_UI__
+  return window.__DOMGLYPH__
     .getAvailableActions()
     .filter(a => a.section === section);
 }
@@ -169,7 +169,7 @@ const dangerActions = getActionsInSection('danger-zone');
 Different action states require different agent behaviors:
 
 ```ts
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 const saveAction = actions.find(a => a.action === 'save-profile');
 
 switch (saveAction?.state) {
@@ -183,7 +183,7 @@ switch (saveAction?.state) {
     break;
   case 'success':
     // Already done — check events for result
-    const events = window.__CORTEX_UI__.getRecentEvents();
+    const events = window.__DOMGLYPH__.getRecentEvents();
     break;
   case 'error':
     // Handle error recovery

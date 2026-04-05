@@ -21,7 +21,7 @@ export type {
   TextOwnProps
 } from "./types";
 
-import { colorTokens } from "@cortexui/tokens";
+import { colorTokens } from "@domglyph/tokens";
 import type { SurfaceDescriptor } from "./types";
 
 /**

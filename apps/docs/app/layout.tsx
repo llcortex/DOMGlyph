@@ -7,14 +7,14 @@ import { Search } from "@/components/search";
 import "@/app/globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cortexui.llcortex.ai";
-const socialImageAlt = "CortexUI social preview showing UI that speaks to humans and machines.";
+const socialImageAlt = "DOMglyph social preview showing UI that speaks to humans and machines.";
 const socialImageUrl = `${siteUrl}/social-preview.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    template: "%s — CortexUI",
-    default: "CortexUI — AI-native design system"
+    template: "%s — DOMglyph",
+    default: "DOMglyph — AI-native design system"
   },
   description: "The design system that makes web interfaces visually usable for humans and programmatically operable for AI agents.",
   keywords: ["design system", "AI", "UI components", "accessibility", "React"],
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "CortexUI",
-    title: "CortexUI — AI-native design system",
+    siteName: "DOMglyph",
+    title: "DOMglyph — AI-native design system",
     description:
-      "UI that speaks to humans and machines. CortexUI makes interfaces visually usable for people and programmatically operable for AI agents.",
+      "UI that speaks to humans and machines. DOMglyph makes interfaces visually usable for people and programmatically operable for AI agents.",
     images: [
       {
         url: socialImageUrl,
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CortexUI — AI-native design system",
+    title: "DOMglyph — AI-native design system",
     description:
-      "UI that speaks to humans and machines. CortexUI makes interfaces visually usable for people and programmatically operable for AI agents.",
+      "UI that speaks to humans and machines. DOMglyph makes interfaces visually usable for people and programmatically operable for AI agents.",
     images: [
       {
         url: socialImageUrl,

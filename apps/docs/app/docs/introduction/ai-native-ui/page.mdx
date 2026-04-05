@@ -1,6 +1,6 @@
 # AI-Native UI
 
-"AI-native" has become a overused phrase. Products claim to be AI-native because they have a chatbot sidebar or an autocomplete field. CortexUI uses the term with a specific technical meaning: **an AI-native UI is one that is designed from the ground up to be reliably operable by AI agents, not just by humans.**
+"AI-native" has become a overused phrase. Products claim to be AI-native because they have a chatbot sidebar or an autocomplete field. DOMglyph uses the term with a specific technical meaning: **an AI-native UI is one that is designed from the ground up to be reliably operable by AI agents, not just by humans.**
 
 This is an architectural definition, not a feature checklist. An interface is AI-native when its components expose stable, machine-readable contracts that allow any AI system to discover, interpret, and operate the interface without prior training on its specific DOM structure.
 
@@ -12,7 +12,7 @@ AI agents entered the picture much later. The first generation of web automation
 
 The second generation added semantic awareness through ARIA. Screen reader compatibility improved. But the core problem remained: there was no concept of "this element does X" that an AI agent could reliably discover and act on.
 
-The third generation — the one CortexUI is part of — treats AI agents as first-class consumers of the interface. The interface is designed not only to look right to humans, but to declare its meaning, its available actions, and its current state to any machine that asks.
+The third generation — the one DOMglyph is part of — treats AI agents as first-class consumers of the interface. The interface is designed not only to look right to humans, but to declare its meaning, its available actions, and its current state to any machine that asks.
 
 ## How AI Agents Interact with Web Pages Today
 
@@ -59,7 +59,7 @@ Here is a checkout form written in plain HTML (not AI-native):
 
 An agent encountering this page must guess: What does this form do? What will happen when the button is clicked? Which entity does this relate to? The agent has no answers — only inference.
 
-Here is the same form written with CortexUI's AI-native contract:
+Here is the same form written with DOMglyph's AI-native contract:
 
 ```html
 <!-- AI-native form: human-friendly + machine-readable -->
@@ -143,7 +143,7 @@ This does not mean that every interface must be fully AI-native from day one. Bu
 
 ## Code Comparison: Traditional vs AI-Native Button
 
-This side-by-side shows the concrete difference between a traditional button and an AI-native button built with CortexUI:
+This side-by-side shows the concrete difference between a traditional button and an AI-native button built with DOMglyph:
 
 ```tsx
 // Traditional button (React + Tailwind)
@@ -163,7 +163,7 @@ function SubmitButton({ isLoading }: { isLoading: boolean }) {
 ```
 
 ```tsx
-// AI-native button (CortexUI ActionButton)
+// AI-native button (DOMglyph ActionButton)
 // Human-friendly. Machine-readable. Both by design.
 function SubmitButton({ isLoading, entityId }: {
   isLoading: boolean;
@@ -197,14 +197,14 @@ When your interface is AI-native, an AI agent can do the following reliably, wit
 ### Discover available actions
 
 ```tsx
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 // Returns every action currently available, grouped by screen and section
 ```
 
 ### Query by intent
 
 ```tsx
-const saveButton = window.__CORTEX_UI__.getAction("save-profile");
+const saveButton = window.__DOMGLYPH__.getAction("save-profile");
 // Returns the element, its current state, its entity context
 // Works regardless of what the button text currently says
 ```
@@ -212,7 +212,7 @@ const saveButton = window.__CORTEX_UI__.getAction("save-profile");
 ### Observe state changes
 
 ```tsx
-window.__CORTEX_UI__.onStateChange("profile-save-btn", (newState) => {
+window.__DOMGLYPH__.onStateChange("profile-save-btn", (newState) => {
   if (newState === "loading") {
     // Agent knows: save is in progress, do not trigger again
   }
@@ -225,7 +225,7 @@ window.__CORTEX_UI__.onStateChange("profile-save-btn", (newState) => {
 ### Understand entity context
 
 ```tsx
-const orderContext = window.__CORTEX_UI__.getEntityContext("order");
+const orderContext = window.__DOMGLYPH__.getEntityContext("order");
 // Returns: all elements related to the current order entity,
 // the entity ID, and what actions are available on it
 ```
@@ -233,7 +233,7 @@ const orderContext = window.__CORTEX_UI__.getEntityContext("order");
 ### Navigate by screen
 
 ```tsx
-const checkoutElements = window.__CORTEX_UI__.getElementsByScreen("checkout");
+const checkoutElements = window.__DOMGLYPH__.getElementsByScreen("checkout");
 // Returns all interactive elements on the checkout screen
 // regardless of how they are visually arranged
 ```
@@ -246,13 +246,13 @@ If you have built REST APIs before, think of the `data-ai-*` attribute system as
 
 ## Summary
 
-AI-native UI is not a feature — it is a design discipline. It means deliberately designing interfaces that serve two audiences: humans who interact visually, and AI agents that interact programmatically. CortexUI is the first design system built around this discipline, providing the component APIs, the semantic attribute system, and the runtime inspection layer that make AI-native development practical.
+AI-native UI is not a feature — it is a design discipline. It means deliberately designing interfaces that serve two audiences: humans who interact visually, and AI agents that interact programmatically. DOMglyph is the first design system built around this discipline, providing the component APIs, the semantic attribute system, and the runtime inspection layer that make AI-native development practical.
 
 Building AI-native interfaces today is optional. In three years, it will be expected.
 
 ## Next Steps
 
-- [CortexUI vs traditional design systems](/docs/introduction/comparison)
+- [DOMglyph vs traditional design systems](/docs/introduction/comparison)
 - [Get started with installation](/docs/getting-started/installation)
 - [Set up your first project](/docs/getting-started/project-setup)
 - [Build your first AI-native component](/docs/getting-started/first-component)

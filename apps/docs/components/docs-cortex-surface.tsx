@@ -5,7 +5,7 @@ import {
   AIRole,
   AIState,
   createAIAttributes
-} from "@cortexui/ai-contract";
+} from "@domglyph/ai-contract";
 
 const exampleRows = [
   {
@@ -33,10 +33,10 @@ export function DocsCortexSurface(): JSX.Element {
     >
       <div className="mb-6">
         <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-600 dark:text-brand-400">
-          Live CortexUI Surface
+          Live DOMglyph Surface
         </p>
         <p className="max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">
-          This block renders live CortexUI contract metadata in the docs DOM so AI View can inspect
+          This block renders live DOMglyph contract metadata in the docs DOM so AI View can inspect
           real machine-readable elements instead of only code examples.
         </p>
       </div>

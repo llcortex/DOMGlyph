@@ -1,4 +1,4 @@
-import { DATA_AI_ROLE } from "@cortexui/ai-contract";
+import { DATA_AI_ROLE } from "@domglyph/ai-contract";
 
 import type { AccessibilityCheckOptions, AccessibilityCheckResult } from "./types";
 

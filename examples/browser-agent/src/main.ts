@@ -1,4 +1,4 @@
-import { installCortexUIDevtools, installCortexUIRuntime } from "@cortexui/runtime";
+import { installDOMglyphDevtools, installDOMglyphRuntime } from "@domglyph/runtime";
 
 const root = document.getElementById("root");
 
@@ -9,7 +9,7 @@ if (root) {
         <section style="background:#fff;border:1px solid rgba(18,35,27,.1);border-radius:28px;padding:28px;">
           <p style="margin:0;color:#2f7c5f;letter-spacing:.18em;text-transform:uppercase;">Browser Agent Demo</p>
           <h1 style="margin:12px 0 8px;font-size:2.6rem;">Agent-readable workspace</h1>
-          <p style="margin:0;color:rgba(18,35,27,.72);max-width:64ch;">This demo shows how an in-browser agent can inspect forms, actions, entities, and recent events through the CortexUI runtime.</p>
+          <p style="margin:0;color:rgba(18,35,27,.72);max-width:64ch;">This demo shows how an in-browser agent can inspect forms, actions, entities, and recent events through the DOMglyph runtime.</p>
         </section>
 
         <section data-ai-section="agent-actions" style="background:#fff;border:1px solid rgba(18,35,27,.1);border-radius:24px;padding:24px;display:grid;gap:16px;">
@@ -59,8 +59,8 @@ if (root) {
   `;
 }
 
-const runtime = installCortexUIRuntime(window);
-installCortexUIDevtools(window);
+const runtime = installDOMglyphRuntime(window);
+installDOMglyphDevtools(window);
 
 const output = document.getElementById("agent-output");
 

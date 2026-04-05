@@ -5,7 +5,7 @@ Returns the complete schema of a form — all its fields, their types, and curre
 ## Signature
 
 ```ts
-window.__CORTEX_UI__.getFormSchema(formId: string): FormSchema
+window.__DOMGLYPH__.getFormSchema(formId: string): FormSchema
 ```
 
 ## Return Type
@@ -62,7 +62,7 @@ interface FormFieldSchema {
 // An agent filling out a form
 async function fillEditProfileForm(agentData) {
   // 1. Get form schema
-  const schema = window.__CORTEX_UI__.getFormSchema('edit-profile-form');
+  const schema = window.__DOMGLYPH__.getFormSchema('edit-profile-form');
 
   // 2. Find and fill each field
   for (const field of schema.fields) {
@@ -78,7 +78,7 @@ async function fillEditProfileForm(agentData) {
   }
 
   // 3. Find submit action
-  const actions = window.__CORTEX_UI__.getAvailableActions();
+  const actions = window.__DOMGLYPH__.getAvailableActions();
   const submitAction = actions.find(a => a.action === 'save-profile');
 
   if (submitAction) {

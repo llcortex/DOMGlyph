@@ -2,7 +2,7 @@
 
 ## Overview
 
-CortexUI components are fully keyboard navigable. This benefits both human users and AI agents that interact via keyboard simulation.
+DOMglyph components are fully keyboard navigable. This benefits both human users and AI agents that interact via keyboard simulation.
 
 ## Key Bindings by Component
 
@@ -17,7 +17,7 @@ CortexUI components are fully keyboard navigable. This benefits both human users
 
 ## Focus Management
 
-CortexUI handles focus automatically:
+DOMglyph handles focus automatically:
 - Modal: focuses first element inside on open
 - Dialog: returns focus to trigger on close
 - Toast/Banner: does not steal focus
@@ -28,4 +28,4 @@ Use keyboard navigation paths when scripting AI agent tests. `data-ai-id` select
 
 ## Tab Order
 
-Elements receive focus in DOM order by default. CortexUI does not use `tabindex > 0` — this would break natural tab order.
+Elements receive focus in DOM order by default. DOMglyph does not use `tabindex > 0` — this would break natural tab order.

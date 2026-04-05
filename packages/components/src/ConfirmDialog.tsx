@@ -1,5 +1,5 @@
-import { AIRole, AIState, createAIAttributes } from "@cortexui/ai-contract";
-import { Box, DialogBase, Stack, Text } from "@cortexui/primitives";
+import { AIRole, AIState, createAIAttributes } from "@domglyph/ai-contract";
+import { Box, DialogBase, Stack, Text } from "@domglyph/primitives";
 import { useId } from "react";
 
 import { ActionButton } from "./ActionButton";
@@ -52,7 +52,7 @@ export function ConfirmDialog({
             onClick={onCancel}
             style={{
               background: "transparent",
-              color: "var(--cortexui-foreground)"
+              color: "var(--domglyph-foreground)"
             }}
           >
             {cancelLabel}

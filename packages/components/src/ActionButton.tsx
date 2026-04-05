@@ -1,5 +1,5 @@
-import { AIRole, createAIAttributes } from "@cortexui/ai-contract";
-import { ButtonBase } from "@cortexui/primitives";
+import { AIRole, createAIAttributes } from "@domglyph/ai-contract";
+import { ButtonBase } from "@domglyph/primitives";
 import { forwardRef } from "react";
 
 import type { ActionButtonProps } from "./types";

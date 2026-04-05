@@ -1,6 +1,6 @@
-import { ActionButton, DataTable, FormField, StatusBanner } from "@cortexui/components";
-import { Box, Stack, Text } from "@cortexui/primitives";
-import { CORTEX_UI_DEVTOOLS } from "@cortexui/runtime";
+import { ActionButton, DataTable, FormField, StatusBanner } from "@domglyph/components";
+import { Box, Stack, Text } from "@domglyph/primitives";
+import { CORTEX_UI_DEVTOOLS } from "@domglyph/runtime";
 import { useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 

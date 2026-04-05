@@ -1,6 +1,6 @@
 # React Integration
 
-CortexUI is built for React 18. This guide covers idiomatic React patterns for building AI-native interfaces: component imports, state synchronization, the `useAIState` hook, form integration with React Hook Form, and a complete form example.
+DOMglyph is built for React 18. This guide covers idiomatic React patterns for building AI-native interfaces: component imports, state synchronization, the `useAIState` hook, form integration with React Hook Form, and a complete form example.
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@ CortexUI is built for React 18. This guide covers idiomatic React patterns for b
 
 ## Component Imports
 
-All CortexUI components are available from `@cortexui/components`:
+All DOMglyph components are available from `@domglyph/components`:
 
 ```tsx
 import {
@@ -35,10 +35,10 @@ import {
   DataTable,
   StatusBadge,
   EntityDisplay,
-} from "@cortexui/components";
+} from "@domglyph/components";
 ```
 
-Runtime and context hooks come from `@cortexui/runtime`:
+Runtime and context hooks come from `@domglyph/runtime`:
 
 ```tsx
 import {
@@ -49,10 +49,10 @@ import {
   useSection,
   useAIState,
   useCortexRuntime,
-} from "@cortexui/runtime";
+} from "@domglyph/runtime";
 ```
 
-Type definitions come from `@cortexui/ai-contract`:
+Type definitions come from `@domglyph/ai-contract`:
 
 ```tsx
 import type {
@@ -60,7 +60,7 @@ import type {
   AIRole,
   AIAction,
   CortexContract,
-} from "@cortexui/ai-contract";
+} from "@domglyph/ai-contract";
 ```
 
 ## State Management Patterns
@@ -71,8 +71,8 @@ The simplest pattern: bind `aiState` directly to a `useState` value. The AI cont
 
 ```tsx
 import { useState } from "react";
-import { ActionButton } from "@cortexui/components";
-import type { AIState } from "@cortexui/ai-contract";
+import { ActionButton } from "@domglyph/components";
+import type { AIState } from "@domglyph/ai-contract";
 
 function DeleteButton({ onDelete }: { onDelete: () => Promise<void> }) {
   const [state, setState] = useState<AIState>("idle");
@@ -110,8 +110,8 @@ When component state is derived from server state (e.g., from a data fetching li
 
 ```tsx
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { ActionButton } from "@cortexui/components";
-import type { AIState } from "@cortexui/ai-contract";
+import { ActionButton } from "@domglyph/components";
+import type { AIState } from "@domglyph/ai-contract";
 
 function mapMutationStateToAIState(
   status: "idle" | "pending" | "success" | "error"
@@ -153,8 +153,8 @@ function PublishButton({ articleId }: { articleId: string }) {
 The `useAIState` hook is a convenience wrapper that manages the AI state lifecycle for you. It handles the common pattern of idle → loading → success/error → idle:
 
 ```tsx
-import { useAIState } from "@cortexui/runtime";
-import { ActionButton } from "@cortexui/components";
+import { useAIState } from "@domglyph/runtime";
+import { ActionButton } from "@domglyph/components";
 
 function SaveButton({ onSave }: { onSave: () => Promise<void> }) {
   const { aiState, wrap } = useAIState({
@@ -203,15 +203,15 @@ The `wrap` function takes any async function and wraps it with automatic state t
 
 ## Forms with React Hook Form
 
-CortexUI's form components integrate cleanly with React Hook Form. The AI contract is preserved through the integration.
+DOMglyph's form components integrate cleanly with React Hook Form. The AI contract is preserved through the integration.
 
 ### Basic Setup
 
 ```tsx
 import { useForm } from "react-hook-form";
-import { FormField, TextInput, ActionButton } from "@cortexui/components";
-import { SectionProvider } from "@cortexui/runtime";
-import { useAIState } from "@cortexui/runtime";
+import { FormField, TextInput, ActionButton } from "@domglyph/components";
+import { SectionProvider } from "@domglyph/runtime";
+import { useAIState } from "@domglyph/runtime";
 
 interface ProfileFormData {
   displayName: string;
@@ -320,9 +320,9 @@ import {
   SelectInput,
   ActionButton,
   Card,
-} from "@cortexui/components";
-import { SectionProvider, useAIState } from "@cortexui/runtime";
-import type { AIState } from "@cortexui/ai-contract";
+} from "@domglyph/components";
+import { SectionProvider, useAIState } from "@domglyph/runtime";
+import type { AIState } from "@domglyph/ai-contract";
 
 interface CheckoutFormData {
   email: string;
@@ -491,4 +491,4 @@ An AI agent interacting with this form can:
 
 - [Vanilla JS integration](/docs/getting-started/vanilla-js)
 - [Your first component tutorial](/docs/getting-started/first-component)
-- [CortexUI philosophy](/docs/introduction/philosophy)
+- [DOMglyph philosophy](/docs/introduction/philosophy)

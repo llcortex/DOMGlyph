@@ -1,8 +1,8 @@
 "use client";
 
-import { ActionButton, DataTable, FormField, StatusBanner } from "@cortexui/components";
-import { Box, Stack, Text } from "@cortexui/primitives";
-import { installCortexUIDevtools } from "@cortexui/runtime";
+import { ActionButton, DataTable, FormField, StatusBanner } from "@domglyph/components";
+import { Box, Stack, Text } from "@domglyph/primitives";
+import { installDOMglyphDevtools } from "@domglyph/runtime";
 import { useState } from "react";
 
 const incidents = [
@@ -33,7 +33,7 @@ export default function DashboardExamplePage(): JSX.Element {
                 action={{ id: "toggle-dashboard-devtools", name: "Toggle dashboard devtools" }}
                 aiState="idle"
                 onClick={() => {
-                  installCortexUIDevtools(window)?.toggle();
+                  installDOMglyphDevtools(window)?.toggle();
                 }}
               >
                 Toggle Inspector

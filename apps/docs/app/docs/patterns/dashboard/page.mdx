@@ -50,9 +50,9 @@ Metric/KPI widgets should use `data-ai-role="status"` — they are read-only ind
 ## How AI Reads a Dashboard
 
 ```js
-const ctx = window.__CORTEX_UI__.getScreenContext();
+const ctx = window.__DOMGLYPH__.getScreenContext();
 // { screen: "analytics-dashboard", sections: ["summary-metrics", "recent-activity", "quick-actions"] }
 
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 // [{ id: "export-report", action: "export-report" }, { id: "invite-user", action: "invite-user" }]
 ```

@@ -4,7 +4,7 @@ In computer science, a deterministic system is one where a given input always pr
 
 Most web UI is not deterministic in this sense. Not because it is buggy, but because it was never designed with machine legibility in mind. The result is interfaces that are perfectly usable for humans but profoundly unreliable for AI agents, automation systems, and test runners.
 
-CortexUI is designed to be deterministic. This page explains what that means, why it matters, and how it is achieved.
+DOMglyph is designed to be deterministic. This page explains what that means, why it matters, and how it is achieved.
 
 ## What "Deterministic" Means in UI Context
 
@@ -37,7 +37,7 @@ Implicit state is one of the leading causes of AI agent failures. An agent that 
 
 ### Requirement 1: Stable Identity
 
-Every interactive element must have a stable, unique identifier that does not change when the UI is restyled, translated, or refactored. In CortexUI, this is `data-ai-id`:
+Every interactive element must have a stable, unique identifier that does not change when the UI is restyled, translated, or refactored. In DOMglyph, this is `data-ai-id`:
 
 ```html
 <!-- Non-deterministic: identifier depends on text and structure -->
@@ -89,21 +89,21 @@ Every available action must be discoverable by name, and triggering it must prod
 const submitBtn = document.querySelector('button[type="submit"]');
 
 // Deterministic: agent queries by action name
-const actions = window.__CORTEX_UI__.getAvailableActions({ screen: "checkout" });
+const actions = window.__DOMGLYPH__.getAvailableActions({ screen: "checkout" });
 // Returns all actions explicitly declared on the checkout screen
 
-window.__CORTEX_UI__.trigger("submit-checkout");
+window.__DOMGLYPH__.trigger("submit-checkout");
 // Fires the action; state transitions to "loading", then "success" or "error"
 ```
 
-## How CortexUI Achieves Determinism
+## How DOMglyph Achieves Determinism
 
-CortexUI achieves determinism through a combination of:
+DOMglyph achieves determinism through a combination of:
 
 1. **Mandatory `data-ai-id`** on all interactive elements — stable identifiers that are part of the component's contract, not generated dynamically
 2. **`data-ai-state` synchronization** — every state change in the application is reflected immediately as a `data-ai-state` attribute update on the relevant element
 3. **`data-ai-action` naming** — every action has a semantic name in verb-noun format that is stable across visual changes
-4. **Runtime API** — `window.__CORTEX_UI__` provides a programmatic interface for discovering and querying all declared elements
+4. **Runtime API** — `window.__DOMGLYPH__` provides a programmatic interface for discovering and querying all declared elements
 
 ## A State Machine Diagram
 
@@ -236,7 +236,7 @@ The semantic contract — `data-ai-action="submit-login"` — does not change wi
 
 - A deterministic interface is one where AI agents can interact with consistent, predictable results
 - Current web UI is non-deterministic because it relies on visual position, text content, and implicit state
-- CortexUI's three requirements for determinism: stable identity, explicit state, predictable actions
+- DOMglyph's three requirements for determinism: stable identity, explicit state, predictable actions
 - State transitions are declared as explicit attribute updates, not inferred from visual appearance
 - The result is test suites that survive refactors and AI agents that interact reliably
 
@@ -245,4 +245,4 @@ The semantic contract — `data-ai-action="submit-login"` — does not change wi
 - [State visibility — making state explicit](/docs/concepts/state-visibility)
 - [Action-driven design](/docs/concepts/action-driven)
 - [States reference](/docs/ai-contract/states)
-- [Testing with CortexUI](/docs/getting-started/first-component)
+- [Testing with DOMglyph](/docs/getting-started/first-component)

@@ -1,6 +1,6 @@
 # Screen Awareness
 
-Screen awareness is the principle that every page in a CortexUI application declares its identity, context, and structure in a machine-readable form. An AI agent should be able to answer "where am I?" and "what is this page about?" by reading the DOM — without parsing URLs, reading page titles, or making visual inferences.
+Screen awareness is the principle that every page in a DOMglyph application declares its identity, context, and structure in a machine-readable form. An AI agent should be able to answer "where am I?" and "what is this page about?" by reading the DOM — without parsing URLs, reading page titles, or making visual inferences.
 
 ## Every Page Should Declare Its Identity
 
@@ -71,7 +71,7 @@ Placed on the major logical regions within the screen. Sections give agents a ma
 Agents read screen identity using `getScreenContext()`:
 
 ```js
-const ctx = window.__CORTEX_UI__.getScreenContext();
+const ctx = window.__DOMGLYPH__.getScreenContext();
 ```
 
 The return value is a structured context object:
@@ -180,7 +180,7 @@ AI agents often need to navigate across multiple screens to complete a workflow.
 ```ts
 async function completeCheckoutFlow(orderId: string) {
   // Step 1: Confirm we're on the cart page
-  let ctx = window.__CORTEX_UI__.getScreenContext();
+  let ctx = window.__DOMGLYPH__.getScreenContext();
   if (ctx.screen !== "cart") {
     throw new Error(`Expected cart, got ${ctx.screen}`);
   }
@@ -205,7 +205,7 @@ async function completeCheckoutFlow(orderId: string) {
   // Step 4: Confirm success
   await waitForScreen("order-confirmation");
 
-  ctx = window.__CORTEX_UI__.getScreenContext();
+  ctx = window.__DOMGLYPH__.getScreenContext();
   return { success: true, orderId: ctx.entityId };
 }
 ```
@@ -228,7 +228,7 @@ Navigation is exposed through `data-ai-role="nav-item"` on navigational links:
 Agents read available navigation targets from `getAvailableActions()` filtered by role:
 
 ```js
-const allActions = window.__CORTEX_UI__.getAvailableActions();
+const allActions = window.__DOMGLYPH__.getAvailableActions();
 const navItems = allActions.filter(a => a.role === "nav-item");
 
 /*

@@ -5,8 +5,8 @@ import {
   DATA_AI_EVENT,
   DATA_AI_STATUS,
   createAIAttributes
-} from "@cortexui/ai-contract";
-import { Box, Stack, Text, primitiveVars } from "@cortexui/primitives";
+} from "@domglyph/ai-contract";
+import { Box, Stack, Text, primitiveVars } from "@domglyph/primitives";
 import type { CSSProperties } from "react";
 
 import type { StatusBannerProps } from "./types";
@@ -54,9 +54,9 @@ export function StatusBanner({
       className={className}
       role={status === "error" ? "alert" : "status"}
       style={{
-        background: "color-mix(in srgb, var(--cortexui-surface) 92%, white)",
-        border: "1px solid var(--cortexui-border-color)",
-        borderRadius: "var(--cortexui-radius)",
+        background: "color-mix(in srgb, var(--domglyph-surface) 92%, white)",
+        border: "1px solid var(--domglyph-border-color)",
+        borderRadius: "var(--domglyph-radius)",
         padding: "0.875rem 1rem",
         ...bannerTone[status],
         ...style

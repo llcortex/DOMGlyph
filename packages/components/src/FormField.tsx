@@ -1,5 +1,5 @@
-import { AIRole, AIState, createAIAttributes } from "@cortexui/ai-contract";
-import { Box, InputBase, Stack, Text } from "@cortexui/primitives";
+import { AIRole, AIState, createAIAttributes } from "@domglyph/ai-contract";
+import { Box, InputBase, Stack, Text } from "@domglyph/primitives";
 import { useId } from "react";
 
 import type { FormFieldProps } from "./types";

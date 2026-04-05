@@ -4,7 +4,7 @@ Low-level building blocks that provide behavior and accessibility without AI con
 
 ## Why Primitives Exist
 
-CortexUI has three layers:
+DOMglyph has three layers:
 
 ```
 ┌─────────────────────────────────────────┐
@@ -30,10 +30,10 @@ They do NOT handle:
 
 ## When to Use Primitives Directly
 
-Use primitives when you're building a custom component that needs to maintain CortexUI's accessibility guarantees but has unique visual requirements.
+Use primitives when you're building a custom component that needs to maintain DOMglyph's accessibility guarantees but has unique visual requirements.
 
 ```tsx
-import { ButtonBase } from '@cortexui/primitives';
+import { ButtonBase } from '@domglyph/primitives';
 
 // A custom icon button built on ButtonBase
 function IconButton({ icon, label, onClick }: IconButtonProps) {

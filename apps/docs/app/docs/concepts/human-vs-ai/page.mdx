@@ -20,7 +20,7 @@ Humans apply all of this reasoning instantly and in parallel. The interface does
 
 ## How AI Agents Read UI Today
 
-Without CortexUI or similar semantic layers, an AI agent — whether it's a browser automation script, an LLM-powered copilot, or a testing framework — reads UI through one of three mechanisms:
+Without DOMglyph or similar semantic layers, an AI agent — whether it's a browser automation script, an LLM-powered copilot, or a testing framework — reads UI through one of three mechanisms:
 
 **1. DOM traversal**
 The agent walks the HTML tree, looking at tag names, class names, and text content. It might search for a `<button>` element containing the text "Save", or an `<input>` with `placeholder="Email address"`.
@@ -48,7 +48,7 @@ The cost of this gap is significant:
 
 ## The Dual-Layer Mental Model
 
-CortexUI's answer to this gap is not to change how the UI looks to humans. It is to add a second layer of meaning that is designed exclusively for machines.
+DOMglyph's answer to this gap is not to change how the UI looks to humans. It is to add a second layer of meaning that is designed exclusively for machines.
 
 Think of it as two simultaneous readings of the same element:
 
@@ -79,7 +79,7 @@ Consider a simple user registration form. Here is what each audience sees:
 - A checkbox for agreeing to terms
 - The button is styled in brand blue, the checkbox is required
 
-**What an AI agent sees without CortexUI:**
+**What an AI agent sees without DOMglyph:**
 ```html
 <form>
   <input type="text" placeholder="Your name" />
@@ -93,7 +93,7 @@ Consider a simple user registration form. Here is what each audience sees:
 
 The agent has to guess: which input is the name? Which is email? Is the checkbox required? What does clicking the button actually do — is it registration or login? None of this is explicit.
 
-**What an AI agent sees with CortexUI:**
+**What an AI agent sees with DOMglyph:**
 ```html
 <form
   data-ai-role="form"
@@ -147,21 +147,21 @@ Now the agent knows exactly what each field is for, which fields are required, a
 
 ## The Key Insight: Adding a Machine Layer, Not Removing the Human Layer
 
-The most important thing to understand about CortexUI's approach is that it is **additive**, not substitutive.
+The most important thing to understand about DOMglyph's approach is that it is **additive**, not substitutive.
 
 The UI still looks the same to humans. The visual design is unchanged. The blue button is still blue. The form still has the same layout. The human experience is not degraded in any way — if anything, it is improved, because the discipline of explicitly declaring roles and actions tends to produce more semantically coherent UIs.
 
-What CortexUI adds is a machine layer — a parallel representation of the interface that is legible to AI agents, automation frameworks, testing tools, and monitoring systems. The same DOM element carries both representations simultaneously. There is no runtime cost. There is no duplicate DOM.
+What DOMglyph adds is a machine layer — a parallel representation of the interface that is legible to AI agents, automation frameworks, testing tools, and monitoring systems. The same DOM element carries both representations simultaneously. There is no runtime cost. There is no duplicate DOM.
 
 <Callout type="important">
-AI-native UI does not remove the human layer. It adds a machine layer. The same element is read differently by different audiences — and CortexUI makes both readings explicit, stable, and reliable.
+AI-native UI does not remove the human layer. It adds a machine layer. The same element is read differently by different audiences — and DOMglyph makes both readings explicit, stable, and reliable.
 </Callout>
 
 ## The Contrast in Practice
 
 Here is the contrast rendered as code for a button that saves a user's profile:
 
-**Without CortexUI — AI has to guess:**
+**Without DOMglyph — AI has to guess:**
 ```html
 <!-- AI must infer meaning from tag, class, and text -->
 <button class="btn btn-primary btn-sm">
@@ -171,7 +171,7 @@ Here is the contrast rendered as code for a button that saves a user's profile:
 
 An agent trying to click "the save button" might match this — until the copy changes to "Save Profile", or the class names get refactored, or the button is duplicated elsewhere on the page.
 
-**With CortexUI — AI has a stable contract:**
+**With DOMglyph — AI has a stable contract:**
 ```html
 <!-- AI reads a deterministic, named contract -->
 <button
@@ -194,13 +194,13 @@ The copy can change. The classes can change. The layout can change. The `data-ai
 - Humans read UI through vision, convention, and contextual inference
 - AI agents today use DOM traversal, text matching, and coordinate clicking — all of which are brittle
 - The gap between these two reading modes is the source of significant automation failures
-- CortexUI bridges the gap by adding a machine-readable semantic layer to every element
+- DOMglyph bridges the gap by adding a machine-readable semantic layer to every element
 - This layer is additive — human experience is unchanged, machine reliability is dramatically improved
 - The same element now carries two simultaneous readings: visual for humans, semantic for machines
 
 ## Related
 
-- [What is CortexUI](/docs/introduction/what-is-cortexui)
+- [What is DOMglyph](/docs/introduction/what-is-cortexui)
 - [UI as API — the contract metaphor](/docs/concepts/ui-as-api)
 - [Deterministic interfaces](/docs/concepts/deterministic)
 - [AI Contract Overview](/docs/ai-contract/overview)

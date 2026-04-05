@@ -4,8 +4,8 @@ import {
   DATA_AI_ENTITY_ID,
   DATA_AI_FIELD_TYPE,
   createAIAttributes
-} from "@cortexui/ai-contract";
-import { Box, Text } from "@cortexui/primitives";
+} from "@domglyph/ai-contract";
+import { Box, Text } from "@domglyph/primitives";
 import type { CSSProperties } from "react";
 
 import type { DataTableProps, DataTableRow } from "./types";
@@ -16,7 +16,7 @@ const tableStyle: CSSProperties = {
 };
 
 const cellStyle: CSSProperties = {
-  borderBottom: "1px solid var(--cortexui-border-color)",
+  borderBottom: "1px solid var(--domglyph-border-color)",
   padding: "0.75rem",
   textAlign: "left"
 };

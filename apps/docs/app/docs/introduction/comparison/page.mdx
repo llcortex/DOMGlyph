@@ -1,12 +1,12 @@
-# CortexUI vs Traditional Design Systems
+# DOMglyph vs Traditional Design Systems
 
-Design systems exist on a spectrum. At one end, you have pure visual systems: tokens, colors, typography scales. At the other end, you have full interaction frameworks. CortexUI occupies a new position on this spectrum — one that includes everything traditional design systems provide and adds a semantic layer that none of them have designed for.
+Design systems exist on a spectrum. At one end, you have pure visual systems: tokens, colors, typography scales. At the other end, you have full interaction frameworks. DOMglyph occupies a new position on this spectrum — one that includes everything traditional design systems provide and adds a semantic layer that none of them have designed for.
 
 This page gives you an honest, detailed comparison so you can make an informed choice.
 
 ## Feature Comparison
 
-| Feature | Traditional Systems | CortexUI |
+| Feature | Traditional Systems | DOMglyph |
 |---|---|---|
 | **Pre-built components** | ✅ Extensive | ✅ Full library |
 | **Visual theming & tokens** | ✅ Yes | ✅ Yes |
@@ -18,7 +18,7 @@ This page gives you an honest, detailed comparison so you can make an informed c
 | **Explicit state exposure** | Partial (ARIA `aria-disabled`, etc.) | ✅ Explicit `data-ai-state` |
 | **Entity relationship tracking** | ❌ No | ✅ `data-ai-entity` + `data-ai-entity-id` |
 | **Screen & section context** | ❌ No | ✅ `data-ai-screen` + `data-ai-section` |
-| **Runtime inspection API** | ❌ No | ✅ `window.__CORTEX_UI__` |
+| **Runtime inspection API** | ❌ No | ✅ `window.__DOMGLYPH__` |
 | **AI agent compatibility** | ❌ Heuristic only | ✅ Deterministic |
 | **Browser automation stability** | ❌ CSS-selector dependent | ✅ Stable semantic targets |
 | **Action discovery API** | ❌ No | ✅ `getAvailableActions()` |
@@ -60,9 +60,9 @@ Material UI is one of the most widely deployed design systems in the world. It h
 
 ### Radix UI
 
-Radix UI provides unstyled, accessible primitives with exceptional keyboard navigation and ARIA implementation. It is the closest existing system to CortexUI's accessibility philosophy — "get the semantics right, let the visual layer be customizable."
+Radix UI provides unstyled, accessible primitives with exceptional keyboard navigation and ARIA implementation. It is the closest existing system to DOMglyph's accessibility philosophy — "get the semantics right, let the visual layer be customizable."
 
-Radix is where CortexUI's philosophy most resonates, but even Radix does not go far enough. Accessibility semantics (ARIA) and AI agent semantics (`data-ai-*`) are different problems. Radix solves the former thoroughly. CortexUI solves both.
+Radix is where DOMglyph's philosophy most resonates, but even Radix does not go far enough. Accessibility semantics (ARIA) and AI agent semantics (`data-ai-*`) are different problems. Radix solves the former thoroughly. DOMglyph solves both.
 
 ```tsx
 // Radix UI — excellent primitives, strong ARIA
@@ -85,7 +85,7 @@ Headless UI provides unstyled accessible components from the Tailwind team. It h
 The same gap applies: Headless UI solves the human accessibility problem, not the AI agent interoperability problem.
 
 <Callout type="note">
-The gap between existing design systems and CortexUI is not about component quality or visual design. Every system listed here provides excellent components. The gap is about **who the interface is designed to serve**. Traditional systems serve human users. CortexUI serves human users and AI agents simultaneously.
+The gap between existing design systems and DOMglyph is not about component quality or visual design. Every system listed here provides excellent components. The gap is about **who the interface is designed to serve**. Traditional systems serve human users. DOMglyph serves human users and AI agents simultaneously.
 </Callout>
 
 ## The ARIA Comparison in Detail
@@ -108,21 +108,21 @@ These are different vocabularies for different audiences:
 | "What action can I trigger here?" | (no concept) | queryable via runtime API |
 | "Is it loading?" | `aria-busy="true"` | `data-ai-state="loading"` |
 
-CortexUI includes both ARIA and `data-ai-*` attributes. They are complementary, not competing.
+DOMglyph includes both ARIA and `data-ai-*` attributes. They are complementary, not competing.
 
-## When to Choose CortexUI
+## When to Choose DOMglyph
 
-Choose CortexUI when:
+Choose DOMglyph when:
 
-**You are building AI-powered features.** If your product includes an AI copilot, an AI assistant, or any feature where an LLM needs to interact with your UI, you need a stable semantic layer. CortexUI provides it out of the box.
+**You are building AI-powered features.** If your product includes an AI copilot, an AI assistant, or any feature where an LLM needs to interact with your UI, you need a stable semantic layer. DOMglyph provides it out of the box.
 
-**You have browser automation or end-to-end testing at scale.** If your test suite is constantly breaking due to CSS selector changes, CortexUI's stable `data-ai-*` identifiers will dramatically reduce maintenance overhead.
+**You have browser automation or end-to-end testing at scale.** If your test suite is constantly breaking due to CSS selector changes, DOMglyph's stable `data-ai-*` identifiers will dramatically reduce maintenance overhead.
 
-**You are building for an ecosystem where your UI will be consumed by third-party agents.** If your product is a platform that other developers build on, and those developers may deploy AI agents that interact with your UI, CortexUI gives those agents a reliable contract.
+**You are building for an ecosystem where your UI will be consumed by third-party agents.** If your product is a platform that other developers build on, and those developers may deploy AI agents that interact with your UI, DOMglyph gives those agents a reliable contract.
 
 **You are investing in long-term interface stability.** Semantic contracts age better than structural conventions. An interface built on explicit `data-ai-action` identifiers is more maintainable over time than one built on CSS class conventions.
 
-**You want observability into your UI at runtime.** The `window.__CORTEX_UI__` runtime API gives you and your tooling real-time visibility into the state of every interactive element. This is useful for debugging, monitoring, and analytics.
+**You want observability into your UI at runtime.** The `window.__DOMGLYPH__` runtime API gives you and your tooling real-time visibility into the state of every interactive element. This is useful for debugging, monitoring, and analytics.
 
 ## When Traditional Systems Are Fine
 
@@ -130,34 +130,34 @@ Traditional design systems are a completely appropriate choice when:
 
 **Your application has no AI features and no near-term plans for AI features.** If you are building a dashboard that will only ever be used by human users with no automation requirements, the AI semantic layer is unnecessary complexity.
 
-**You have an existing design system you are already invested in.** Migrating to CortexUI has a cost. If your current system works for your requirements, that cost is not justified.
+**You have an existing design system you are already invested in.** Migrating to DOMglyph has a cost. If your current system works for your requirements, that cost is not justified.
 
 **You are building a content site, marketing page, or document-centric experience.** The AI contract system is designed for interactive applications with state-driven components. Content sites with mostly static content and minimal interaction do not benefit significantly from it.
 
-**Performance is paramount and every byte counts.** CortexUI adds attributes and a runtime script to your application. For most applications this cost is negligible, but in extreme performance-sensitive contexts it is worth weighing.
+**Performance is paramount and every byte counts.** DOMglyph adds attributes and a runtime script to your application. For most applications this cost is negligible, but in extreme performance-sensitive contexts it is worth weighing.
 
 <Callout type="tip">
-CortexUI is not an either/or choice with other design systems in terms of visual patterns. Many teams use CortexUI's semantic layer (`@cortexui/ai-contract`) in combination with their existing visual component library. The semantic layer is independently useful even if you are not using CortexUI's visual components.
+DOMglyph is not an either/or choice with other design systems in terms of visual patterns. Many teams use DOMglyph's semantic layer (`@domglyph/ai-contract`) in combination with their existing visual component library. The semantic layer is independently useful even if you are not using DOMglyph's visual components.
 </Callout>
 
 ## Migration Path
 
-If you are currently using Chakra UI, MUI, Radix, or another system and want to adopt CortexUI incrementally, the recommended path is:
+If you are currently using Chakra UI, MUI, Radix, or another system and want to adopt DOMglyph incrementally, the recommended path is:
 
-1. Install `@cortexui/ai-contract` and `@cortexui/runtime` alongside your existing system
+1. Install `@domglyph/ai-contract` and `@domglyph/runtime` alongside your existing system
 2. Begin annotating existing components with `data-ai-*` attributes manually, using the contract types for type safety
-3. Gradually replace visual components with CortexUI equivalents where it makes sense
+3. Gradually replace visual components with DOMglyph equivalents where it makes sense
 4. Use the runtime API to verify your semantic layer as you build it
 
 You do not have to migrate everything at once. The semantic layer is independently valuable and can be layered onto an existing application.
 
 ## Summary
 
-CortexUI is a superset of what traditional design systems provide. It includes everything they offer — components, theming, accessibility, TypeScript — and adds the AI semantic layer, the runtime inspection API, and the design discipline of building interfaces as interaction contracts. For applications where AI agents are or will be first-class consumers of the interface, CortexUI is the right architectural choice.
+DOMglyph is a superset of what traditional design systems provide. It includes everything they offer — components, theming, accessibility, TypeScript — and adds the AI semantic layer, the runtime inspection API, and the design discipline of building interfaces as interaction contracts. For applications where AI agents are or will be first-class consumers of the interface, DOMglyph is the right architectural choice.
 
 ## Next Steps
 
-- [What is CortexUI](/docs/introduction/what-is-cortexui)
-- [The CortexUI philosophy](/docs/introduction/philosophy)
+- [What is DOMglyph](/docs/introduction/what-is-cortexui)
+- [The DOMglyph philosophy](/docs/introduction/philosophy)
 - [Get started with installation](/docs/getting-started/installation)
 - [Build your first AI-native component](/docs/getting-started/first-component)

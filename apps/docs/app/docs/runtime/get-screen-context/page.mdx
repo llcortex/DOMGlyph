@@ -5,7 +5,7 @@
 ## Signature
 
 ```ts
-window.__CORTEX_UI__.getScreenContext(): ScreenContext
+window.__DOMGLYPH__.getScreenContext(): ScreenContext
 ```
 
 ## Return Type
@@ -95,7 +95,7 @@ With these annotations in place, `getScreenContext()` will return the example ou
 ```ts
 async function navigateToUserProfile(userId: string) {
   // After navigating to the user profile page...
-  const ctx = window.__CORTEX_UI__.getScreenContext();
+  const ctx = window.__DOMGLYPH__.getScreenContext();
 
   if (ctx.screen !== 'user-profile') {
     throw new Error(`Expected user-profile screen, got: ${ctx.screen}`);
@@ -118,7 +118,7 @@ With the runtime, navigation verification is a single, reliable check:
 
 ```ts
 async function ensureOnScreen(expectedScreen: string) {
-  const ctx = window.__CORTEX_UI__.getScreenContext();
+  const ctx = window.__DOMGLYPH__.getScreenContext();
 
   if (ctx.screen !== expectedScreen) {
     // Log the mismatch and trigger a re-navigation
@@ -144,11 +144,11 @@ Pair `getScreenContext()` with `getAvailableActions()` after every navigation. T
 The `sections` array reflects the structural layout of the current page. Agents can use it to determine whether a specific section has rendered — for example, whether a lazy-loaded "recent activity" panel is present before attempting to interact with it.
 
 ```ts
-const ctx = window.__CORTEX_UI__.getScreenContext();
+const ctx = window.__DOMGLYPH__.getScreenContext();
 
 if (ctx.sections.includes('recent-activity')) {
   // Safe to interact with the recent activity section
-  const actions = window.__CORTEX_UI__.getAvailableActions();
+  const actions = window.__DOMGLYPH__.getAvailableActions();
   const loadMoreAction = actions.find(a => a.section === 'recent-activity');
 }
 ```
@@ -171,7 +171,7 @@ If no ancestor element has a `data-ai-screen` attribute, `getScreenContext()` re
 The runtime does not throw — it returns a safe empty value. You can detect this case by checking `ctx.screen === ''`.
 
 <Callout type="warning">
-A missing `data-ai-screen` attribute means the page has not been annotated with a CortexUI AI contract. Agent code should treat this as an unsupported page and avoid taking actions on it.
+A missing `data-ai-screen` attribute means the page has not been annotated with a DOMglyph AI contract. Agent code should treat this as an unsupported page and avoid taking actions on it.
 </Callout>
 
 ### Called before the page has mounted

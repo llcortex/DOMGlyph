@@ -33,18 +33,18 @@ document.querySelectorAll('[data-ai-role="form"]')
 
 ```js
 // 1. Check screen context
-console.log(window.__CORTEX_UI__.getScreenContext());
+console.log(window.__DOMGLYPH__.getScreenContext());
 
 // 2. List all actions
-console.log(window.__CORTEX_UI__.getAvailableActions());
+console.log(window.__DOMGLYPH__.getAvailableActions());
 
 // 3. Check a specific form
-console.log(window.__CORTEX_UI__.getFormSchema('my-form-id'));
+console.log(window.__DOMGLYPH__.getFormSchema('my-form-id'));
 
 // 4. Check event log
-console.log(window.__CORTEX_UI__.getRecentEvents());
+console.log(window.__DOMGLYPH__.getRecentEvents());
 ```
 
 <Callout type="tip">
-Keep the browser console open with `window.__CORTEX_UI__` pinned while developing CortexUI components.
+Keep the browser console open with `window.__DOMGLYPH__` pinned while developing DOMglyph components.
 </Callout>

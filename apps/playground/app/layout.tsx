@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CortexUI Playground",
-  description: "Interactive demos for AI-aware CortexUI components."
+  title: "DOMglyph Playground",
+  description: "Interactive demos for AI-aware DOMglyph components."
 };
 
 export default function RootLayout({

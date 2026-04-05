@@ -1,6 +1,6 @@
 # Events Reference
 
-Events are the observable outcomes of user and agent interactions. Every significant operation in a CortexUI application emits a structured event that the runtime records and agents can query. Events close the feedback loop — they are how an agent knows whether what it did actually worked.
+Events are the observable outcomes of user and agent interactions. Every significant operation in a DOMglyph application emits a structured event that the runtime records and agents can query. Events close the feedback loop — they are how an agent knows whether what it did actually worked.
 
 ## The 5 Event Types
 
@@ -113,12 +113,12 @@ field_updated events for password fields never include the value in the payload.
 
 ## How Events Are Emitted
 
-Events are emitted by CortexUI components automatically when the corresponding interactions occur. You do not need to write event emission code manually when using the design system's built-in components.
+Events are emitted by DOMglyph components automatically when the corresponding interactions occur. You do not need to write event emission code manually when using the design system's built-in components.
 
-For custom components, emit events using the CortexUI runtime:
+For custom components, emit events using the DOMglyph runtime:
 
 ```ts
-import { emitCortexEvent } from "@cortexui/runtime";
+import { emitCortexEvent } from "@domglyph/runtime";
 
 // Emit action_triggered
 emitCortexEvent({
@@ -146,10 +146,10 @@ emitCortexEvent({
 
 ## How to Listen to Events
 
-You can subscribe to the CortexUI event stream using the `onCortexEvent` listener:
+You can subscribe to the DOMglyph event stream using the `onCortexEvent` listener:
 
 ```ts
-import { onCortexEvent } from "@cortexui/runtime";
+import { onCortexEvent } from "@domglyph/runtime";
 
 // Listen to all events
 const unsubscribe = onCortexEvent((event) => {
@@ -183,10 +183,10 @@ window.addEventListener("cortexui:event", (e: CustomEvent) => {
 
 ## How getRecentEvents() Returns Events
 
-The CortexUI runtime keeps a rolling buffer of the last 50 events. AI agents query this buffer synchronously using `getRecentEvents()`.
+The DOMglyph runtime keeps a rolling buffer of the last 50 events. AI agents query this buffer synchronously using `getRecentEvents()`.
 
 ```js
-const events = window.__CORTEX_UI__.getRecentEvents();
+const events = window.__DOMGLYPH__.getRecentEvents();
 
 /*
 [
@@ -217,7 +217,7 @@ Here is a complete example of an AI agent using events to verify that a profile 
 
 ```ts
 async function saveUserProfile(userId: string, data: ProfileData) {
-  const runtime = window.__CORTEX_UI__;
+  const runtime = window.__DOMGLYPH__;
 
   // 1. Verify we're on the right screen
   const ctx = runtime.getScreenContext();
@@ -282,7 +282,7 @@ Always verify success using both the event stream (action_completed) and the ele
 
 ## Event Retention and Privacy
 
-The rolling event buffer is in-memory and cleared on navigation. It is never persisted to localStorage or sent to external services by the CortexUI runtime itself — that is the application's responsibility if desired.
+The rolling event buffer is in-memory and cleared on navigation. It is never persisted to localStorage or sent to external services by the DOMglyph runtime itself — that is the application's responsibility if desired.
 
 Field values in `field_updated` and `form_submitted` events are included by default. If your application handles sensitive data (e.g., SSNs, credit card numbers), mark those fields:
 

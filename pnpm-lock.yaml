@@ -41,18 +41,18 @@ importers:
 
   apps/docs:
     dependencies:
-      '@cortexui/ai-contract':
-        specifier: 1.1.0
-        version: 1.1.0
-      '@cortexui/components':
-        specifier: 1.1.0
-        version: 1.1.0
-      '@cortexui/primitives':
-        specifier: 1.1.0
-        version: 1.1.0
-      '@cortexui/runtime':
-        specifier: 1.1.0
-        version: 1.1.0
+      '@domglyph/ai-contract':
+        specifier: 2.0.0
+        version: 2.0.0
+      '@domglyph/components':
+        specifier: 2.0.0
+        version: 2.0.0
+      '@domglyph/primitives':
+        specifier: 2.0.0
+        version: 2.0.0
+      '@domglyph/runtime':
+        specifier: 2.0.0
+        version: 2.0.0
       '@mdx-js/loader':
         specifier: ^3.1.1
         version: 3.1.1
@@ -114,16 +114,16 @@ importers:
 
   apps/playground:
     dependencies:
-      '@cortexui/ai-contract':
+      '@domglyph/ai-contract':
         specifier: workspace:*
         version: link:../../packages/ai-contract
-      '@cortexui/components':
+      '@domglyph/components':
         specifier: workspace:*
         version: link:../../packages/components
-      '@cortexui/primitives':
+      '@domglyph/primitives':
         specifier: workspace:*
         version: link:../../packages/primitives
-      '@cortexui/runtime':
+      '@domglyph/runtime':
         specifier: workspace:*
         version: link:../../packages/runtime
       next:
@@ -145,7 +145,7 @@ importers:
 
   examples/browser-agent:
     dependencies:
-      '@cortexui/runtime':
+      '@domglyph/runtime':
         specifier: workspace:*
         version: link:../../packages/runtime
     devDependencies:
@@ -155,13 +155,13 @@ importers:
 
   examples/next-dashboard:
     dependencies:
-      '@cortexui/components':
+      '@domglyph/components':
         specifier: workspace:*
         version: link:../../packages/components
-      '@cortexui/primitives':
+      '@domglyph/primitives':
         specifier: workspace:*
         version: link:../../packages/primitives
-      '@cortexui/runtime':
+      '@domglyph/runtime':
         specifier: workspace:*
         version: link:../../packages/runtime
       next:
@@ -183,13 +183,13 @@ importers:
 
   examples/react-crm:
     dependencies:
-      '@cortexui/components':
+      '@domglyph/components':
         specifier: workspace:*
         version: link:../../packages/components
-      '@cortexui/primitives':
+      '@domglyph/primitives':
         specifier: workspace:*
         version: link:../../packages/primitives
-      '@cortexui/runtime':
+      '@domglyph/runtime':
         specifier: workspace:*
         version: link:../../packages/runtime
       react:
@@ -214,7 +214,7 @@ importers:
 
   examples/vanilla-demo:
     dependencies:
-      '@cortexui/runtime':
+      '@domglyph/runtime':
         specifier: workspace:*
         version: link:../../packages/runtime
     devDependencies:
@@ -230,13 +230,13 @@ importers:
 
   packages/components:
     dependencies:
-      '@cortexui/ai-contract':
+      '@domglyph/ai-contract':
         specifier: workspace:*
         version: link:../ai-contract
-      '@cortexui/primitives':
+      '@domglyph/primitives':
         specifier: workspace:*
         version: link:../primitives
-      '@cortexui/tokens':
+      '@domglyph/tokens':
         specifier: workspace:*
         version: link:../tokens
       react:
@@ -258,7 +258,7 @@ importers:
 
   packages/primitives:
     dependencies:
-      '@cortexui/tokens':
+      '@domglyph/tokens':
         specifier: workspace:*
         version: link:../tokens
       react:
@@ -280,7 +280,7 @@ importers:
 
   packages/runtime:
     dependencies:
-      '@cortexui/ai-contract':
+      '@domglyph/ai-contract':
         specifier: workspace:*
         version: link:../ai-contract
     devDependencies:
@@ -290,10 +290,10 @@ importers:
 
   packages/testing:
     dependencies:
-      '@cortexui/ai-contract':
+      '@domglyph/ai-contract':
         specifier: workspace:*
         version: link:../ai-contract
-      '@cortexui/components':
+      '@domglyph/components':
         specifier: workspace:*
         version: link:../components
     devDependencies:
@@ -461,20 +461,20 @@ packages:
   '@changesets/write@0.4.0':
     resolution: {integrity: sha512-CdTLvIOPiCNuH71pyDu3rA+Q0n65cmAbXnwWH84rKGiFumFzkmHNT8KHTMEchcxN+Kl8I54xGUhJ7l3E7X396Q==}
 
-  '@cortexui/ai-contract@1.1.0':
-    resolution: {integrity: sha512-aJyPgLfcPaB3EWa+mzoTK43eWaKuCKowZOKWqIeFiPOsNYH/fDmabmAgRGE9QAWN8UP1vJD4/Gil3mjLXthLow==}
+  '@domglyph/ai-contract@2.0.0':
+    resolution: {integrity: sha512-TvnK+ZWNFQ5cWzS4ChbZ6BQaSG30aQ8pBA95OfKnUtX6FK2c+7Ywg3tgahbqvJvFt4baJMdLn52TB/rJi6LFAw==}
 
-  '@cortexui/components@1.1.0':
-    resolution: {integrity: sha512-u7//5KJ9rIiEJNwYzdSCKhC9UOjbUphNVr6fP05x7pNkIpKnkq9McxYrOcp8muoywNz3HlGHnTs7ae4mpLfaug==}
+  '@domglyph/components@2.0.0':
+    resolution: {integrity: sha512-xvifDAjB3oaHPvYFSRuiUlEHAW985ovjyjACoQfvpHHaOR6G3UmtubbgcsbvEoCjHaiNYmx7Jj3CPai9QftRqQ==}
 
-  '@cortexui/primitives@1.1.0':
-    resolution: {integrity: sha512-11Wt0HoyzDULF9HqVHmyK1kwNBLi+EaE606VP/2KxegIZ+3f6AstS7mneQQIM3reoI5FKg+BV4Ig1jr0Oy7GRw==}
+  '@domglyph/primitives@2.0.0':
+    resolution: {integrity: sha512-8so0n8r025ZVYDC6YgPyaODvkreXdf76FDAlEAMA9RoP1nHyQNrZm1e65/AWYhfucRZWujC0v5A/kBoyI7dhXg==}
 
-  '@cortexui/runtime@1.1.0':
-    resolution: {integrity: sha512-iP6MEA4Ksl4LRQGKccDrm29TbQf4+6ThgYSOEmoNp+OGvAlQayB/6+T2MF3fGYVXiI7ZMrF74O0Bbt3D+Q+fhg==}
+  '@domglyph/runtime@2.0.0':
+    resolution: {integrity: sha512-dpBTVFJUEeOMmefPmVIQB59F52TxjTJLl2TgKLPyyW4/Xbem443XaVjUp2/0T4f1btNt/SKNqHCpihI62LAYQQ==}
 
-  '@cortexui/tokens@1.1.0':
-    resolution: {integrity: sha512-czFc0iDysEJ5SvHOPhhWFKS2FpxPUHoWH4HXtSgGqoqH0ejCa9A6ST48GsTvyzgWx8LuU35WizzFFTaWkOWIVQ==}
+  '@domglyph/tokens@2.0.0':
+    resolution: {integrity: sha512-GCrNQKXFef6MttXaTi7OG5UZlm6YViMh+JzLkHdjRDwpoYTIi7pF8ClTv3aGxykKp5ISKTKOjlOJnJ6KsrBNDg==}
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -3134,27 +3134,27 @@ snapshots:
       human-id: 4.1.3
       prettier: 2.8.8
 
-  '@cortexui/ai-contract@1.1.0': {}
+  '@domglyph/ai-contract@2.0.0': {}
 
-  '@cortexui/components@1.1.0':
+  '@domglyph/components@2.0.0':
     dependencies:
-      '@cortexui/ai-contract': 1.1.0
-      '@cortexui/primitives': 1.1.0
-      '@cortexui/tokens': 1.1.0
+      '@domglyph/ai-contract': 2.0.0
+      '@domglyph/primitives': 2.0.0
+      '@domglyph/tokens': 2.0.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@cortexui/primitives@1.1.0':
+  '@domglyph/primitives@2.0.0':
     dependencies:
-      '@cortexui/tokens': 1.1.0
+      '@domglyph/tokens': 2.0.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@cortexui/runtime@1.1.0':
+  '@domglyph/runtime@2.0.0':
     dependencies:
-      '@cortexui/ai-contract': 1.1.0
+      '@domglyph/ai-contract': 2.0.0
 
-  '@cortexui/tokens@1.1.0': {}
+  '@domglyph/tokens@2.0.0': {}
 
   '@esbuild/aix-ppc64@0.21.5':
     optional: true

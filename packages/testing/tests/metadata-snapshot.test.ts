@@ -9,7 +9,7 @@ import {
 
 registerCortexMatchers(expect);
 
-describe("@cortexui/testing metadata snapshots and matchers", () => {
+describe("@domglyph/testing metadata snapshots and matchers", () => {
   it("serializes stable metadata snapshots", () => {
     const snapshot = createMetadataSnapshot("action-button", createActionFixture());
 

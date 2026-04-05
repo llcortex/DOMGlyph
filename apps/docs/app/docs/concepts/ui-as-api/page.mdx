@@ -49,14 +49,14 @@ Every meaningful UI interaction has the same structure as an API call:
 The difference is that in traditional UI design, none of this is declared explicitly. The "endpoint" is a button with some text. The "parameters" are form fields with placeholder text. The "response" is whatever happens to the DOM after submission. There is no machine-readable specification.
 
 <Callout type="important">
-CortexUI treats every UI interaction as an API call with a declared contract. The action has a stable identifier. The inputs have declared types and requirements. The outcomes are tracked as explicit state transitions.
+DOMglyph treats every UI interaction as an API call with a declared contract. The action has a stable identifier. The inputs have declared types and requirements. The outcomes are tracked as explicit state transitions.
 </Callout>
 
-## The Parallel Between REST API Design and CortexUI Design
+## The Parallel Between REST API Design and DOMglyph Design
 
 The correspondence is direct:
 
-| REST API Concept | CortexUI Equivalent |
+| REST API Concept | DOMglyph Equivalent |
 |---|---|
 | Endpoint path (`POST /orders`) | `data-ai-action="submit-order"` |
 | Parameter name (`userId`) | `data-ai-id="order-user-id"` |
@@ -68,7 +68,7 @@ The correspondence is direct:
 | Resource type (`Order`) | `data-ai-entity="order"` |
 | Resource ID | `data-ai-entity-id="ord_01HABC"` |
 
-When you annotate your UI with CortexUI attributes, you are essentially writing an OpenAPI spec directly into your HTML. The interface self-documents its contract.
+When you annotate your UI with DOMglyph attributes, you are essentially writing an OpenAPI spec directly into your HTML. The interface self-documents its contract.
 
 ## Thinking About Your UI as a Set of Callable Endpoints
 
@@ -102,7 +102,7 @@ Responses:
 402 → { "error": "insufficient_funds", "message": "..." }
 ```
 
-As a CortexUI form, that same contract is expressed in HTML:
+As a DOMglyph form, that same contract is expressed in HTML:
 
 ```html
 <form
@@ -161,7 +161,7 @@ As a CortexUI form, that same contract is expressed in HTML:
 An AI agent can now read this form's contract with a single call:
 
 ```javascript
-const schema = window.__CORTEX_UI__.getFormSchema("checkout-form");
+const schema = window.__DOMGLYPH__.getFormSchema("checkout-form");
 // Returns:
 // {
 //   id: "checkout-form",
@@ -214,7 +214,7 @@ LLM-powered copilots, test generators, and automation frameworks can read your U
 
 - REST APIs are valuable because they expose stable, explicit contracts — endpoints, parameters, responses
 - UI interactions have the same structure but have historically lacked explicit contracts
-- CortexUI closes this gap by treating every UI interaction as an API call with a declared contract
+- DOMglyph closes this gap by treating every UI interaction as an API call with a declared contract
 - The mapping is direct: actions map to endpoints, fields map to parameters, state maps to response status
 - This changes how you design components — actions, state, and field types become first-class design decisions
 - The result is a more testable, reliable, and AI-operable interface

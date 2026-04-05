@@ -4,12 +4,12 @@ import {
   DATA_AI_ROLE,
   DATA_AI_STATE,
   AIRole
-} from "@cortexui/ai-contract";
+} from "@domglyph/ai-contract";
 import { describe, expect, it } from "vitest";
 
 import { createActionFixture, validateAIContractNode } from "../src/index";
 
-describe("@cortexui/testing contract validation", () => {
+describe("@domglyph/testing contract validation", () => {
   it("validates a compliant AI contract fixture", () => {
     const result = validateAIContractNode(createActionFixture());
 

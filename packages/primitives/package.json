@@ -1,6 +1,6 @@
 {
-  "name": "@cortexui/primitives",
-  "version": "1.1.1",
+  "name": "@domglyph/primitives",
+  "version": "2.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -22,7 +22,7 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "@cortexui/tokens": "workspace:*",
+    "@domglyph/tokens": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

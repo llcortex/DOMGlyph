@@ -5,37 +5,37 @@ import {
   DATA_AI_ROLE,
   DATA_AI_STATE,
   extractAIAttributes
-} from "@cortexui/ai-contract";
+} from "@domglyph/ai-contract";
 
-import { installCortexUIRuntime } from "./runtime";
-import type { CortexUIDevtoolsAPI, CortexUIGlobalAPI } from "./types";
+import { installDOMglyphRuntime } from "./runtime";
+import type { DOMglyphDevtoolsAPI, DOMglyphGlobalAPI } from "./types";
 
-const DEVTOOLS_ROOT_ID = "cortexui-devtools-root";
-const DEVTOOLS_STYLE_ID = "cortexui-devtools-style";
+const DEVTOOLS_ROOT_ID = "domglyph-devtools-root";
+const DEVTOOLS_STYLE_ID = "domglyph-devtools-style";
 const INSPECT_SELECTOR = AI_ATTRIBUTE_NAMES.map((name) => `[${name}]`).join(", ");
 
-export function installCortexUIDevtools(
+export function installDOMglyphDevtools(
   targetWindow: Window = window
-): CortexUIDevtoolsAPI | null {
+): DOMglyphDevtoolsAPI | null {
   if (typeof targetWindow === "undefined" || targetWindow.document === undefined) {
     return null;
   }
 
-  if (targetWindow.CORTEX_UI_DEVTOOLS !== undefined) {
-    return targetWindow.CORTEX_UI_DEVTOOLS;
+  if (targetWindow.__DOMGLYPH_DEVTOOLS__ !== undefined) {
+    return targetWindow.__DOMGLYPH_DEVTOOLS__;
   }
 
-  const runtime = targetWindow.CORTEX_UI ?? installCortexUIRuntime(targetWindow);
+  const runtime = targetWindow.__DOMGLYPH__ ?? installDOMglyphRuntime(targetWindow);
   if (runtime === null) {
     return null;
   }
 
-  const devtools = new CortexUIDevtoolsOverlay(targetWindow, runtime);
-  targetWindow.CORTEX_UI_DEVTOOLS = devtools;
+  const devtools = new DOMglyphDevtoolsOverlay(targetWindow, runtime);
+  targetWindow.__DOMGLYPH_DEVTOOLS__ = devtools;
   return devtools;
 }
 
-class CortexUIDevtoolsOverlay implements CortexUIDevtoolsAPI {
+class DOMglyphDevtoolsOverlay implements DOMglyphDevtoolsAPI {
   private readonly doc: Document;
   private readonly root: HTMLDivElement;
   private readonly panel: HTMLDivElement;
@@ -52,7 +52,7 @@ class CortexUIDevtoolsOverlay implements CortexUIDevtoolsAPI {
 
   constructor(
     private readonly win: Window,
-    private readonly runtime: CortexUIGlobalAPI
+    private readonly runtime: DOMglyphGlobalAPI
   ) {
     this.doc = win.document;
     ensureStyle(this.doc);
@@ -80,7 +80,7 @@ class CortexUIDevtoolsOverlay implements CortexUIDevtoolsAPI {
     this.panel.style.zIndex = "2147483647";
 
     const title = this.doc.createElement("div");
-    title.textContent = "CortexUI Devtools";
+    title.textContent = "DOMglyph Devtools";
     title.style.fontSize = "16px";
     title.style.fontWeight = "700";
     title.style.marginBottom = "12px";
@@ -117,7 +117,7 @@ class CortexUIDevtoolsOverlay implements CortexUIDevtoolsAPI {
 
     this.visible = true;
     this.root.style.display = "block";
-    this.doc.documentElement.setAttribute("data-cortexui-devtools", "open");
+    this.doc.documentElement.setAttribute("data-domglyph-devtools", "open");
     this.refreshTimer = this.win.setInterval(() => this.render(), 600);
     this.render();
   }
@@ -129,7 +129,7 @@ class CortexUIDevtoolsOverlay implements CortexUIDevtoolsAPI {
 
     this.visible = false;
     this.root.style.display = "none";
-    this.doc.documentElement.removeAttribute("data-cortexui-devtools");
+    this.doc.documentElement.removeAttribute("data-domglyph-devtools");
     if (this.refreshTimer !== null) {
       this.win.clearInterval(this.refreshTimer);
       this.refreshTimer = null;
@@ -152,8 +152,8 @@ class CortexUIDevtoolsOverlay implements CortexUIDevtoolsAPI {
       dispose();
     }
     this.root.remove();
-    if (this.win.CORTEX_UI_DEVTOOLS === this) {
-      delete this.win.CORTEX_UI_DEVTOOLS;
+    if (this.win.__DOMGLYPH_DEVTOOLS__ === this) {
+      delete this.win.__DOMGLYPH_DEVTOOLS__;
     }
   }
 
@@ -256,7 +256,7 @@ function ensureStyle(doc: Document): void {
   const style = doc.createElement("style");
   style.id = DEVTOOLS_STYLE_ID;
   style.textContent = `
-    html[data-cortexui-devtools="open"] ${INSPECT_SELECTOR} {
+    html[data-domglyph-devtools="open"] ${INSPECT_SELECTOR} {
       outline: 1px dashed rgba(47, 201, 120, 0.45);
       outline-offset: 2px;
     }

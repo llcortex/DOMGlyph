@@ -1,22 +1,22 @@
-# @cortexui/primitives
+# @domglyph/primitives (formerly [@cortexui/primitives](https://www.npmjs.com/package/@cortexui/primitives))
 
-[![npm version](https://img.shields.io/npm/v/@cortexui/primitives?color=0ea5e9)](https://www.npmjs.com/package/@cortexui/primitives)
+[![npm version](https://img.shields.io/npm/v/@domglyph/primitives?color=0ea5e9)](https://www.npmjs.com/package/@domglyph/primitives)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](../../LICENSE)
 
-Low-level accessible UI primitives. The foundation of CortexUI components.
+Low-level accessible UI primitives. The foundation of DOMglyph components.
 
 ---
 
 ## Overview
 
-`@cortexui/primitives` provides the base layer of the CortexUI architecture. Understanding the three-layer model helps clarify where each package fits:
+`@domglyph/primitives` provides the base layer of the DOMglyph architecture. Understanding the three-layer model helps clarify where each package fits:
 
 ```
 ┌─────────────────────────────────────┐
-│  @cortexui/components               │  ← AI contract + visual design
+│  @domglyph/components               │  ← AI contract + visual design
 │  ActionButton, FormField, DataTable  │
 ├─────────────────────────────────────┤
-│  @cortexui/primitives               │  ← Behavior + accessibility
+│  @domglyph/primitives               │  ← Behavior + accessibility
 │  Box, Stack, Text, ButtonBase, …    │
 ├─────────────────────────────────────┤
 │  HTML elements + ARIA               │  ← DOM
@@ -32,7 +32,7 @@ Low-level accessible UI primitives. The foundation of CortexUI components.
 ## Installation
 
 ```bash
-npm install @cortexui/primitives
+npm install @domglyph/primitives
 ```
 
 Peer dependencies:
@@ -50,7 +50,7 @@ npm install react@^18 react-dom@^18
 A polymorphic container element. Renders as any HTML element via the `as` prop, defaulting to `div`. The base building block for layout.
 
 ```tsx
-import { Box } from '@cortexui/primitives';
+import { Box } from '@domglyph/primitives';
 
 <Box as="section" style={{ padding: '24px' }}>
   Page content here
@@ -74,7 +74,7 @@ import { Box } from '@cortexui/primitives';
 A flexbox layout primitive for stacking children vertically or horizontally with consistent spacing.
 
 ```tsx
-import { Stack } from '@cortexui/primitives';
+import { Stack } from '@domglyph/primitives';
 
 // Vertical stack with gap
 <Stack direction="column" gap="16px">
@@ -97,7 +97,7 @@ import { Stack } from '@cortexui/primitives';
 A semantic typography primitive. Renders as any text-level HTML element via the `as` prop. Use it for labels, headings, captions, and body copy.
 
 ```tsx
-import { Text } from '@cortexui/primitives';
+import { Text } from '@domglyph/primitives';
 
 // Form label
 <Text as="label" size="sm" weight="medium">
@@ -124,7 +124,7 @@ An accessible button primitive with no visual styling. Handles keyboard events (
 When building custom components on `ButtonBase`, you are responsible for adding `data-ai-*` attributes:
 
 ```tsx
-import { ButtonBase } from '@cortexui/primitives';
+import { ButtonBase } from '@domglyph/primitives';
 
 <ButtonBase
   onClick={handleClick}
@@ -148,7 +148,7 @@ import { ButtonBase } from '@cortexui/primitives';
 An accessible input primitive with no visual styling. Handles value state, change events, and ARIA attributes for error and required states. The foundation of `FormField`.
 
 ```tsx
-import { InputBase } from '@cortexui/primitives';
+import { InputBase } from '@domglyph/primitives';
 
 <InputBase
   type="email"
@@ -172,7 +172,7 @@ import { InputBase } from '@cortexui/primitives';
 An accessible dialog primitive with focus trapping, scroll locking, and `Escape` key dismissal. Renders as a native `<dialog>` element. The foundation of `ConfirmDialog`.
 
 ```tsx
-import { DialogBase } from '@cortexui/primitives';
+import { DialogBase } from '@domglyph/primitives';
 
 <DialogBase
   open={isOpen}
@@ -196,19 +196,29 @@ import { DialogBase } from '@cortexui/primitives';
 
 ## When to use primitives directly
 
-Use `@cortexui/primitives` directly when:
+Use `@domglyph/primitives` directly when:
 
-- You are building a **custom component** that needs CortexUI's accessibility guarantees but has unique visual requirements not served by the components package
+- You are building a **custom component** that needs DOMglyph's accessibility guarantees but has unique visual requirements not served by the components package
 - You need a **polymorphic container** (`Box`) or **layout primitive** (`Stack`) without pulling in a full component
 
-When you build on primitives directly, **you are responsible for adding `data-ai-*` attributes** to make the component inspectable by the AI runtime. See [`@cortexui/ai-contract`](../ai-contract/README.md) for the full attribute specification and [`@cortexui/testing`](../testing/README.md) for validation utilities to use in your tests.
+When you build on primitives directly, **you are responsible for adding `data-ai-*` attributes** to make the component inspectable by the AI runtime. See [`@domglyph/ai-contract`](../ai-contract/README.md) for the full attribute specification and [`@domglyph/testing`](../testing/README.md) for validation utilities to use in your tests.
 
 ---
 
-## Part of CortexUI
+## Part of DOMglyph
 
-`@cortexui/primitives` is part of the [CortexUI](../../README.md) design system.
+`@domglyph/primitives` is part of the [DOMglyph](../../README.md) design system.
 
 - [Main repository](../../README.md)
 - [Documentation](http://localhost:3001/docs/primitives)
 - [Contributing](../../CONTRIBUTING.md)
+
+---
+
+## ☕ Support
+
+If you find DOMglyph useful, you can support the project:
+
+👉 https://buymeacoffee.com/nishchya
+
+It helps keep the project alive and growing.

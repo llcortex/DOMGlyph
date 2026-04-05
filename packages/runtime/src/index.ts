@@ -1,19 +1,19 @@
-import { AIEvent } from "@cortexui/ai-contract";
+import { AIEvent } from "@domglyph/ai-contract";
 
-import { installCortexUIDevtools } from "./devtools";
-import { installCortexUIRuntime } from "./runtime";
+import { installDOMglyphDevtools } from "./devtools";
+import { installDOMglyphRuntime } from "./runtime";
 import type {
-  CortexUIDevtoolsAPI,
-  CortexUIGlobalAPI,
+  DOMglyphDevtoolsAPI,
+  DOMglyphGlobalAPI,
   RuntimeRegistry
 } from "./types";
 
-export { installCortexUIDevtools } from "./devtools";
-export { CortexUIRuntime, installCortexUIRuntime } from "./runtime";
+export { installDOMglyphDevtools } from "./devtools";
+export { DOMglyphRuntime, installDOMglyphRuntime } from "./runtime";
 export type {
   AvailableAction,
-  CortexUIDevtoolsAPI,
-  CortexUIGlobalAPI,
+  DOMglyphDevtoolsAPI,
+  DOMglyphGlobalAPI,
   FormFieldSchema,
   FormSchema,
   RuntimeEventLogEntry,
@@ -35,15 +35,15 @@ export const runtimeRegistry: RuntimeRegistry = {
 
 export const defaultRuntimeEvent = AIEvent.ACTION_TRIGGERED;
 
-export const CORTEX_UI: CortexUIGlobalAPI | null =
-  typeof window === "undefined" ? null : installCortexUIRuntime(window);
+export const __DOMGLYPH__: DOMglyphGlobalAPI | null =
+  typeof window === "undefined" ? null : installDOMglyphRuntime(window);
 
-export const CORTEX_UI_DEVTOOLS: CortexUIDevtoolsAPI | null =
-  typeof window === "undefined" ? null : installCortexUIDevtools(window);
+export const __DOMGLYPH_DEVTOOLS__: DOMglyphDevtoolsAPI | null =
+  typeof window === "undefined" ? null : installDOMglyphDevtools(window);
 
 declare global {
   interface Window {
-    CORTEX_UI?: CortexUIGlobalAPI;
-    CORTEX_UI_DEVTOOLS?: CortexUIDevtoolsAPI;
+    __DOMGLYPH__?: DOMglyphGlobalAPI;
+    __DOMGLYPH_DEVTOOLS__?: DOMglyphDevtoolsAPI;
   }
 }

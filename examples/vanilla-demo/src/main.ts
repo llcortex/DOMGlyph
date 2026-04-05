@@ -1,4 +1,4 @@
-import { installCortexUIDevtools, installCortexUIRuntime } from "@cortexui/runtime";
+import { installDOMglyphDevtools, installDOMglyphRuntime } from "@domglyph/runtime";
 
 const root = document.getElementById("root");
 
@@ -23,7 +23,7 @@ if (root) {
               data-ai-required="true"
               data-ai-state="idle"
               type="email"
-              value="ops@cortexui.dev"
+              value="ops@domglyph.dev"
               style="border:1px solid rgba(39,25,13,.18);border-radius:14px;padding:12px 14px;font:inherit;"
             />
             <div style="display:flex;gap:12px;flex-wrap:wrap;">
@@ -81,8 +81,8 @@ if (root) {
   `;
 }
 
-installCortexUIRuntime(window);
-installCortexUIDevtools(window);
+installDOMglyphRuntime(window);
+installDOMglyphDevtools(window);
 
 document.getElementById("toggle-vanilla-inspector")?.addEventListener("click", () => {
   window.CORTEX_UI_DEVTOOLS?.toggle();

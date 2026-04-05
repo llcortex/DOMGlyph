@@ -118,7 +118,7 @@ Every meaningful page region should have a `data-ai-section`. Sections give acti
 
 ### 7. Use Verb-Noun Format for All Action Names
 
-Every `data-ai-action` value must start with a verb. This is enforced by the CortexUI linter and should be reviewed in code review.
+Every `data-ai-action` value must start with a verb. This is enforced by the DOMglyph linter and should be reviewed in code review.
 
 ```
 save-profile     ✓
@@ -131,10 +131,10 @@ click-save-btn   ✗  (implementation, not intent)
 
 ### 8. Test Your Contract
 
-Use the `@cortexui/testing` package to validate the contract programmatically in your test suite:
+Use the `@domglyph/testing` package to validate the contract programmatically in your test suite:
 
 ```ts
-import { validateAIContract } from "@cortexui/testing";
+import { validateAIContract } from "@domglyph/testing";
 
 test("user profile page contract is valid", async () => {
   render(<UserProfilePage userId="user-abc" />);

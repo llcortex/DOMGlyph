@@ -3,7 +3,7 @@ import {
   AIRole,
   AIState,
   createAIAttributes
-} from "@cortexui/ai-contract";
+} from "@domglyph/ai-contract";
 
 import { createVirtualElement } from "./dom";
 

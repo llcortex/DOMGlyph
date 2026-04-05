@@ -1,26 +1,26 @@
-# @cortexui/runtime
+# @domglyph/runtime (formerly [@cortexui/runtime](https://www.npmjs.com/package/@cortexui/runtime))
 
-[![npm version](https://img.shields.io/npm/v/@cortexui/runtime?color=0ea5e9)](https://www.npmjs.com/package/@cortexui/runtime)
+[![npm version](https://img.shields.io/npm/v/@domglyph/runtime?color=0ea5e9)](https://www.npmjs.com/package/@domglyph/runtime)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](../../LICENSE)
 
-The browser runtime that makes CortexUI pages inspectable by AI agents.
+The browser runtime that makes DOMglyph pages inspectable by AI agents.
 
 ---
 
 ## Overview
 
-`@cortexui/runtime` installs `window.__CORTEX_UI__` — a structured inspection API that AI agents use instead of scraping the DOM.
+`@domglyph/runtime` installs `window.__DOMGLYPH__` — a structured inspection API that AI agents use instead of scraping the DOM.
 
 Without this runtime, an AI agent visiting your page would need to traverse the DOM, parse CSS, infer intent from visible text, and guess at state. With this runtime, the agent calls a single function and gets back a typed, structured description of exactly what is on screen and what can be done.
 
-The runtime works by reading the `data-ai-*` attributes that CortexUI components emit. It requires no separate data store, no backend, and no framework integration beyond a single `installCortexUIRuntime()` call.
+The runtime works by reading the `data-ai-*` attributes that DOMglyph components emit. It requires no separate data store, no backend, and no framework integration beyond a single `installDOMglyphRuntime()` call.
 
 ---
 
 ## Installation
 
 ```bash
-npm install @cortexui/runtime
+npm install @domglyph/runtime
 ```
 
 ---
@@ -29,13 +29,13 @@ npm install @cortexui/runtime
 
 ### With React (recommended)
 
-Call `installCortexUIRuntime` once in your application's entry point, before the app renders:
+Call `installDOMglyphRuntime` once in your application's entry point, before the app renders:
 
 ```tsx
-import { installCortexUIRuntime } from '@cortexui/runtime';
+import { installDOMglyphRuntime } from '@domglyph/runtime';
 
 // Install before rendering
-installCortexUIRuntime(window);
+installDOMglyphRuntime(window);
 
 // Then render your app
 ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
@@ -43,13 +43,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
 
 ### Verifying installation
 
-Open the browser console on any CortexUI page and run:
+Open the browser console on any DOMglyph page and run:
 
 ```js
-console.log(window.__CORTEX_UI__.getScreenContext());
+console.log(window.__DOMGLYPH__.getScreenContext());
 ```
 
-If `__CORTEX_UI__` is defined and returns a context object, the runtime is installed correctly.
+If `__DOMGLYPH__` is defined and returns a context object, the runtime is installed correctly.
 
 ---
 
@@ -71,7 +71,7 @@ getScreenContext(): {
 Example output:
 
 ```js
-window.__CORTEX_UI__.getScreenContext();
+window.__DOMGLYPH__.getScreenContext();
 // {
 //   screen: "order-detail",
 //   entity: "order",
@@ -98,7 +98,7 @@ getAvailableActions(): Array<{
 Example output:
 
 ```js
-window.__CORTEX_UI__.getAvailableActions();
+window.__DOMGLYPH__.getAvailableActions();
 // [
 //   { id: "approve-order", action: "approve-order", state: "idle", section: "actions" },
 //   { id: "cancel-order",  action: "cancel-order",  state: "idle", section: "actions" },
@@ -128,7 +128,7 @@ getFormSchema(formId: string): {
 Example output:
 
 ```js
-window.__CORTEX_UI__.getFormSchema('edit-shipping-form');
+window.__DOMGLYPH__.getFormSchema('edit-shipping-form');
 // {
 //   formId: "edit-shipping-form",
 //   fields: [
@@ -156,7 +156,7 @@ getVisibleEntities(): Array<{
 Example output:
 
 ```js
-window.__CORTEX_UI__.getVisibleEntities();
+window.__DOMGLYPH__.getVisibleEntities();
 // [
 //   { entity: "order",   entityId: "ord-9142", section: "summary" },
 //   { entity: "product", entityId: "prd-001",  section: "line-items" },
@@ -185,7 +185,7 @@ getRecentEvents(): Array<{
 Example output:
 
 ```js
-window.__CORTEX_UI__.getRecentEvents();
+window.__DOMGLYPH__.getRecentEvents();
 // [
 //   { type: "action_triggered", actionId: "approve-order", timestamp: 1711900000000 },
 //   { type: "action_completed", actionId: "approve-order", result: "success", timestamp: 1711900000250 }
@@ -199,10 +199,10 @@ window.__CORTEX_UI__.getRecentEvents();
 In development, you can install the extended devtools runtime for additional inspection capabilities:
 
 ```ts
-import { installCortexUIDevtools } from '@cortexui/runtime';
+import { installDOMglyphDevtools } from '@domglyph/runtime';
 
-installCortexUIDevtools(window);
-// window.__CORTEX_UI_DEVTOOLS__ is now available
+installDOMglyphDevtools(window);
+// window.__DOMGLYPH_DEVTOOLS__ is now available
 ```
 
 The devtools runtime adds:
@@ -217,22 +217,22 @@ Do not install devtools in production builds.
 
 ## Using with AI Agents
 
-A typical agent interaction loop using the CortexUI runtime:
+A typical agent interaction loop using the DOMglyph runtime:
 
 ```js
 // Step 1: Orient — where am I and what entity am I looking at?
-const ctx = window.__CORTEX_UI__.getScreenContext();
+const ctx = window.__DOMGLYPH__.getScreenContext();
 // { screen: "profile", entity: "user", entityId: "usr-42", sections: [...] }
 
 // Step 2: Survey — what actions can I take right now?
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 // [{ id: "save-profile", action: "save-profile", state: "idle", section: "contact" }]
 
 // Step 3: Act — trigger the desired action deterministically
 document.querySelector(`[data-ai-id="${actions[0].id}"]`).click();
 
 // Step 4: Verify — did it work?
-const events = window.__CORTEX_UI__.getRecentEvents();
+const events = window.__DOMGLYPH__.getRecentEvents();
 // [{ type: "action_completed", actionId: "save-profile", result: "success", ... }]
 ```
 
@@ -240,10 +240,20 @@ This pattern is stable across re-renders, redesigns, and component updates. As l
 
 ---
 
-## Part of CortexUI
+## Part of DOMglyph
 
-`@cortexui/runtime` is part of the [CortexUI](../../README.md) design system.
+`@domglyph/runtime` is part of the [DOMglyph](../../README.md) design system.
 
 - [Main repository](../../README.md)
 - [Documentation](http://localhost:3001/docs/runtime)
 - [Contributing](../../CONTRIBUTING.md)
+
+---
+
+## ☕ Support
+
+If you find DOMglyph useful, you can support the project:
+
+👉 https://buymeacoffee.com/nishchya
+
+It helps keep the project alive and growing.

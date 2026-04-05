@@ -1,4 +1,4 @@
-import { extractAIAttributes, validateAIAttributes } from "@cortexui/ai-contract";
+import { extractAIAttributes, validateAIAttributes } from "@domglyph/ai-contract";
 import type { ExpectStatic } from "vitest";
 
 import { runAccessibilityChecks } from "./accessibility";

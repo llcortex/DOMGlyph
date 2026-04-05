@@ -1,6 +1,6 @@
 # Interaction Contracts
 
-An interaction contract is the complete specification of what a UI element is, what it can do, how it changes, and what it emits. It is the formal agreement between a CortexUI component and anything that interacts with it — whether that is a human, an AI agent, or an automated test.
+An interaction contract is the complete specification of what a UI element is, what it can do, how it changes, and what it emits. It is the formal agreement between a DOMglyph component and anything that interacts with it — whether that is a human, an AI agent, or an automated test.
 
 ## What a Contract Is
 
@@ -101,10 +101,10 @@ These three events together form the event contract for any action. Any action t
 
 ## Contract Validation
 
-Contracts can be validated programmatically using the `@cortexui/testing` package:
+Contracts can be validated programmatically using the `@domglyph/testing` package:
 
 ```ts
-import { validateAIContract, getContractReport } from "@cortexui/testing";
+import { validateAIContract, getContractReport } from "@domglyph/testing";
 
 // Validate all elements on the page
 const report = await validateAIContract();

@@ -1,15 +1,15 @@
-# @cortexui/testing
+# @domglyph/testing  (formerly [@cortexui/testing](https://www.npmjs.com/package/@cortexui/testing))
 
-[![npm version](https://img.shields.io/npm/v/@cortexui/testing?color=0ea5e9)](https://www.npmjs.com/package/@cortexui/testing)
+[![npm version](https://img.shields.io/npm/v/@domglyph/testing?color=0ea5e9)](https://www.npmjs.com/package/@domglyph/testing)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](../../LICENSE)
 
-AI contract validation and testing utilities for CortexUI.
+AI contract validation and testing utilities for DOMglyph.
 
 ---
 
 ## Overview
 
-`@cortexui/testing` gives you everything you need to verify that components correctly implement the CortexUI AI contract. It includes:
+`@domglyph/testing` gives you everything you need to verify that components correctly implement the DOMglyph AI contract. It includes:
 
 - **`validateAIContractNode`** — validates `data-ai-*` attributes on a DOM element
 - **`runComponentComplianceChecks`** — full compliance check combining AI contract and accessibility
@@ -22,7 +22,7 @@ AI contract validation and testing utilities for CortexUI.
 ## Installation
 
 ```bash
-npm install --save-dev @cortexui/testing
+npm install --save-dev @domglyph/testing
 ```
 
 ---
@@ -31,10 +31,10 @@ npm install --save-dev @cortexui/testing
 
 ### validateAIContractNode(element)
 
-Validates all `data-ai-*` attributes on a DOM element against the CortexUI AI contract specification. Returns a result object — does not throw.
+Validates all `data-ai-*` attributes on a DOM element against the DOMglyph AI contract specification. Returns a result object — does not throw.
 
 ```ts
-import { validateAIContractNode } from '@cortexui/testing';
+import { validateAIContractNode } from '@domglyph/testing';
 
 const result = validateAIContractNode(element);
 // {
@@ -47,9 +47,9 @@ const result = validateAIContractNode(element);
 Example:
 
 ```ts
-import { validateAIContractNode } from '@cortexui/testing';
+import { validateAIContractNode } from '@domglyph/testing';
 import { render, screen } from '@testing-library/react';
-import { ActionButton } from '@cortexui/components';
+import { ActionButton } from '@domglyph/components';
 
 render(<ActionButton action="save-profile" state="idle" label="Save" />);
 const btn = screen.getByRole('button');
@@ -80,7 +80,7 @@ const result = validateAIContractNode(badElement);
 Runs a full compliance check that covers both the AI contract and accessibility requirements. Useful for a single comprehensive assertion in integration tests.
 
 ```ts
-import { runComponentComplianceChecks } from '@cortexui/testing';
+import { runComponentComplianceChecks } from '@domglyph/testing';
 
 const result = runComponentComplianceChecks(element, {
   requiredAttributes: ['data-ai-id', 'data-ai-role', 'data-ai-state'],
@@ -100,7 +100,7 @@ const result = runComponentComplianceChecks(element, {
 Register custom matchers to write expressive assertions:
 
 ```ts
-import { registerCortexMatchers } from '@cortexui/testing';
+import { registerCortexMatchers } from '@domglyph/testing';
 import { expect } from 'vitest';
 
 // Call once in your vitest setup file (vitest.setup.ts)
@@ -132,7 +132,7 @@ expect(element).toHaveAIAttributes({
 
 #### `toPassAccessibilityChecks()`
 
-Asserts that the element passes the CortexUI accessibility audit.
+Asserts that the element passes the DOMglyph accessibility audit.
 
 ```ts
 expect(element).toPassAccessibilityChecks();
@@ -145,7 +145,7 @@ expect(element).toPassAccessibilityChecks();
 Fixtures create valid DOM elements with AI contract attributes. Use them for testing validators, matchers, and utilities without needing to render full components.
 
 ```ts
-import { createActionFixture, createStatusFixture, createFieldFixture, createFormFixture } from '@cortexui/testing';
+import { createActionFixture, createStatusFixture, createFieldFixture, createFormFixture } from '@domglyph/testing';
 
 // Creates a <button> with data-ai-role="action" and the given props
 const btn = createActionFixture({ action: 'save-profile', state: 'idle' });
@@ -167,7 +167,7 @@ const form = createFormFixture({ id: 'contact-form' });
 Runs a focused accessibility audit on a single element and returns any violations:
 
 ```ts
-import { runAccessibilityChecks } from '@cortexui/testing';
+import { runAccessibilityChecks } from '@domglyph/testing';
 
 const result = runAccessibilityChecks(element);
 // {
@@ -190,7 +190,7 @@ A complete test file for a custom component, covering AI contract compliance, st
 import { describe, test, expect, beforeAll } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { validateAIContractNode, runAccessibilityChecks, registerCortexMatchers } from '@cortexui/testing';
+import { validateAIContractNode, runAccessibilityChecks, registerCortexMatchers } from '@domglyph/testing';
 import { MyButton } from '../src/MyButton';
 
 beforeAll(() => {
@@ -265,10 +265,20 @@ describe('MyButton', () => {
 
 ---
 
-## Part of CortexUI
+## Part of DOMglyph
 
-`@cortexui/testing` is part of the [CortexUI](../../README.md) design system.
+`@domglyph/testing` is part of the [DOMglyph](../../README.md) design system.
 
 - [Main repository](../../README.md)
 - [Documentation](http://localhost:3001/docs/testing)
 - [Contributing](../../CONTRIBUTING.md)
+
+---
+
+## ☕ Support
+
+If you find DOMglyph useful, you can support the project:
+
+👉 https://buymeacoffee.com/nishchya
+
+It helps keep the project alive and growing.

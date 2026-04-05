@@ -4,14 +4,14 @@
 
 ```js
 // After doing something in the UI:
-const events = window.__CORTEX_UI__.getRecentEvents();
+const events = window.__DOMGLYPH__.getRecentEvents();
 console.table(events);
 ```
 
 ## Filtering Events
 
 ```js
-const events = window.__CORTEX_UI__.getRecentEvents();
+const events = window.__DOMGLYPH__.getRecentEvents();
 
 // Just failures
 const failures = events.filter(e => e.type === 'action_failed');
@@ -25,7 +25,7 @@ const saveEvents = events.filter(e => e.actionId === 'save-profile');
 If an AI agent reports an action failed, check:
 
 ```js
-const recentFailures = window.__CORTEX_UI__.getRecentEvents()
+const recentFailures = window.__DOMGLYPH__.getRecentEvents()
   .filter(e => e.type === 'action_failed');
 
 recentFailures.forEach(e => {

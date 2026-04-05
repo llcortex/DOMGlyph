@@ -1,17 +1,17 @@
 import type { CSSProperties } from "react";
 
-import { colorTokens } from "@cortexui/tokens";
+import { colorTokens } from "@domglyph/tokens";
 
 export const primitiveVars = {
-  borderColor: "--cortexui-border-color",
-  dangerColor: "--cortexui-danger-color",
-  focusRing: "--cortexui-focus-ring",
-  foreground: "--cortexui-foreground",
-  mutedForeground: "--cortexui-muted-foreground",
-  radius: "--cortexui-radius",
-  spacing: "--cortexui-spacing",
-  successColor: "--cortexui-success-color",
-  surface: "--cortexui-surface"
+  borderColor: "--domglyph-border-color",
+  dangerColor: "--domglyph-danger-color",
+  focusRing: "--domglyph-focus-ring",
+  foreground: "--domglyph-foreground",
+  mutedForeground: "--domglyph-muted-foreground",
+  radius: "--domglyph-radius",
+  spacing: "--domglyph-spacing",
+  successColor: "--domglyph-success-color",
+  surface: "--domglyph-surface"
 } as const;
 
 export const primitiveTheme = {

@@ -3,7 +3,7 @@
 
 ## The Extension Pattern
 
-CortexUI components are designed to be extended. The base components provide the machine-readable contract layer; domain-specific extensions add the application's specific semantics on top.
+DOMglyph components are designed to be extended. The base components provide the machine-readable contract layer; domain-specific extensions add the application's specific semantics on top.
 
 The extension pattern follows four steps:
 
@@ -15,7 +15,7 @@ The extension pattern follows four steps:
 This pattern keeps the contract layer thin and the domain layer expressive, without duplicating the contract machinery in every custom component.
 
 ```tsx
-import { ActionButton } from '@cortexui/components';
+import { ActionButton } from '@domglyph/components';
 
 interface ApproveButtonProps {
   approvalId: string;
@@ -57,7 +57,7 @@ When extending components, keep action names specific to the domain: `approve-re
 When your domain state doesn't map directly to the standard `idle | loading | disabled | error | success` vocabulary, map explicitly in the extension:
 
 ```tsx
-import { ActionButton } from '@cortexui/components';
+import { ActionButton } from '@domglyph/components';
 
 type WorkflowState = 'draft' | 'pending' | 'in-review' | 'approved' | 'rejected';
 
@@ -94,10 +94,10 @@ function SubmitForReviewButton({ documentId, workflowState, onSubmit }: SubmitFo
 
 ## Building Custom Components from Primitives
 
-For cases where the base components don't fit the needed UI pattern, build custom components directly from CortexUI primitives. Primitives provide the lowest-level building blocks — unstyled, contract-ready elements.
+For cases where the base components don't fit the needed UI pattern, build custom components directly from DOMglyph primitives. Primitives provide the lowest-level building blocks — unstyled, contract-ready elements.
 
 ```tsx
-import { ButtonBase, Text, Stack } from '@cortexui/primitives';
+import { ButtonBase, Text, Stack } from '@domglyph/primitives';
 
 interface SplitButtonProps {
   primaryAction: string;
@@ -148,7 +148,7 @@ function SplitButton({
 Form extensions follow a similar pattern, mapping domain field types to the standard contract vocabulary:
 
 ```tsx
-import { FieldBase } from '@cortexui/primitives';
+import { FieldBase } from '@domglyph/primitives';
 
 interface CurrencyFieldProps {
   fieldId: string;
@@ -193,7 +193,7 @@ function CurrencyField({ fieldId, label, currency, value, onChange, required = f
 Data tables often need domain-specific row actions. Extend the base table to add per-row contract annotations:
 
 ```tsx
-import { TableBase, TableRow, TableCell } from '@cortexui/primitives';
+import { TableBase, TableRow, TableCell } from '@domglyph/primitives';
 
 interface UserTableProps {
   users: Array<{
@@ -264,7 +264,7 @@ function UserTable({ users, onDeactivate, onReactivate }: UserTableProps) {
 When building component hierarchies, contract attributes propagate through context. Child components can inherit entity context from parent sections without re-declaring it:
 
 ```tsx
-import { Section } from '@cortexui/components';
+import { Section } from '@domglyph/components';
 
 function UserProfileSection({ userId }: { userId: string }) {
   return (
@@ -295,7 +295,7 @@ Extended components should include contract tests alongside visual tests:
 
 ```tsx
 import { render } from '@testing-library/react';
-import { getAiContract } from '@cortexui/testing';
+import { getAiContract } from '@domglyph/testing';
 
 test('ApproveButton has correct contract', () => {
   const { container } = render(

@@ -4,7 +4,7 @@ Actions are the callable intents of your UI. They are the things a user — or a
 
 ## What Actions Are
 
-In traditional UI thinking, a button is a visual element. In CortexUI's AI contract, a button is a declaration: "this is something you can do here." Actions expose the operational vocabulary of your application in a machine-readable form.
+In traditional UI thinking, a button is a visual element. In DOMglyph's AI contract, a button is a declaration: "this is something you can do here." Actions expose the operational vocabulary of your application in a machine-readable form.
 
 An action has five properties in the contract:
 
@@ -201,7 +201,7 @@ A complete CRM user profile page might expose the following action catalog:
 AI agents use `getAvailableActions()` to enumerate all actions currently accessible on the screen:
 
 ```js
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 
 /*
 [

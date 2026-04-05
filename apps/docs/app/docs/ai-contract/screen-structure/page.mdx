@@ -1,6 +1,6 @@
 # Screen Structure
 
-Every page in a CortexUI application should declare its structural identity through a hierarchy of data-ai-* attributes. This hierarchy allows AI agents to understand where they are, what context they are operating in, and how the content is organized — without any visual inference.
+Every page in a DOMglyph application should declare its structural identity through a hierarchy of data-ai-* attributes. This hierarchy allows AI agents to understand where they are, what context they are operating in, and how the content is organized — without any visual inference.
 
 ## The Hierarchy
 
@@ -235,7 +235,7 @@ Entity context scopes the meaning of actions. A `delete-account` action inside `
 The runtime scanner traverses the DOM and collects all structural annotations into a context object:
 
 ```js
-const ctx = window.__CORTEX_UI__.getScreenContext();
+const ctx = window.__DOMGLYPH__.getScreenContext();
 
 /*
 {
@@ -251,7 +251,7 @@ An agent typically calls `getScreenContext()` as its first step — before any o
 
 ```js
 // Agent verifying context before acting
-const ctx = window.__CORTEX_UI__.getScreenContext();
+const ctx = window.__DOMGLYPH__.getScreenContext();
 
 if (ctx.screen !== "user-profile") {
   throw new Error(`Expected user-profile, but on ${ctx.screen}`);
@@ -261,7 +261,7 @@ if (ctx.entityId !== targetUserId) {
 }
 
 // Safe to proceed
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 ```
 
 <Callout type="important">

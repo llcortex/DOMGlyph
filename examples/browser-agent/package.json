@@ -1,6 +1,6 @@
 {
-  "name": "@cortexui/example-browser-agent",
-  "version": "0.0.0",
+  "name": "@domglyph/example-browser-agent",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,7 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "@cortexui/runtime": "workspace:*"
+    "@domglyph/runtime": "workspace:*"
   },
   "devDependencies": {
     "vite": "^5.4.8"

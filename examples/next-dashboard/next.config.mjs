@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@cortexui/components", "@cortexui/primitives", "@cortexui/runtime"]
+  transpilePackages: ["@domglyph/components", "@domglyph/primitives", "@domglyph/runtime"]
 };
 
 export default nextConfig;

@@ -16,12 +16,12 @@ import {
   DATA_AI_STATE,
   DATA_AI_STATUS,
   extractAIAttributes
-} from "@cortexui/ai-contract";
+} from "@domglyph/ai-contract";
 
 import type {
   ActionRegistryEntry,
   AvailableAction,
-  CortexUIGlobalAPI,
+  DOMglyphGlobalAPI,
   FormFieldSchema,
   FormSchema,
   RuntimeEventLogEntry,
@@ -38,7 +38,7 @@ const FIELD_SELECTOR = `input, textarea, select, [${DATA_AI_ROLE}="${AIRole.FIEL
 const FORM_SELECTOR = `form, [${DATA_AI_ROLE}="${AIRole.FORM}"]`;
 const MAX_EVENT_LOG = 100;
 
-export class CortexUIRuntime implements CortexUIGlobalAPI {
+export class DOMglyphRuntime implements DOMglyphGlobalAPI {
   private readonly actionRegistry = new Map<string, ActionRegistryEntry>();
   private readonly recentEvents: RuntimeEventLogEntry[] = [];
   private mutationObserver: MutationObserver | null = null;
@@ -360,17 +360,17 @@ export class CortexUIRuntime implements CortexUIGlobalAPI {
   }
 }
 
-export function installCortexUIRuntime(targetWindow: Window = window): CortexUIGlobalAPI | null {
+export function installDOMglyphRuntime(targetWindow: Window = window): DOMglyphGlobalAPI | null {
   if (typeof targetWindow === "undefined" || targetWindow.document === undefined) {
     return null;
   }
 
-  if (targetWindow.CORTEX_UI !== undefined) {
-    return targetWindow.CORTEX_UI;
+  if (targetWindow.__DOMGLYPH__ !== undefined) {
+    return targetWindow.__DOMGLYPH__;
   }
 
-  const runtime = new CortexUIRuntime(targetWindow, targetWindow.document);
-  targetWindow.CORTEX_UI = runtime;
+  const runtime = new DOMglyphRuntime(targetWindow, targetWindow.document);
+  targetWindow.__DOMGLYPH__ = runtime;
   return runtime;
 }
 

@@ -176,7 +176,7 @@ Every field in the form must carry three attributes:
 Given the annotated form above, `getFormSchema("edit-profile-form")` returns:
 
 ```js
-const schema = window.__CORTEX_UI__.getFormSchema("edit-profile-form");
+const schema = window.__DOMGLYPH__.getFormSchema("edit-profile-form");
 
 /*
 {
@@ -251,7 +251,7 @@ async function fillProfileForm(data: {
   timezone?: string;
   bio?: string;
 }) {
-  const schema = window.__CORTEX_UI__.getFormSchema("edit-profile-form");
+  const schema = window.__DOMGLYPH__.getFormSchema("edit-profile-form");
 
   for (const field of schema.fields) {
     const value = data[field.name];

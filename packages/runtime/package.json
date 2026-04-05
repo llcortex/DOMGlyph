@@ -1,6 +1,6 @@
 {
-  "name": "@cortexui/runtime",
-  "version": "1.1.1",
+  "name": "@domglyph/runtime",
+  "version": "2.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -22,7 +22,7 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "@cortexui/ai-contract": "workspace:*"
+    "@domglyph/ai-contract": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^8.5.1"

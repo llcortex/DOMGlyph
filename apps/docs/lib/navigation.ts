@@ -14,8 +14,8 @@ export const navigation: NavSection[] = [
   {
     title: "Introduction",
     items: [
-      { title: "What is CortexUI", href: "/docs/introduction/what-is-cortexui" },
-      { title: "Why CortexUI exists", href: "/docs/introduction/why-cortexui" },
+      { title: "What is DOMglyph", href: "/docs/introduction/what-is-cortexui" },
+      { title: "Why DOMglyph exists", href: "/docs/introduction/why-cortexui" },
       { title: "Core philosophy", href: "/docs/introduction/philosophy" },
       { title: "AI-native UI explained", href: "/docs/introduction/ai-native-ui" },
       { title: "vs Traditional systems", href: "/docs/introduction/comparison" }

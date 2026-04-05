@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { createStatusFixture, createVirtualElement, runAccessibilityChecks } from "../src/index";
 
-describe("@cortexui/testing accessibility", () => {
+describe("@domglyph/testing accessibility", () => {
   it("passes status fixtures with accessible role and text", () => {
     const result = runAccessibilityChecks(createStatusFixture(), {
       requireAccessibleName: true

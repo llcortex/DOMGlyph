@@ -28,7 +28,7 @@ async function deleteUser(userId) {
 
   // Wait for dialog
   await waitFor(() => {
-    const actions = window.__CORTEX_UI__.getAvailableActions();
+    const actions = window.__DOMGLYPH__.getAvailableActions();
     return actions.some(a => a.action === 'confirm-delete-user');
   });
 

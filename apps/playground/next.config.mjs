@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: [
-    "@cortexui/ai-contract",
-    "@cortexui/components",
-    "@cortexui/primitives",
-    "@cortexui/runtime"
+    "@domglyph/ai-contract",
+    "@domglyph/components",
+    "@domglyph/primitives",
+    "@domglyph/runtime"
   ]
 };
 

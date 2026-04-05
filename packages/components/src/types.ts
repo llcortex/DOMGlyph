@@ -1,10 +1,10 @@
-import type { AIAction, AIEvent, AIState } from "@cortexui/ai-contract";
+import type { AIAction, AIEvent, AIState } from "@domglyph/ai-contract";
 import type {
   ButtonBaseProps,
   DialogBaseProps,
   InputBaseProps,
   PrimitiveBoxProps
-} from "@cortexui/primitives";
+} from "@domglyph/primitives";
 import type { ReactNode } from "react";
 
 export interface ActionButtonProps extends Omit<ButtonBaseProps, "children"> {

@@ -9,7 +9,7 @@ export function Footer(): JSX.Element {
           className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 transition-colors hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-brand-900/20 dark:hover:text-brand-400"
         >
           <span aria-hidden="true">☕</span>
-          <span>Support CortexUI</span>
+          <span>Support DOMglyph</span>
           <span aria-hidden="true">→</span>
           <span>Buy me a coffee</span>
         </a>

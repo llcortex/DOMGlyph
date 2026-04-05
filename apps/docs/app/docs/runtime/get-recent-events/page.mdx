@@ -5,7 +5,7 @@ Returns a chronological log of recent AI-contract events emitted on the current 
 ## Signature
 
 ```ts
-window.__CORTEX_UI__.getRecentEvents(): RuntimeEventLogEntry[]
+window.__DOMGLYPH__.getRecentEvents(): RuntimeEventLogEntry[]
 ```
 
 ## Return Type
@@ -48,7 +48,7 @@ function waitForActionResult(actionId, timeoutMs = 10000) {
   return new Promise((resolve, reject) => {
     const start = Date.now();
     const check = setInterval(() => {
-      const events = window.__CORTEX_UI__.getRecentEvents();
+      const events = window.__DOMGLYPH__.getRecentEvents();
       const completed = events.find(
         e => e.actionId === actionId && e.type === 'action_completed'
       );

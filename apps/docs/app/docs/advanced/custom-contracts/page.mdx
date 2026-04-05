@@ -16,7 +16,7 @@ Do not extend for attributes that could be handled by the standard vocabulary. C
 
 ## Adding Custom Attributes
 
-Custom attributes follow the same `data-ai-` prefix convention as the standard contract. This ensures they are picked up by the CortexUI runtime and included in the contract tree.
+Custom attributes follow the same `data-ai-` prefix convention as the standard contract. This ensures they are picked up by the DOMglyph runtime and included in the contract tree.
 
 ```html
 <!-- Custom priority attribute for a task manager -->
@@ -60,7 +60,7 @@ Custom attributes follow the same `data-ai-` prefix convention as the standard c
 ```
 
 <Callout type="note">
-Custom attributes must be prefixed with `data-ai-` to be picked up by the CortexUI runtime. Attributes without this prefix are ignored by the contract scanner and will not appear in `getScreenContext()`, `getAvailableActions()`, or any other runtime API response.
+Custom attributes must be prefixed with `data-ai-` to be picked up by the DOMglyph runtime. Attributes without this prefix are ignored by the contract scanner and will not appear in `getScreenContext()`, `getAvailableActions()`, or any other runtime API response.
 </Callout>
 
 ## Registering with the Runtime
@@ -68,15 +68,15 @@ Custom attributes must be prefixed with `data-ai-` to be picked up by the Cortex
 To have custom attributes included in runtime API responses and tracked in the event log, register them when installing the runtime:
 
 ```ts
-import { installCortexUIRuntime } from '@cortexui/runtime';
+import { installDOMglyphRuntime } from '@domglyph/runtime';
 
-installCortexUIRuntime(window, {
+installDOMglyphRuntime(window, {
   customAttributes: ['data-ai-priority', 'data-ai-category', 'data-ai-severity'],
   onCustomAttribute(el, attr, value) {
     // Called whenever a custom attribute is observed during contract scanning
     // Use this hook to validate, transform, or emit custom events
     if (attr === 'data-ai-priority' && !['high', 'medium', 'low'].includes(value)) {
-      console.warn(`[CortexUI] Unknown priority value: ${value} on element`, el);
+      console.warn(`[DOMglyph] Unknown priority value: ${value} on element`, el);
     }
   }
 });
@@ -85,7 +85,7 @@ installCortexUIRuntime(window, {
 After registration, custom attributes are included in element descriptors returned by the runtime:
 
 ```ts
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 // Returns:
 // [
 //   {
@@ -156,25 +156,25 @@ Document custom attributes the same way you'd document an API extension. This do
 For production systems, add runtime validation for custom attributes to catch implementation errors early:
 
 ```ts
-import { installCortexUIRuntime } from '@cortexui/runtime';
+import { installDOMglyphRuntime } from '@domglyph/runtime';
 
 const VALID_PRIORITIES = new Set(['high', 'medium', 'low']);
 const VALID_APPROVAL_STATES = new Set([
   'draft', 'pending-review', 'approved', 'rejected', 'archived'
 ]);
 
-installCortexUIRuntime(window, {
+installDOMglyphRuntime(window, {
   customAttributes: ['data-ai-priority', 'data-ai-approval-state'],
   onCustomAttribute(el, attr, value) {
     if (attr === 'data-ai-priority' && !VALID_PRIORITIES.has(value)) {
       console.error(
-        `[CortexUI] Invalid data-ai-priority value "${value}". ` +
+        `[DOMglyph] Invalid data-ai-priority value "${value}". ` +
         `Valid values: ${[...VALID_PRIORITIES].join(', ')}`
       );
     }
     if (attr === 'data-ai-approval-state' && !VALID_APPROVAL_STATES.has(value)) {
       console.error(
-        `[CortexUI] Invalid data-ai-approval-state value "${value}". ` +
+        `[DOMglyph] Invalid data-ai-approval-state value "${value}". ` +
         `Valid values: ${[...VALID_APPROVAL_STATES].join(', ')}`
       );
     }
@@ -203,11 +203,11 @@ export type AiPriority = 'high' | 'medium' | 'low';
 export type AiApprovalState = 'draft' | 'pending-review' | 'approved' | 'rejected' | 'archived';
 
 // packages/ai-contract/src/runtime.ts
-import { installCortexUIRuntime } from '@cortexui/runtime';
+import { installDOMglyphRuntime } from '@domglyph/runtime';
 import { CUSTOM_AI_ATTRIBUTES, AiPriority, AiApprovalState } from './attributes';
 
 export function installWithCustomContract(win: Window) {
-  installCortexUIRuntime(win, {
+  installDOMglyphRuntime(win, {
     customAttributes: [...CUSTOM_AI_ATTRIBUTES],
     onCustomAttribute(el, attr, value) {
       // shared validation logic

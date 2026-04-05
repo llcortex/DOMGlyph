@@ -2,13 +2,13 @@
 
 ## Overview
 
-AI agents navigate between pages to complete multi-step tasks. CortexUI provides screen context so agents always know where they are.
+AI agents navigate between pages to complete multi-step tasks. DOMglyph provides screen context so agents always know where they are.
 
 ## How Agents Navigate
 
 ```js
 // Check current screen
-const ctx = window.__CORTEX_UI__.getScreenContext();
+const ctx = window.__DOMGLYPH__.getScreenContext();
 // { screen: "users-list", entity: "user" }
 
 // Navigate to user detail
@@ -16,7 +16,7 @@ const navItem = document.querySelector('[data-ai-id="nav-users"]');
 navItem.click(); // or follow href
 
 // After navigation, verify
-const newCtx = window.__CORTEX_UI__.getScreenContext();
+const newCtx = window.__DOMGLYPH__.getScreenContext();
 // { screen: "user-detail", entity: "user", entityId: "user-123" }
 ```
 

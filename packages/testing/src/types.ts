@@ -4,7 +4,7 @@ import type {
   AIAttributeValidationResult,
   AIRole,
   AIState
-} from "@cortexui/ai-contract";
+} from "@domglyph/ai-contract";
 
 export interface TestHarness {
   readonly name: string;

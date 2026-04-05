@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { AIViewToggle } from "./ai-view-toggle";
 import { SearchTrigger } from "./search";
+import { siteConfig } from "@/lib/site-config";
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -55,11 +56,11 @@ export function Header({ onMenuClick }: { onMenuClick?: () => void }) {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 mr-4 shrink-0">
           <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
-            <span className="text-white font-bold text-sm">C</span>
+            <span className="text-white font-bold text-sm">D</span>
           </div>
           <div>
-            <span className="font-bold text-slate-900 dark:text-white text-base">CortexUI</span>
-            <span className="hidden sm:inline text-xs text-slate-400 dark:text-slate-500 ml-1.5">AI-native</span>
+            <span className="font-bold text-slate-900 dark:text-white text-base">DOMglyph</span>
+            <span className="hidden sm:inline text-xs text-slate-400 dark:text-slate-500 ml-1.5">v{siteConfig.packageVersion}</span>
           </div>
         </Link>
 

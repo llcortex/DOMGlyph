@@ -2,12 +2,12 @@
 
 ## Overview
 
-CortexUI components use ARIA attributes correctly out of the box. Understanding the relationship between ARIA and data-ai-* attributes is important: they are **complementary, not redundant**.
+DOMglyph components use ARIA attributes correctly out of the box. Understanding the relationship between ARIA and data-ai-* attributes is important: they are **complementary, not redundant**.
 
 - **ARIA** is for assistive technology (screen readers, switch access)
 - **data-ai-*** is for AI agents
 
-Both layers operate simultaneously on every CortexUI component.
+Both layers operate simultaneously on every DOMglyph component.
 
 ## ARIA by Component
 
@@ -66,4 +66,4 @@ Never use data-ai-* instead of ARIA. A button needs both `aria-busy="true"` (for
 
 ## The Parallel
 
-Screen readers and AI agents face the same fundamental problem: they can't see the visual UI. CortexUI solves it for both simultaneously.
+Screen readers and AI agents face the same fundamental problem: they can't see the visual UI. DOMglyph solves it for both simultaneously.

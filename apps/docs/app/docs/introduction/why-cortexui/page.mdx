@@ -1,4 +1,4 @@
-# Why CortexUI
+# Why DOMglyph
 
 The web was built for humans. Every design pattern, every framework convention, every accessibility guideline was authored with a human at the keyboard in mind. But we are now shipping products where AI agents browse pages, fill forms, click buttons, extract data, and take actions — often without a human in the loop. The web was not designed for this, and it shows.
 
@@ -42,7 +42,7 @@ The natural response to this problem is: "we already have ARIA attributes for ac
 
 ### ARIA Alone Is Not Enough
 
-ARIA (Accessible Rich Internet Applications) attributes describe semantic roles for screen readers: `role="button"`, `aria-label="Save"`, `aria-disabled="true"`. These are valuable and CortexUI uses them fully. But ARIA was designed to communicate with assistive technologies, not AI agents.
+ARIA (Accessible Rich Internet Applications) attributes describe semantic roles for screen readers: `role="button"`, `aria-label="Save"`, `aria-disabled="true"`. These are valuable and DOMglyph uses them fully. But ARIA was designed to communicate with assistive technologies, not AI agents.
 
 ARIA does not express:
 - **Stable action identifiers** that persist across refactors
@@ -79,22 +79,22 @@ The class names in this example will likely change. The `data-ai-action` identif
 Targeting elements by their visible text content couples automation to copywriting decisions. Internationalized applications fail immediately — "Submit" becomes "Einreichen" in German, "提交" in Chinese, "Soumettre" in French. A/B tests change button copy. The product team rewrites headlines. Each of these is a normal product activity, and none of them should break AI-UI interaction.
 
 <Callout type="note">
-A well-designed interface contract separates the **presentation** (what a human sees) from the **identity** (what a machine references). CortexUI's `data-ai-*` attributes are the identity layer. They are independent of copy, style, or layout.
+A well-designed interface contract separates the **presentation** (what a human sees) from the **identity** (what a machine references). DOMglyph's `data-ai-*` attributes are the identity layer. They are independent of copy, style, or layout.
 </Callout>
 
 ## Real-World Scenarios Where This Matters
 
 ### Browser Automation and RPA
 
-Robotic Process Automation tools use browser automation to interact with web applications on behalf of users or systems. These tools constantly battle interface instability. When your application uses CortexUI, RPA tools can target stable `data-ai-*` attributes instead of brittle CSS selectors, dramatically reducing maintenance overhead.
+Robotic Process Automation tools use browser automation to interact with web applications on behalf of users or systems. These tools constantly battle interface instability. When your application uses DOMglyph, RPA tools can target stable `data-ai-*` attributes instead of brittle CSS selectors, dramatically reducing maintenance overhead.
 
 ### AI-Powered Copilots
 
-Products are increasingly shipping AI assistants that can operate the interface on behalf of users ("fill in this form for me," "submit my expense report"). These assistants need to locate the right elements, read their current state, and take the right actions. With CortexUI, the interface tells the assistant exactly what is available and what each element does.
+Products are increasingly shipping AI assistants that can operate the interface on behalf of users ("fill in this form for me," "submit my expense report"). These assistants need to locate the right elements, read their current state, and take the right actions. With DOMglyph, the interface tells the assistant exactly what is available and what each element does.
 
 ### Automated Testing
 
-End-to-end tests written against CortexUI's semantic layer are dramatically more stable. A test that clicks `[data-ai-action="submit-order"]` survives a full visual redesign. A test that clicks `.checkout-btn-primary` does not. This is not just a developer experience improvement — it is a product quality improvement.
+End-to-end tests written against DOMglyph's semantic layer are dramatically more stable. A test that clicks `[data-ai-action="submit-order"]` survives a full visual redesign. A test that clicks `.checkout-btn-primary` does not. This is not just a developer experience improvement — it is a product quality improvement.
 
 ### LLM-Powered Features
 
@@ -102,13 +102,13 @@ As applications embed language models that can take UI actions, the reliability 
 
 ### Monitoring and Observability
 
-The `window.__CORTEX_UI__` runtime API enables monitoring tools to observe the complete interactive state of an interface at any moment. Which actions are available? Which elements are disabled? What state is each interactive element in? This becomes possible when the interface is self-describing.
+The `window.__DOMGLYPH__` runtime API enables monitoring tools to observe the complete interactive state of an interface at any moment. Which actions are available? Which elements are disabled? What state is each interactive element in? This becomes possible when the interface is self-describing.
 
 ## The Opportunity: UI That Describes Itself
 
-The opportunity that CortexUI takes advantage of is simple: if interfaces described themselves to AI agents with the same rigor that REST APIs describe themselves to API clients, every downstream AI-UI integration becomes dramatically more reliable.
+The opportunity that DOMglyph takes advantage of is simple: if interfaces described themselves to AI agents with the same rigor that REST APIs describe themselves to API clients, every downstream AI-UI integration becomes dramatically more reliable.
 
-An API without documentation and stable contracts is nearly unusable. A web interface without stable, machine-readable semantics is in the same position from an AI agent's perspective. CortexUI adds the documentation and contracts.
+An API without documentation and stable contracts is nearly unusable. A web interface without stable, machine-readable semantics is in the same position from an AI agent's perspective. DOMglyph adds the documentation and contracts.
 
 When your interface can answer these questions deterministically:
 
@@ -121,11 +121,11 @@ When your interface can answer these questions deterministically:
 
 ## Summary
 
-The problem is architectural: web interfaces were not designed for machine consumption. The result is brittle automation, unreliable AI features, and constant maintenance overhead. Existing solutions — ARIA, CSS selectors, text matching — are all heuristics that break when interfaces change. CortexUI addresses the root cause by building a stable semantic contract into every component, making AI-UI interaction as reliable as API calls.
+The problem is architectural: web interfaces were not designed for machine consumption. The result is brittle automation, unreliable AI features, and constant maintenance overhead. Existing solutions — ARIA, CSS selectors, text matching — are all heuristics that break when interfaces change. DOMglyph addresses the root cause by building a stable semantic contract into every component, making AI-UI interaction as reliable as API calls.
 
 ## Next Steps
 
-- [What is CortexUI](/docs/introduction/what-is-cortexui)
-- [CortexUI philosophy and principles](/docs/introduction/philosophy)
-- [CortexUI vs traditional design systems](/docs/introduction/comparison)
+- [What is DOMglyph](/docs/introduction/what-is-cortexui)
+- [DOMglyph philosophy and principles](/docs/introduction/philosophy)
+- [DOMglyph vs traditional design systems](/docs/introduction/comparison)
 - [Get started with installation](/docs/getting-started/installation)

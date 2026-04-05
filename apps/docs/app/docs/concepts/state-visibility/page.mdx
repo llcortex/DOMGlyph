@@ -239,7 +239,7 @@ Here is the complete lifecycle of a "Save Profile" button, annotated at each sta
 State is how agents know whether an action is currently available, in progress, or completed. Before triggering any action, an agent checks its state:
 
 ```ts
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 const saveAction = actions.find(a => a.action === "save-profile");
 
 if (!saveAction) {

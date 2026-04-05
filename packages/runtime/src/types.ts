@@ -1,4 +1,4 @@
-import type { AIAction, AIAttributeMap, AIEvent } from "@cortexui/ai-contract";
+import type { AIAction, AIAttributeMap, AIEvent } from "@domglyph/ai-contract";
 
 export interface ScreenContext {
   readonly screenId?: string;
@@ -54,7 +54,7 @@ export interface RuntimeRegistry {
   readonly components: readonly string[];
 }
 
-export interface CortexUIGlobalAPI {
+export interface DOMglyphGlobalAPI {
   getScreenContext(): ScreenContext;
   getAvailableActions(): readonly AvailableAction[];
   getFormSchema(formId: string): FormSchema | null;
@@ -66,7 +66,7 @@ export interface ActionRegistryEntry extends AvailableAction {
   readonly attributes: AIAttributeMap;
 }
 
-export interface CortexUIDevtoolsAPI {
+export interface DOMglyphDevtoolsAPI {
   show(): void;
   hide(): void;
   toggle(): boolean;

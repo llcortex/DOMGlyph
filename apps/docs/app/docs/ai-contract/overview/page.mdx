@@ -1,17 +1,17 @@
 # AI Contract — Overview
 
-The AI contract is the machine-readable interface layer that makes CortexUI components deterministically operable by AI agents.
+The AI contract is the machine-readable interface layer that makes DOMglyph components deterministically operable by AI agents.
 
 ## What It Is
 
-Traditional UI is designed for human eyes. CortexUI adds a parallel layer — a structured set of attributes, roles, states, and events that AI agents can read without DOM scraping or visual inference.
+Traditional UI is designed for human eyes. DOMglyph adds a parallel layer — a structured set of attributes, roles, states, and events that AI agents can read without DOM scraping or visual inference.
 
 ```
 Component
   ↓
 data-ai-* attributes (on DOM elements)
   ↓
-Runtime scanner (window.__CORTEX_UI__)
+Runtime scanner (window.__DOMGLYPH__)
   ↓
 Structured API
   ↓
@@ -73,23 +73,23 @@ The AI contract does not replace accessibility attributes. Both coexist — ARIA
 
 ## How AI Agents Use the Contract
 
-An agent operating on a CortexUI app doesn't scrape the DOM. It uses the runtime API:
+An agent operating on a DOMglyph app doesn't scrape the DOM. It uses the runtime API:
 
 ```js
 // 1. Where am I?
-const ctx = window.__CORTEX_UI__.getScreenContext();
+const ctx = window.__DOMGLYPH__.getScreenContext();
 // { screen: "user-profile", entity: "user", entityId: "user-123" }
 
 // 2. What can I do?
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 // [{ id: "save-profile", action: "save-profile", state: "idle" }]
 
 // 3. What forms exist?
-const schema = window.__CORTEX_UI__.getFormSchema("edit-profile-form");
+const schema = window.__DOMGLYPH__.getFormSchema("edit-profile-form");
 // { formId: "edit-profile-form", fields: [...] }
 
 // 4. What happened?
-const events = window.__CORTEX_UI__.getRecentEvents();
+const events = window.__DOMGLYPH__.getRecentEvents();
 // [{ type: "action_completed", actionId: "save-profile", result: "success" }]
 ```
 
@@ -108,9 +108,9 @@ This makes AI-driven automation:
 
 ## The Contract Is Declarative
 
-You don't write code to expose the contract. You annotate your existing HTML with data-ai-* attributes. The CortexUI runtime scanner picks these up automatically and exposes them through `window.__CORTEX_UI__`.
+You don't write code to expose the contract. You annotate your existing HTML with data-ai-* attributes. The DOMglyph runtime scanner picks these up automatically and exposes them through `window.__DOMGLYPH__`.
 
-This means adding AI contract support to an existing CortexUI app is an annotation task, not a refactor.
+This means adding AI contract support to an existing DOMglyph app is an annotation task, not a refactor.
 
 ```tsx
 // Before: opaque to AI
@@ -132,7 +132,7 @@ This means adding AI contract support to an existing CortexUI app is an annotati
 ```
 
 <Callout type="note">
-CortexUI components annotate themselves when you pass the correct props. You only need to write raw data-ai-* attributes if you're building custom components outside the design system.
+DOMglyph components annotate themselves when you pass the correct props. You only need to write raw data-ai-* attributes if you're building custom components outside the design system.
 </Callout>
 
 ## Contract Layers at a Glance

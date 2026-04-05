@@ -7,41 +7,41 @@
 
 URLs are so fundamental to the web that developers don't think about them as a design decision — they are an expected part of every application. Every resource has an address. That is not a feature; it is the baseline.
 
-CortexUI's long-term goal is to make machine-readable interaction contracts the same kind of baseline. Every interactive element has a stable identity. Every action has a declared name. Every state is explicit. Every outcome is observable. Not as an advanced feature for AI-forward applications — as the expected minimum for any serious web application.
+DOMglyph's long-term goal is to make machine-readable interaction contracts the same kind of baseline. Every interactive element has a stable identity. Every action has a declared name. Every state is explicit. Every outcome is observable. Not as an advanced feature for AI-forward applications — as the expected minimum for any serious web application.
 
-In the same way that REST APIs made server resources universally accessible to code, CortexUI aims to make UI universally accessible to AI agents. The web's transformation from a human-readable medium to a machine-operable infrastructure is already happening. The question is whether it will be built on a principled foundation or on a continuous accumulation of heuristics.
+In the same way that REST APIs made server resources universally accessible to code, DOMglyph aims to make UI universally accessible to AI agents. The web's transformation from a human-readable medium to a machine-operable infrastructure is already happening. The question is whether it will be built on a principled foundation or on a continuous accumulation of heuristics.
 
 ## The 3-Year Horizon
 
 ### Year 1: Establish the Contract
 
-The foundational year is about proving the concept at scale and establishing CortexUI as the reference implementation of machine-readable UI contracts.
+The foundational year is about proving the concept at scale and establishing DOMglyph as the reference implementation of machine-readable UI contracts.
 
-**v1.0 stable release** marks the point at which the `data-ai-*` vocabulary, the runtime API, and the component library are stable enough for production dependency. No more breaking changes to core attributes without a major version bump. Teams can build on CortexUI with confidence.
+**v1.0 stable release** marks the point at which the `data-ai-*` vocabulary, the runtime API, and the component library are stable enough for production dependency. No more breaking changes to core attributes without a major version bump. Teams can build on DOMglyph with confidence.
 
 **Production use in 50+ applications** validates that the contract works across diverse use cases: consumer applications, enterprise dashboards, developer tools, e-commerce, content management. Each production deployment reveals edge cases, missing vocabulary, and runtime limitations that inform the specification.
 
 **Browser DevTools extension** (v0.2) makes the contract visible to developers during implementation. Adoption accelerates when developers can see the contract they are building in real time, with immediate feedback on validation errors.
 
-**`@cortexui/testing` in CI pipelines** establishes contract verification as part of the standard build process. Teams that adopt contract testing discover that their applications become more reliable for both human users and AI agents — because many contract attributes (state declarations, action names) also benefit accessibility and manual QA.
+**`@domglyph/testing` in CI pipelines** establishes contract verification as part of the standard build process. Teams that adopt contract testing discover that their applications become more reliable for both human users and AI agents — because many contract attributes (state declarations, action names) also benefit accessibility and manual QA.
 
 ### Year 2: Build the Ecosystem
 
-The second year is about making CortexUI the foundation that other tools build on, rather than a standalone library.
+The second year is about making DOMglyph the foundation that other tools build on, rather than a standalone library.
 
 **Design tool integrations** (Figma, Sketch) bring contract thinking into the design phase, before any code is written. When designers think about action names and state vocabularies alongside visual design, the gap between design intent and implementation contracts narrows dramatically.
 
 **Framework adapters** (Vue, Svelte, Angular) bring the contract to developers who aren't in the React ecosystem. The vocabulary is framework-agnostic; the component implementations are not. Community-maintained adapters extend the reach of the standard.
 
-**Agent SDK with Claude and GPT support** (v0.4) enables agent developers to build on CortexUI without writing low-level integration code. The SDK abstracts the `page.evaluate()` boundary, provides type-safe access to the runtime API, and handles the common reliability patterns.
+**Agent SDK with Claude and GPT support** (v0.4) enables agent developers to build on DOMglyph without writing low-level integration code. The SDK abstracts the `page.evaluate()` boundary, provides type-safe access to the runtime API, and handles the common reliability patterns.
 
-**Third-party component libraries adopt the contract** — design systems like Radix UI, Headless UI, shadcn/ui, and Material UI begin shipping `data-ai-*` attributes alongside their existing accessibility attributes. The contract becomes part of the standard expectations for a quality component library, not a CortexUI-specific feature.
+**Third-party component libraries adopt the contract** — design systems like Radix UI, Headless UI, shadcn/ui, and Material UI begin shipping `data-ai-*` attributes alongside their existing accessibility attributes. The contract becomes part of the standard expectations for a quality component library, not a DOMglyph-specific feature.
 
 ### Year 3: Standard Adoption
 
 The third year is about institutionalization — the point at which the contract becomes a standard rather than a library.
 
-**CortexUI spec submitted to W3C for consideration** initiates the process of making the interaction contract a web standard. This does not require W3C adoption to succeed — but formal submission signals maturity, invites review from browser vendors and standards bodies, and positions the vocabulary as a public good rather than a proprietary standard.
+**DOMglyph spec submitted to W3C for consideration** initiates the process of making the interaction contract a web standard. This does not require W3C adoption to succeed — but formal submission signals maturity, invites review from browser vendors and standards bodies, and positions the vocabulary as a public good rather than a proprietary standard.
 
 **Major design systems adopt compatible contracts** — Atlassian's Atlaskit, GitHub Primer, Adobe Spectrum, Google Material. When the design systems that underpin millions of applications adopt the contract vocabulary, the coverage of machine-readable interfaces expands by orders of magnitude overnight.
 
@@ -59,9 +59,9 @@ This is related to work on formal methods for distributed systems and type-level
 
 ### AI-generated Contracts
 
-Can AI analyze an existing web UI and generate the `data-ai-*` annotations automatically? A model trained on labeled CortexUI applications could identify interactive elements, infer their roles and action semantics, and propose contract annotations that developers review and accept. This would dramatically lower the cost of adopting CortexUI in legacy applications.
+Can AI analyze an existing web UI and generate the `data-ai-*` annotations automatically? A model trained on labeled DOMglyph applications could identify interactive elements, infer their roles and action semantics, and propose contract annotations that developers review and accept. This would dramatically lower the cost of adopting DOMglyph in legacy applications.
 
-The CortexUI specification and the growing body of annotated applications form a training dataset for exactly this kind of model.
+The DOMglyph specification and the growing body of annotated applications form a training dataset for exactly this kind of model.
 
 ### Bidirectional Contracts
 
@@ -82,9 +82,9 @@ AI-native interfaces could transform operation access. Today, the world's softwa
 Machine-readable interaction contracts could make software accessible to AI agents operating on behalf of users who cannot navigate the interface themselves, or who want to delegate routine operations to automation. The web's software would become universally operable, not just universally readable.
 
 <Callout type="important">
-CortexUI is a bet that the right time to design for AI operability is now — not after AI agents are already embedded everywhere and retrofitting becomes the only option. The cost of designing for machine operability from the start is low. The cost of retrofitting a world of interfaces that were never designed for it is enormous. The window for making the right choice is open. It will not stay open indefinitely.
+DOMglyph is a bet that the right time to design for AI operability is now — not after AI agents are already embedded everywhere and retrofitting becomes the only option. The cost of designing for machine operability from the start is low. The cost of retrofitting a world of interfaces that were never designed for it is enormous. The window for making the right choice is open. It will not stay open indefinitely.
 </Callout>
 
 The web that was designed for users became the infrastructure for commerce, communication, and the global flow of information. The web that is designed for operators — built with the same care and intention as the web we built for humans — could become infrastructure for a different kind of transformation: one where software works for everyone, whether they navigate it themselves or delegate that navigation to an agent that acts on their behalf.
 
-That is the vision. CortexUI is the beginning of building toward it.
+That is the vision. DOMglyph is the beginning of building toward it.

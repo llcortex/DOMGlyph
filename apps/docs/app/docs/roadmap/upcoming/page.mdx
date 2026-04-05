@@ -5,7 +5,7 @@
 
 **Expected: Q3 2026**
 
-A browser extension that makes the AI contract visible and inspectable during development. Every CortexUI app gains a live overlay showing the machine-readable contract as it exists in the DOM.
+A browser extension that makes the AI contract visible and inspectable during development. Every DOMglyph app gains a live overlay showing the machine-readable contract as it exists in the DOM.
 
 **Features:**
 
@@ -13,7 +13,7 @@ A browser extension that makes the AI contract visible and inspectable during de
 
 - **Contract tree panel** — A DevTools panel that shows the full contract tree for the current screen: screen context at the top, sections, entities, and available actions in a structured tree. Click any node to inspect the full set of `data-ai-*` attributes on that element.
 
-- **Real-time event log** — Live display of the CortexUI runtime event log. See every `action_started`, `action_completed`, and `action_failed` event as it fires, with full event payload. Filterable by action ID, event type, and section.
+- **Real-time event log** — Live display of the DOMglyph runtime event log. See every `action_started`, `action_completed`, and `action_failed` event as it fires, with full event payload. Filterable by action ID, event type, and section.
 
 - **Contract validation warnings** — The extension validates the contract as it scans the DOM. Missing required attributes, invalid state values, duplicate IDs, and elements that appear interactive but lack contract annotations are flagged with inline warnings in the overlay and a summary in the DevTools panel.
 
@@ -21,7 +21,7 @@ A browser extension that makes the AI contract visible and inspectable during de
 
 **Expected: Q4 2026**
 
-A Figma plugin that generates CortexUI contract annotations from design files, closing the gap between design and implementation.
+A Figma plugin that generates DOMglyph contract annotations from design files, closing the gap between design and implementation.
 
 **Features:**
 
@@ -31,23 +31,23 @@ A Figma plugin that generates CortexUI contract annotations from design files, c
 
 - **Auto-suggestion from component names** — The plugin analyzes component names and generates `data-ai-action` suggestions. A component named "Save Profile Button" gets the suggestion `save-profile`. Designers confirm or modify the suggestion.
 
-- **Design token sync** — Design tokens defined in Figma variables are synced to the CortexUI token system, ensuring that visual and contract layers use a consistent vocabulary.
+- **Design token sync** — Design tokens defined in Figma variables are synced to the DOMglyph token system, ensuring that visual and contract layers use a consistent vocabulary.
 
 ## v0.4 — Native Agent SDK
 
 **Expected: Q1 2027**
 
-A TypeScript SDK that provides type-safe, ergonomic access to CortexUI apps from AI agents. Removes the need for manual `page.evaluate()` wrappers and provides built-in reliability patterns.
+A TypeScript SDK that provides type-safe, ergonomic access to DOMglyph apps from AI agents. Removes the need for manual `page.evaluate()` wrappers and provides built-in reliability patterns.
 
 **Features:**
 
-- **Type-safe runtime access** — Full TypeScript types for all `window.__CORTEX_UI__` API responses. Autocomplete for action IDs, form field IDs, and event types in agents that import the SDK.
+- **Type-safe runtime access** — Full TypeScript types for all `window.__DOMGLYPH__` API responses. Autocomplete for action IDs, form field IDs, and event types in agents that import the SDK.
 
 - **Built-in retry and error handling** — Configurable retry policies for action execution, automatic detection of transient failures versus permanent errors, and structured error types that carry the contract context.
 
 - **Action sequencing utilities** — Higher-level primitives for common agent patterns: `fillForm()`, `executeAndWait()`, `waitForState()`, `expectEvent()`. Reduces boilerplate in agent implementations.
 
-- **Claude and GPT integration modules** — Pre-built integration modules that format CortexUI context into the optimal prompt structure for Claude and GPT models, and parse model responses back into action IDs. Makes the "query contract → ask model → execute action" loop a one-liner.
+- **Claude and GPT integration modules** — Pre-built integration modules that format DOMglyph context into the optimal prompt structure for Claude and GPT models, and parse model responses back into action IDs. Makes the "query contract → ask model → execute action" loop a one-liner.
 
 ## v0.5 — Multi-agent Coordination
 
@@ -71,15 +71,15 @@ All dates are targets, not guarantees. The roadmap reflects current plans and wi
 
 ## Contributing
 
-CortexUI is open source and actively welcoming contributions. The highest-impact areas for community contribution:
+DOMglyph is open source and actively welcoming contributions. The highest-impact areas for community contribution:
 
 **Contract specification improvements** — Proposed additions or refinements to the `data-ai-*` vocabulary. Open an issue on GitHub with a use case, proposed attribute name, valid values, and example markup.
 
-**New component implementations** — CortexUI's component library is not exhaustive. Complex components like date pickers, rich text editors, drag-and-drop lists, and data grids have nuanced contract requirements and would benefit from community-contributed reference implementations.
+**New component implementations** — DOMglyph's component library is not exhaustive. Complex components like date pickers, rich text editors, drag-and-drop lists, and data grids have nuanced contract requirements and would benefit from community-contributed reference implementations.
 
 **Runtime extensions** — The runtime is designed for extension via the `customAttributes` API and `onCustomAttribute` hook. Runtime extensions for specific domains (healthcare FHIR data, financial transaction workflows, e-commerce checkout) would benefit the community.
 
-**Framework adapters** — CortexUI components are currently React-first. Vue, Svelte, Angular, and SolidJS adapters that expose the same contract primitives for other framework communities are high-value contributions.
+**Framework adapters** — DOMglyph components are currently React-first. Vue, Svelte, Angular, and SolidJS adapters that expose the same contract primitives for other framework communities are high-value contributions.
 
 **Documentation** — Additional examples, tutorials, and translated documentation lower the barrier to adoption. Documentation contributions are always welcome.
 

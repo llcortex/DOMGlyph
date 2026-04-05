@@ -1,6 +1,6 @@
 {
-  "name": "@cortexui/docs",
-  "version": "0.0.0",
+  "name": "@domglyph/docs",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,10 +13,10 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "@cortexui/ai-contract": "1.1.0",
-    "@cortexui/components": "1.1.0",
-    "@cortexui/primitives": "1.1.0",
-    "@cortexui/runtime": "1.1.0",
+    "@domglyph/ai-contract": "2.1.0",
+    "@domglyph/components": "2.1.0",
+    "@domglyph/primitives": "2.1.0",
+    "@domglyph/runtime": "2.1.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.2.1",

@@ -22,7 +22,7 @@ const baseButtonStyle: CSSProperties = {
 };
 
 const spinnerStyle: CSSProperties = {
-  animation: "cortexui-spin 0.8s linear infinite",
+  animation: "domglyph-spin 0.8s linear infinite",
   border: "2px solid currentColor",
   borderBottomColor: "transparent",
   borderRadius: "999px",

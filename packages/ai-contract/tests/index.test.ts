@@ -16,7 +16,7 @@ import {
   validateAIAttributes
 } from "../src/index";
 
-describe("@cortexui/ai-contract", () => {
+describe("@domglyph/ai-contract", () => {
   it("creates serialized attributes from typed config", () => {
     expect(
       createAIAttributes({

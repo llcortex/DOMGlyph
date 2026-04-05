@@ -37,7 +37,7 @@ Heuristic agents are not a temporary problem that better AI models will solve. E
 
 ## The Deterministic Approach
 
-The same workflow, implemented against a CortexUI interface:
+The same workflow, implemented against a DOMglyph interface:
 
 1. **Find `[data-ai-action="save-profile"]`.** No inference required. The element with this attribute is the save-profile action. There is exactly one of them. The selector is stable across deployments, redesigns, and i18n changes.
 
@@ -83,7 +83,7 @@ The analogy extends to tooling. Type systems enable IDEs to provide autocomplete
 
 ## When Determinism Is Not Possible
 
-CortexUI acknowledges that not every interface can be fully contracted immediately. Legacy codebases, third-party components, and incrementally migrated applications will have sections that lack machine-readable contracts. For these cases, heuristic approaches remain a fallback.
+DOMglyph acknowledges that not every interface can be fully contracted immediately. Legacy codebases, third-party components, and incrementally migrated applications will have sections that lack machine-readable contracts. For these cases, heuristic approaches remain a fallback.
 
 But the goal is to shrink the footprint of heuristic reasoning over time, not to accept it as a permanent baseline. Every component that gains a `data-ai-action` attribute removes one source of inference from the agent's workflow. Every form that gains `data-ai-field-type` attributes removes one source of guess. Every state that gains `data-ai-state` removes one visual heuristic.
 

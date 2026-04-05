@@ -14,7 +14,7 @@ export type {
   StatusBannerProps
 } from "./types";
 
-import { primitiveSurface } from "@cortexui/primitives";
+import { primitiveSurface } from "@domglyph/primitives";
 import type { ComponentContract } from "./types";
 
 export const cardComponent: ComponentContract = {

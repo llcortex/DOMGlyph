@@ -1,6 +1,6 @@
 # Vanilla JS Integration
 
-CortexUI's AI contract does not require React. You can use the semantic layer — the `data-ai-*` attribute system, the runtime API, and the contract types — with plain JavaScript, server-rendered HTML, or any other framework.
+DOMglyph's AI contract does not require React. You can use the semantic layer — the `data-ai-*` attribute system, the runtime API, and the contract types — with plain JavaScript, server-rendered HTML, or any other framework.
 
 This guide covers:
 - How to manually add `data-ai-*` attributes
@@ -9,12 +9,12 @@ This guide covers:
 - A complete vanilla JS form with full AI contract
 
 <Callout type="note">
-The React component library (`@cortexui/components`) does require React. This guide is for the framework-agnostic layer: `@cortexui/ai-contract` (the type definitions and utilities) and `@cortexui/runtime` (the runtime inspection API). These work in any JS environment.
+The React component library (`@domglyph/components`) does require React. This guide is for the framework-agnostic layer: `@domglyph/ai-contract` (the type definitions and utilities) and `@domglyph/runtime` (the runtime inspection API). These work in any JS environment.
 </Callout>
 
 ## Why Vanilla JS?
 
-You might use the CortexUI AI contract without React if:
+You might use the DOMglyph AI contract without React if:
 - Your application uses a server-rendered framework (Rails, Django, Laravel, Hugo)
 - You are incrementally adding AI contract support to an existing codebase
 - You are using a non-React JS framework (Vue, Svelte, Angular, Alpine.js)
@@ -73,14 +73,14 @@ The attributes alone — without any JavaScript — make your HTML readable to a
 If you are using a bundler (Webpack, Vite, Parcel, esbuild):
 
 ```bash
-npm install @cortexui/runtime
+npm install @domglyph/runtime
 ```
 
 Then import and initialize in your JavaScript entry point:
 
 ```javascript
 // main.js or index.js
-import { initCortexRuntime } from "@cortexui/runtime/vanilla";
+import { initCortexRuntime } from "@domglyph/runtime/vanilla";
 
 // Initialize once, as early as possible
 initCortexRuntime({
@@ -88,7 +88,7 @@ initCortexRuntime({
 });
 ```
 
-This installs `window.__CORTEX_UI__` and begins observing the DOM.
+This installs `window.__DOMGLYPH__` and begins observing the DOM.
 
 ### Via CDN (no bundler)
 
@@ -98,7 +98,7 @@ For server-rendered applications or projects without a bundler:
 <head>
   <!-- Load the runtime before any interactive content -->
   <script
-    src="https://unpkg.com/@cortexui/runtime@latest/dist/runtime.umd.js"
+    src="https://unpkg.com/@domglyph/runtime@latest/dist/runtime.umd.js"
     defer
   ></script>
   <script>
@@ -155,13 +155,13 @@ initCortexRuntime({
 
 ## Using the Runtime API in Plain JS
 
-Once the runtime is initialized, `window.__CORTEX_UI__` provides the full inspection API:
+Once the runtime is initialized, `window.__DOMGLYPH__` provides the full inspection API:
 
 ### Discovering Actions
 
 ```javascript
 // Get all currently available actions
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 console.log(actions);
 // [
 //   { id: "create-report-btn", action: "create-report", state: "idle", screen: "dashboard" },
@@ -169,21 +169,21 @@ console.log(actions);
 // ]
 
 // Get actions on a specific screen
-const dashboardActions = window.__CORTEX_UI__.getElementsByScreen("dashboard");
+const dashboardActions = window.__DOMGLYPH__.getElementsByScreen("dashboard");
 
 // Get a specific action by action name
-const createAction = window.__CORTEX_UI__.getAction("create-report");
+const createAction = window.__DOMGLYPH__.getAction("create-report");
 ```
 
 ### Reading State
 
 ```javascript
 // Get an element's contract by its aiId
-const element = window.__CORTEX_UI__.getElementByAiId("create-report-btn");
+const element = window.__DOMGLYPH__.getElementByAiId("create-report-btn");
 console.log(element.state); // "idle"
 
 // Get entity context
-const reportContext = window.__CORTEX_UI__.getEntityContext("report");
+const reportContext = window.__DOMGLYPH__.getEntityContext("report");
 console.log(reportContext); // All elements related to "report" entity
 ```
 
@@ -191,17 +191,17 @@ console.log(reportContext); // All elements related to "report" entity
 
 ```javascript
 // Trigger an action by its action name (simulates a click)
-window.__CORTEX_UI__.trigger("create-report");
+window.__DOMGLYPH__.trigger("create-report");
 
 // Trigger by aiId
-window.__CORTEX_UI__.triggerById("create-report-btn");
+window.__DOMGLYPH__.triggerById("create-report-btn");
 ```
 
 ### Observing State Changes
 
 ```javascript
 // Watch a specific element for state changes
-const unsubscribe = window.__CORTEX_UI__.onStateChange(
+const unsubscribe = window.__DOMGLYPH__.onStateChange(
   "create-report-btn",
   function (event) {
     console.log("State changed:", event.previousState, "→", event.newState);
@@ -223,7 +223,7 @@ const unsubscribe = window.__CORTEX_UI__.onStateChange(
 unsubscribe();
 
 // Watch ALL state changes
-window.__CORTEX_UI__.onAnyStateChange(function (event) {
+window.__DOMGLYPH__.onAnyStateChange(function (event) {
   analytics.track("ui_state_change", {
     elementId: event.aiId,
     action: event.action,
@@ -366,7 +366,7 @@ Here is a complete, working HTML page with a contact form that has a full AI con
   </main>
 
   <script>
-    // Initialize the CortexUI runtime
+    // Initialize the DOMglyph runtime
     document.addEventListener("DOMContentLoaded", function () {
       CortexRuntime.init({ debug: true });
 
@@ -460,7 +460,7 @@ Here is a complete, working HTML page with a contact form that has a full AI con
 ```
 
 <Callout type="tip">
-Even without React, the AI contract in this form is complete. An agent can discover the form via `window.__CORTEX_UI__.getAction("submit-contact")`, fill the fields by targeting their `data-ai-id` values, submit by triggering the action, and observe the `data-ai-state` transition from `"loading"` to `"success"` — all without any knowledge of the page's CSS or DOM structure.
+Even without React, the AI contract in this form is complete. An agent can discover the form via `window.__DOMGLYPH__.getAction("submit-contact")`, fill the fields by targeting their `data-ai-id` values, submit by triggering the action, and observe the `data-ai-state` transition from `"loading"` to `"success"` — all without any knowledge of the page's CSS or DOM structure.
 </Callout>
 
 ## Using with Non-React Frameworks
@@ -525,5 +525,5 @@ async function handleClick() {
 
 - [React integration guide](/docs/getting-started/react)
 - [Your first component](/docs/getting-started/first-component)
-- [CortexUI philosophy](/docs/introduction/philosophy)
-- [What is CortexUI](/docs/introduction/what-is-cortexui)
+- [DOMglyph philosophy](/docs/introduction/philosophy)
+- [What is DOMglyph](/docs/introduction/what-is-cortexui)

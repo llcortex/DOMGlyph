@@ -1,6 +1,6 @@
-# @cortexui/components
+# @domglyph/components (formerly [@cortexui/components](https://www.npmjs.com/package/@cortexui/components))
 
-[![npm version](https://img.shields.io/npm/v/@cortexui/components?color=0ea5e9)](https://www.npmjs.com/package/@cortexui/components)
+[![npm version](https://img.shields.io/npm/v/@domglyph/components?color=0ea5e9)](https://www.npmjs.com/package/@domglyph/components)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](../../LICENSE)
 
 React components with built-in AI contracts.
@@ -9,16 +9,16 @@ React components with built-in AI contracts.
 
 ## Overview
 
-`@cortexui/components` is the primary package for building CortexUI interfaces. Every component in this package automatically outputs the correct `data-ai-*` attributes — no manual annotation required.
+`@domglyph/components` is the primary package for building DOMglyph interfaces. Every component in this package automatically outputs the correct `data-ai-*` attributes — no manual annotation required.
 
-Pass in semantic props (`action`, `state`, `entityType`, etc.) and the component handles the contract. The result is an interface that is immediately inspectable by AI agents via `window.__CORTEX_UI__`.
+Pass in semantic props (`action`, `state`, `entityType`, etc.) and the component handles the contract. The result is an interface that is immediately inspectable by AI agents via `window.__DOMGLYPH__`.
 
 ---
 
 ## Installation
 
 ```bash
-npm install @cortexui/components
+npm install @domglyph/components
 ```
 
 Peer dependencies:
@@ -36,7 +36,7 @@ npm install react@^18 react-dom@^18
 A button that triggers an action. Renders with `data-ai-role="action"`, `data-ai-id`, `data-ai-action`, and `data-ai-state` automatically.
 
 ```tsx
-import { ActionButton } from '@cortexui/components';
+import { ActionButton } from '@domglyph/components';
 
 // Idle state — ready for interaction
 <ActionButton action="save-profile" state="idle" label="Save Profile" />
@@ -83,7 +83,7 @@ interface ActionButtonProps {
 A labelled input field. Renders with `data-ai-role="field"`, `data-ai-id`, `data-ai-field-type`, and `data-ai-required` automatically.
 
 ```tsx
-import { FormField } from '@cortexui/components';
+import { FormField } from '@domglyph/components';
 
 <FormField
   id="user-email"
@@ -117,7 +117,7 @@ import { FormField } from '@cortexui/components';
 A table of entity rows. Renders with `data-ai-role="table"`, `data-ai-entity`, and per-row `data-ai-entity-id` attributes.
 
 ```tsx
-import { DataTable } from '@cortexui/components';
+import { DataTable } from '@domglyph/components';
 
 <DataTable
   entityType="order"
@@ -144,7 +144,7 @@ import { DataTable } from '@cortexui/components';
 A read-only banner communicating system or operation status. Renders with `data-ai-role="status"` and `data-ai-state`.
 
 ```tsx
-import { StatusBanner } from '@cortexui/components';
+import { StatusBanner } from '@domglyph/components';
 
 // Informational
 <StatusBanner type="info" message="Your session expires in 5 minutes." />
@@ -169,7 +169,7 @@ import { StatusBanner } from '@cortexui/components';
 A modal dialog requesting confirmation before a destructive or significant action. Renders with `data-ai-role="modal"` and child action buttons with named `data-ai-action` attributes.
 
 ```tsx
-import { ConfirmDialog } from '@cortexui/components';
+import { ConfirmDialog } from '@domglyph/components';
 
 <ConfirmDialog
   id="delete-account-dialog"
@@ -201,7 +201,7 @@ Every component in this package outputs the correct `data-ai-*` attributes autom
 When `ActionButton` with `action="save-profile"` is rendered, an AI agent can call:
 
 ```js
-const actions = window.__CORTEX_UI__.getAvailableActions();
+const actions = window.__DOMGLYPH__.getAvailableActions();
 // [
 //   {
 //     id: "save-profile",
@@ -222,10 +222,20 @@ No selector guessing. No text parsing. No fragile heuristics.
 
 ---
 
-## Part of CortexUI
+## Part of DOMglyph
 
-`@cortexui/components` is part of the [CortexUI](../../README.md) design system.
+`@domglyph/components` is part of the [DOMglyph](../../README.md) design system.
 
 - [Main repository](../../README.md)
 - [Documentation](http://localhost:3001/docs/components)
 - [Contributing](../../CONTRIBUTING.md)
+
+---
+
+## ☕ Support
+
+If you find DOMglyph useful, you can support the project:
+
+👉 https://buymeacoffee.com/nishchya
+
+It helps keep the project alive and growing.

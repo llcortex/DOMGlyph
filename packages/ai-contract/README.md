@@ -1,29 +1,33 @@
-# @cortexui/ai-contract
+> **DOMglyph is now DOMglyph.** This package (`@domglyph/ai-contract`) is no longer maintained. All future updates are published under [`@domglyph/ai-contract`](https://www.npmjs.com/package/@domglyph/ai-contract). Please migrate to the new package.
 
-[![npm version](https://img.shields.io/npm/v/@cortexui/ai-contract?color=0ea5e9)](https://www.npmjs.com/package/@cortexui/ai-contract)
+---
+
+# @domglyph/ai-contract
+
+[![npm version](https://img.shields.io/npm/v/@domglyph/ai-contract?color=0ea5e9)](https://www.npmjs.com/package/@domglyph/ai-contract)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](../../LICENSE)
 
-The machine-readable interface specification for CortexUI.
+The machine-readable interface specification for DOMglyph (now DOMglyph).
 
 ---
 
 ## Overview
 
-`@cortexui/ai-contract` is the foundation of the CortexUI system. It defines:
+`@domglyph/ai-contract` is the foundation of the DOMglyph system. It defines:
 
 - The complete `data-ai-*` attribute specification as string constants
 - TypeScript types for every role, state, event, and attribute map
 - Runtime validation utilities (`validateAIAttributes`, `extractAIAttributes`)
-- Event type definitions for the CortexUI event log
+- Event type definitions for the DOMglyph event log
 
-All other CortexUI packages depend on this package as their source of truth. It has no runtime dependencies and is safe to use in any environment — browser, Node.js, or test runner.
+All other DOMglyph packages depend on this package as their source of truth. It has no runtime dependencies and is safe to use in any environment — browser, Node.js, or test runner.
 
 ---
 
 ## Installation
 
 ```bash
-npm install @cortexui/ai-contract
+npm install @domglyph/ai-contract
 ```
 
 ---
@@ -82,7 +86,7 @@ The `data-ai-state` attribute communicates the current interaction state:
 
 ## Events
 
-CortexUI components emit structured events that are captured in the runtime event log.
+DOMglyph components emit structured events that are captured in the runtime event log.
 
 | Event | Description | Key Payload Fields |
 |---|---|---|
@@ -133,7 +137,7 @@ import {
   DATA_AI_REQUIRED,
   DATA_AI_SCREEN,
   DATA_AI_SECTION,
-} from '@cortexui/ai-contract';
+} from '@domglyph/ai-contract';
 
 // Use in React components:
 <button
@@ -148,7 +152,7 @@ import {
 Validate that a DOM element has a correct and complete AI contract:
 
 ```ts
-import { validateAIAttributes } from '@cortexui/ai-contract';
+import { validateAIAttributes } from '@domglyph/ai-contract';
 
 const result = validateAIAttributes(element);
 // {
@@ -167,7 +171,7 @@ if (!result.valid) {
 Read all `data-ai-*` attributes from a DOM element as a typed object:
 
 ```ts
-import { extractAIAttributes } from '@cortexui/ai-contract';
+import { extractAIAttributes } from '@domglyph/ai-contract';
 
 const attrs = extractAIAttributes(element);
 // {
@@ -232,10 +236,20 @@ interface AIAttributeMap {
 
 ---
 
-## Part of CortexUI
+## Part of DOMglyph
 
-`@cortexui/ai-contract` is part of the [CortexUI](../../README.md) design system.
+`@domglyph/ai-contract` is part of the [DOMglyph](../../README.md) design system.
 
 - [Main repository](../../README.md)
 - [Documentation](http://localhost:3001/docs/ai-contract)
 - [Contributing](../../CONTRIBUTING.md)
+
+---
+
+## ☕ Support
+
+If you find DOMglyph useful, you can support the project:
+
+👉 https://buymeacoffee.com/nishchya
+
+It helps keep the project alive and growing.

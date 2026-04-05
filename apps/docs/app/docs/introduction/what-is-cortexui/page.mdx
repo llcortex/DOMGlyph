@@ -1,20 +1,20 @@
-# What is CortexUI
+# What is DOMglyph
 
-CortexUI is not a component library. It is an **interaction contract** — a design system built on the premise that every user interface must be simultaneously legible to two distinct audiences: the humans who interact with it visually, and the AI agents that operate on it programmatically. Most design systems were built when the only consumer of a UI was a human. CortexUI was built for a world where AI agents, automated pipelines, and runtime inspection tools are first-class clients of your interface.
+DOMglyph is not a component library. It is an **interaction contract** — a design system built on the premise that every user interface must be simultaneously legible to two distinct audiences: the humans who interact with it visually, and the AI agents that operate on it programmatically. Most design systems were built when the only consumer of a UI was a human. DOMglyph was built for a world where AI agents, automated pipelines, and runtime inspection tools are first-class clients of your interface.
 
 ## Beyond the Component Library
 
-When developers reach for Chakra UI, Material UI, or Radix UI, they are shopping for pre-built components: buttons, inputs, modals, tables. These systems answer the question "what does this look like and how does it behave for a human?" CortexUI answers a second, equally important question: "what does this mean, and how can a machine reliably act on it?"
+When developers reach for Chakra UI, Material UI, or Radix UI, they are shopping for pre-built components: buttons, inputs, modals, tables. These systems answer the question "what does this look like and how does it behave for a human?" DOMglyph answers a second, equally important question: "what does this mean, and how can a machine reliably act on it?"
 
-The difference is not cosmetic. A traditional button renders a clickable element. A CortexUI button renders a clickable element **and** publishes a machine-readable contract describing its identity, its role, the action it performs, and its current state. Every component is a two-sided artifact.
+The difference is not cosmetic. A traditional button renders a clickable element. A DOMglyph button renders a clickable element **and** publishes a machine-readable contract describing its identity, its role, the action it performs, and its current state. Every component is a two-sided artifact.
 
 <Callout type="important">
-CortexUI is an interaction contract. Every component ships with a visual layer for humans and a semantic layer for machines. Both layers are first-class citizens — neither is an afterthought.
+DOMglyph is an interaction contract. Every component ships with a visual layer for humans and a semantic layer for machines. Both layers are first-class citizens — neither is an afterthought.
 </Callout>
 
 ## The Dual-Layer Architecture
 
-CortexUI components operate on two parallel layers simultaneously:
+DOMglyph components operate on two parallel layers simultaneously:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -38,7 +38,7 @@ CortexUI components operate on two parallel layers simultaneously:
 │              └──────────┬───────────────┘                   │
 │                         ▼                                   │
 │              ┌─────────────────────┐                        │
-│              │  window.__CORTEX_UI__  │                     │
+│              │  window.__DOMGLYPH__  │                     │
 │              │  Runtime Inspector  │                        │
 │              └─────────────────────┘                        │
 └─────────────────────────────────────────────────────────────┘
@@ -50,7 +50,7 @@ CortexUI components operate on two parallel layers simultaneously:
 
 ## The Core Data Attributes
 
-Every CortexUI component that participates in the semantic layer exposes a standard set of `data-ai-*` attributes:
+Every DOMglyph component that participates in the semantic layer exposes a standard set of `data-ai-*` attributes:
 
 ```html
 <button
@@ -80,7 +80,7 @@ Each attribute has a specific, non-overlapping purpose:
 | `data-ai-entity` | The domain entity this element relates to | `"user"` |
 | `data-ai-entity-id` | The specific entity instance ID | `"usr_01HXYZ"` |
 
-## How CortexUI Differs from Chakra, MUI, and Radix
+## How DOMglyph Differs from Chakra, MUI, and Radix
 
 Traditional design systems are excellent at what they were designed to do. The distinction is not quality — it is scope:
 
@@ -88,25 +88,25 @@ Traditional design systems are excellent at what they were designed to do. The d
 
 **Material UI** provides Google's Material Design in React, with deep theming and a large component surface. Like Chakra, it is a visual system. It adds ARIA attributes for accessibility but stops there.
 
-**Radix UI** provides unstyled, accessible primitives with strong focus on keyboard navigation and ARIA compliance. This comes closest to CortexUI's accessibility-first thinking, but ARIA semantics alone do not provide the action-oriented, entity-tracked, screen-aware contract that AI agents need.
+**Radix UI** provides unstyled, accessible primitives with strong focus on keyboard navigation and ARIA compliance. This comes closest to DOMglyph's accessibility-first thinking, but ARIA semantics alone do not provide the action-oriented, entity-tracked, screen-aware contract that AI agents need.
 
-**CortexUI** layers an entirely new semantic contract on top of everything these libraries already do well. Accessibility, visual design, responsive behavior — these are all still present. But CortexUI adds a second contract that is specifically designed for programmatic consumption.
+**DOMglyph** layers an entirely new semantic contract on top of everything these libraries already do well. Accessibility, visual design, responsive behavior — these are all still present. But DOMglyph adds a second contract that is specifically designed for programmatic consumption.
 
 <Callout type="note">
-CortexUI does not compete with accessibility. ARIA attributes and `data-ai-*` attributes serve complementary but different audiences. ARIA speaks to screen readers. `data-ai-*` speaks to AI agents and automation systems. Both are present in every CortexUI component.
+DOMglyph does not compete with accessibility. ARIA attributes and `data-ai-*` attributes serve complementary but different audiences. ARIA speaks to screen readers. `data-ai-*` speaks to AI agents and automation systems. Both are present in every DOMglyph component.
 </Callout>
 
 ## The Core Promise: Deterministic AI-UI Interaction
 
-The central claim of CortexUI is this: **an AI agent interacting with a CortexUI-powered interface should never have to guess.**
+The central claim of DOMglyph is this: **an AI agent interacting with a DOMglyph-powered interface should never have to guess.**
 
 Today, when an AI agent or automation script tries to interact with a web application, it resorts to heuristics: finding elements by text content, by CSS class names, by XPath expressions, by visual position on screen. These approaches are brittle. Text changes. Classes get renamed. Layouts shift. The result is automation that breaks constantly, AI agents that take wrong actions, and test suites that require perpetual maintenance.
 
-CortexUI replaces guesswork with a contract. When an agent needs to submit a form, it does not search for a button with text "Submit" or a class name like `.btn-primary`. It queries for an element with `data-ai-action="submit-order"`. That identifier is a stable part of the interface contract — as stable and intentional as a REST API endpoint path.
+DOMglyph replaces guesswork with a contract. When an agent needs to submit a form, it does not search for a button with text "Submit" or a class name like `.btn-primary`. It queries for an element with `data-ai-action="submit-order"`. That identifier is a stable part of the interface contract — as stable and intentional as a REST API endpoint path.
 
 ```tsx
-// What an AI agent can do with CortexUI:
-const actions = window.__CORTEX_UI__.getAvailableActions();
+// What an AI agent can do with DOMglyph:
+const actions = window.__DOMGLYPH__.getAvailableActions();
 // Returns:
 // [
 //   { id: "submit-order", element: <button>, state: "idle", screen: "checkout" },
@@ -115,14 +115,14 @@ const actions = window.__CORTEX_UI__.getAvailableActions();
 // ]
 
 // Agent clicks the right button with zero guesswork:
-window.__CORTEX_UI__.trigger("submit-order");
+window.__DOMGLYPH__.trigger("submit-order");
 ```
 
 This is the promise: a stable, queryable, self-describing interface that makes AI-UI interaction as reliable as API calls.
 
 ## What This Means in Practice
 
-When you build with CortexUI, you are making an explicit commitment that your interface will be legible to machines as well as humans. This has practical implications:
+When you build with DOMglyph, you are making an explicit commitment that your interface will be legible to machines as well as humans. This has practical implications:
 
 - **Browser automation** stops relying on fragile CSS selectors
 - **AI copilots** can perform UI operations without being trained on your specific DOM structure
@@ -130,22 +130,22 @@ When you build with CortexUI, you are making an explicit commitment that your in
 - **AI agents** embedded in your product can describe what they see and take reliable actions
 - **Monitoring tools** can observe the state of every interactive element in real time
 
-CortexUI shifts the question from "can a human use this interface?" to "can any intelligent agent — human or machine — use this interface reliably and deterministically?"
+DOMglyph shifts the question from "can a human use this interface?" to "can any intelligent agent — human or machine — use this interface reliably and deterministically?"
 
 ## Summary
 
-CortexUI is an AI-native design system that treats UI as an interaction contract. It provides:
+DOMglyph is an AI-native design system that treats UI as an interaction contract. It provides:
 
 1. A complete visual component library (buttons, forms, layouts, data display)
 2. A machine-readable semantic layer expressed through `data-ai-*` HTML attributes
-3. A runtime inspection API (`window.__CORTEX_UI__`) for querying and operating on the interface
+3. A runtime inspection API (`window.__DOMGLYPH__`) for querying and operating on the interface
 4. Deterministic AI-UI interaction as a first-class design goal
 
 It is built for teams that are shipping products where AI agents, automation, or LLM-powered features need to interact with the interface reliably — and for teams who recognize that this will eventually be true of every product.
 
 ## Next Steps
 
-- [Why CortexUI — the problem it solves](/docs/introduction/why-cortexui)
-- [The CortexUI philosophy](/docs/introduction/philosophy)
+- [Why DOMglyph — the problem it solves](/docs/introduction/why-cortexui)
+- [The DOMglyph philosophy](/docs/introduction/philosophy)
 - [What AI-native UI means](/docs/introduction/ai-native-ui)
 - [Get started with installation](/docs/getting-started/installation)

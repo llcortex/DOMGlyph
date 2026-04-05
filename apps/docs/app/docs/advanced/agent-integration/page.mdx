@@ -3,7 +3,7 @@
 
 ## The Agent Workflow
 
-A CortexUI-integrated agent follows a structured workflow that replaces visual heuristics with contract queries at every step:
+A DOMglyph-integrated agent follows a structured workflow that replaces visual heuristics with contract queries at every step:
 
 ```
 1. getScreenContext()     → Where am I? What entity am I looking at?
@@ -17,33 +17,33 @@ Each step queries the runtime API directly — no DOM parsing, no visual inferen
 
 ## The Runtime API
 
-The CortexUI runtime exposes a global API on `window.__CORTEX_UI__` that agents access via `page.evaluate()`:
+The DOMglyph runtime exposes a global API on `window.__DOMGLYPH__` that agents access via `page.evaluate()`:
 
 ```ts
 // Get the current screen context
-window.__CORTEX_UI__.getScreenContext()
+window.__DOMGLYPH__.getScreenContext()
 // Returns: { screenId, screenName, entity?, entityId?, sections: [...] }
 
 // Get all available (non-disabled) actions
-window.__CORTEX_UI__.getAvailableActions()
+window.__DOMGLYPH__.getAvailableActions()
 // Returns: Array<{ id, action, state, entity?, entityId?, section?, description? }>
 
 // Get the schema for a specific form
-window.__CORTEX_UI__.getFormSchema('profile-form')
+window.__DOMGLYPH__.getFormSchema('profile-form')
 // Returns: { formId, fields: Array<{ id, type, label, required, currentValue }> }
 
 // Get visible entities on the current screen
-window.__CORTEX_UI__.getVisibleEntities()
+window.__DOMGLYPH__.getVisibleEntities()
 // Returns: Array<{ entity, entityId, section, actions: [...] }>
 
 // Get recent events from the event log
-window.__CORTEX_UI__.getRecentEvents()
+window.__DOMGLYPH__.getRecentEvents()
 // Returns: Array<{ type, actionId, result?, message?, timestamp }>
 ```
 
 ## Example: Claude Agent Integration
 
-This example shows a complete CortexUI-aware agent step using the Anthropic Claude API. The agent reads the UI contract, sends it to Claude for decision-making, executes the indicated action, and verifies the result.
+This example shows a complete DOMglyph-aware agent step using the Anthropic Claude API. The agent reads the UI contract, sends it to Claude for decision-making, executes the indicated action, and verifies the result.
 
 ```ts
 import Anthropic from '@anthropic-ai/sdk';
@@ -51,13 +51,13 @@ import type { Page } from 'playwright';
 
 const claude = new Anthropic();
 
-// A CortexUI-aware agent step using the Claude API
-async function executeCortexUIAction(page: Page, instruction: string) {
+// A DOMglyph-aware agent step using the Claude API
+async function executeDOMglyphAction(page: Page, instruction: string) {
   // Step 1: Get UI context from the contract
   const context = await page.evaluate(() => ({
-    screen: window.__CORTEX_UI__.getScreenContext(),
-    actions: window.__CORTEX_UI__.getAvailableActions(),
-    entities: window.__CORTEX_UI__.getVisibleEntities()
+    screen: window.__DOMGLYPH__.getScreenContext(),
+    actions: window.__DOMGLYPH__.getAvailableActions(),
+    entities: window.__DOMGLYPH__.getVisibleEntities()
   }));
 
   // Step 2: Pass context to Claude for action selection
@@ -109,7 +109,7 @@ async function waitForActionCompletion(page: Page, actionId: string, timeoutMs: 
 
   while (Date.now() - start < timeoutMs) {
     const events = await page.evaluate((id) =>
-      window.__CORTEX_UI__.getRecentEvents()
+      window.__DOMGLYPH__.getRecentEvents()
         .filter(e => e.type === 'action_completed' && e.actionId === id),
       actionId
     );
@@ -137,7 +137,7 @@ For form interactions, query the form schema before filling to know exactly what
 async function fillAndSubmitForm(page: Page, formId: string, data: Record<string, string>) {
   // Get the form schema
   const schema = await page.evaluate((id) =>
-    window.__CORTEX_UI__.getFormSchema(id),
+    window.__DOMGLYPH__.getFormSchema(id),
     formId
   );
 
@@ -159,7 +159,7 @@ async function fillAndSubmitForm(page: Page, formId: string, data: Record<string
 
   // Find and click the form's submit action
   const submitAction = await page.evaluate((id) =>
-    window.__CORTEX_UI__.getAvailableActions()
+    window.__DOMGLYPH__.getAvailableActions()
       .find(a => a.formId === id && a.action.startsWith('submit')),
     formId
   );
@@ -187,7 +187,7 @@ Robust agent implementations handle the full range of failure modes:
 ```ts
 async function safeExecuteAction(actionId: string): Promise<ActionResult> {
   // Pre-flight: verify action is available
-  const actions = window.__CORTEX_UI__.getAvailableActions();
+  const actions = window.__DOMGLYPH__.getAvailableActions();
   const action = actions.find(a => a.id === actionId);
 
   if (!action) {
@@ -232,7 +232,7 @@ async function waitForActionResult(actionId: string, timeoutMs: number): Promise
     }, timeoutMs);
 
     const poll = setInterval(() => {
-      const events = window.__CORTEX_UI__.getRecentEvents();
+      const events = window.__DOMGLYPH__.getRecentEvents();
       const completed = events.find(
         e => e.type === 'action_completed' && e.actionId === actionId
       );
@@ -254,19 +254,19 @@ For browser automation with Playwright, wrap the runtime API in a helper class:
 ```ts
 import type { Page } from 'playwright';
 
-export class CortexUIPage {
+export class DOMglyphPage {
   constructor(private page: Page) {}
 
   async getScreenContext() {
-    return this.page.evaluate(() => window.__CORTEX_UI__.getScreenContext());
+    return this.page.evaluate(() => window.__DOMGLYPH__.getScreenContext());
   }
 
   async getAvailableActions() {
-    return this.page.evaluate(() => window.__CORTEX_UI__.getAvailableActions());
+    return this.page.evaluate(() => window.__DOMGLYPH__.getAvailableActions());
   }
 
   async getFormSchema(formId: string) {
-    return this.page.evaluate((id) => window.__CORTEX_UI__.getFormSchema(id), formId);
+    return this.page.evaluate((id) => window.__DOMGLYPH__.getFormSchema(id), formId);
   }
 
   async clickAction(actionId: string) {
@@ -277,7 +277,7 @@ export class CortexUIPage {
     const start = Date.now();
     while (Date.now() - start < timeoutMs) {
       const events = await this.page.evaluate(
-        (id) => window.__CORTEX_UI__.getRecentEvents().filter(
+        (id) => window.__DOMGLYPH__.getRecentEvents().filter(
           e => e.type === 'action_completed' && e.actionId === id
         ),
         actionId
@@ -295,11 +295,11 @@ export class CortexUIPage {
 }
 
 // Usage:
-const ui = new CortexUIPage(page);
+const ui = new DOMglyphPage(page);
 const context = await ui.getScreenContext();
 await ui.executeAction('save-profile');
 ```
 
 <Callout type="note">
-The `CortexUIPage` wrapper is a starting point. Production agents typically add retry logic, logging, screenshot capture on failure, and integration with their specific AI model's decision loop. The core pattern — query contract, decide, act, verify — remains the same.
+The `DOMglyphPage` wrapper is a starting point. Production agents typically add retry logic, logging, screenshot capture on failure, and integration with their specific AI model's decision loop. The core pattern — query contract, decide, act, verify — remains the same.
 </Callout>

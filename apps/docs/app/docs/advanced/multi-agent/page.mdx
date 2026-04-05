@@ -3,9 +3,9 @@
 
 ## Overview
 
-Multiple AI agents can operate on the same CortexUI app simultaneously. This is useful for parallelizing complex workflows, isolating agent responsibilities, and coordinating specialized agents that each handle a different domain of the UI.
+Multiple AI agents can operate on the same DOMglyph app simultaneously. This is useful for parallelizing complex workflows, isolating agent responsibilities, and coordinating specialized agents that each handle a different domain of the UI.
 
-CortexUI's section-based architecture is the key enabler. Because every interactive region of the UI is annotated with `data-ai-section`, agents can partition their scope by section — each agent owns its territory, queries only its actions, and avoids interfering with other agents' operations.
+DOMglyph's section-based architecture is the key enabler. Because every interactive region of the UI is annotated with `data-ai-section`, agents can partition their scope by section — each agent owns its territory, queries only its actions, and avoids interfering with other agents' operations.
 
 ## Section-based Agent Routing
 
@@ -13,15 +13,15 @@ The fundamental technique is filtering the available actions by section:
 
 ```js
 // Agent A: handles the profile section only
-const profileActions = window.__CORTEX_UI__.getAvailableActions()
+const profileActions = window.__DOMGLYPH__.getAvailableActions()
   .filter(a => a.section === 'profile-form');
 
 // Agent B: handles the account settings section only
-const settingsActions = window.__CORTEX_UI__.getAvailableActions()
+const settingsActions = window.__DOMGLYPH__.getAvailableActions()
   .filter(a => a.section === 'account-settings');
 
 // Agent C: handles the notification preferences section
-const notificationActions = window.__CORTEX_UI__.getAvailableActions()
+const notificationActions = window.__DOMGLYPH__.getAvailableActions()
   .filter(a => a.section === 'notification-preferences');
 ```
 
@@ -75,7 +75,7 @@ async function waitForAgentAToComplete(actionId, timeoutMs = 15_000) {
   const start = Date.now();
 
   while (Date.now() - start < timeoutMs) {
-    const events = window.__CORTEX_UI__.getRecentEvents();
+    const events = window.__DOMGLYPH__.getRecentEvents();
     const completed = events.some(
       e => e.actionId === actionId && e.type === 'action_completed'
     );
@@ -91,7 +91,7 @@ async function waitForAgentAToComplete(actionId, timeoutMs = 15_000) {
 await waitForAgentAToComplete('save-profile');
 
 // Now Agent B can proceed safely
-const settingsActions = window.__CORTEX_UI__.getAvailableActions()
+const settingsActions = window.__DOMGLYPH__.getAvailableActions()
   .filter(a => a.section === 'account-settings');
 ```
 
@@ -139,7 +139,7 @@ The event log includes section information on each event, allowing agents to ign
 ```js
 // Agent A only cares about events in its section
 function getRelevantEvents(section) {
-  return window.__CORTEX_UI__.getRecentEvents()
+  return window.__DOMGLYPH__.getRecentEvents()
     .filter(e => e.section === section);
 }
 
@@ -158,7 +158,7 @@ Even with section boundaries, some actions span sections or have global effects.
 
 ```js
 function isActionSafe(actionId) {
-  const actions = window.__CORTEX_UI__.getAvailableActions();
+  const actions = window.__DOMGLYPH__.getAvailableActions();
   const action = actions.find(a => a.id === actionId);
   // Only safe to click if the action exists and is in idle state
   return action?.state === 'idle';
@@ -170,7 +170,7 @@ function isActionSafe(actionId) {
 ```js
 async function ensureProfileSaved(page) {
   const events = await page.evaluate(() =>
-    window.__CORTEX_UI__.getRecentEvents()
+    window.__DOMGLYPH__.getRecentEvents()
       .filter(e => e.actionId === 'save-profile' && e.result === 'success')
   );
 
@@ -184,7 +184,7 @@ async function ensureProfileSaved(page) {
 ```
 
 <Callout type="note">
-CortexUI does not yet provide native action locking. Coordinate agents at the application layer using section boundaries and the event log. The `data-ai-lock` primitive for claiming exclusive access to an action is on the roadmap for v0.5.
+DOMglyph does not yet provide native action locking. Coordinate agents at the application layer using section boundaries and the event log. The `data-ai-lock` primitive for claiming exclusive access to an action is on the roadmap for v0.5.
 </Callout>
 
 ## Agent Identity Tagging
@@ -215,7 +215,7 @@ Note: this convention requires all agents to cooperate. It is advisory, not enfo
 
 ## Future: Native Multi-agent Support
 
-The CortexUI roadmap for v0.5 includes native primitives for multi-agent coordination:
+The DOMglyph roadmap for v0.5 includes native primitives for multi-agent coordination:
 
 **`data-ai-lock`**: An attribute that marks an action as claimed by a specific agent. The runtime will surface `locked` state in `getAvailableActions()` responses, allowing other agents to know the action is in use without polling the DOM.
 
@@ -225,4 +225,4 @@ The CortexUI roadmap for v0.5 includes native primitives for multi-agent coordin
 
 **Conflict resolution primitives**: Runtime-level conflict detection that warns when two agents attempt to interact with the same element simultaneously, with configurable resolution strategies.
 
-These primitives will make multi-agent coordination first-class in CortexUI, removing the need for application-layer workarounds and making complex multi-agent workflows reliable at scale.
+These primitives will make multi-agent coordination first-class in DOMglyph, removing the need for application-layer workarounds and making complex multi-agent workflows reliable at scale.
