@@ -73,7 +73,7 @@ export function Sidebar({ isOpen = false, onClose }: SidebarProps) {
               </h5>
             </div>
             <a
-              href="https://cortexui-demo.llcortex.ai/"
+              href="https://domglyph-demo.llcortex.ai"
               target="_blank"
               rel="noopener noreferrer"
               onClick={onClose}

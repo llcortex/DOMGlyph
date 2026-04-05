@@ -75,10 +75,10 @@ export function Header({ onMenuClick }: { onMenuClick?: () => void }) {
           <Link href="/docs/philosophy/evolution" className="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors">
             Philosophy
           </Link>
-          <a href="https://cortexui-demo.llcortex.ai/" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors">
+          <a href="https://domglyph-demo.llcortex.ai" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors">
             Demo
           </a>
-          <a href="https://github.com/llcortex/cortexui" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors">
+          <a href="https://github.com/llcortex/DOMGlyph" target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors">
             GitHub
           </a>
         </nav>
