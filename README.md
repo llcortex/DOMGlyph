@@ -66,7 +66,7 @@ An agent no longer needs to guess. It queries the contract, gets a deterministic
 |---|---|---|---|
 | `ai-contract` | [`@domglyph/ai-contract`](https://www.npmjs.com/package/@domglyph/ai-contract) | 2.1.0 | `data-ai-*` attribute specification, TypeScript types, and validators |
 | `components` | [`@domglyph/components`](https://www.npmjs.com/package/@domglyph/components) | 2.1.0 | React components with built-in AI contracts |
-| `primitives` | [`@domglyph/primitives`](https://www.npmjs.com/package/@domglyph/primitives) | 2.0.0 | Low-level accessible primitives (Box, Stack, Text, ButtonBase, InputBase, DialogBase) |
+| `primitives` | [`@domglyph/primitives`](https://www.npmjs.com/package/@domglyph/primitives) | 2.1.0 | Low-level accessible primitives (Box, Stack, Text, ButtonBase, InputBase, DialogBase) |
 | `runtime` | [`@domglyph/runtime`](https://www.npmjs.com/package/@domglyph/runtime) | 2.1.0 | Browser runtime that installs `window.__DOMGLYPH__` |
 | `testing` | [`@domglyph/testing`](https://www.npmjs.com/package/@domglyph/testing) | 2.1.0 | Contract validation utilities and vitest matchers |
 | `tokens` | [`@domglyph/tokens`](https://www.npmjs.com/package/@domglyph/tokens) | 2.1.0 | Design tokens — colors, spacing, typography, radius |
