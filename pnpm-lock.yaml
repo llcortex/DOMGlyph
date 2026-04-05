@@ -42,17 +42,17 @@ importers:
   apps/docs:
     dependencies:
       '@domglyph/ai-contract':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.1.0
+        version: 2.1.0
       '@domglyph/components':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.1.0
+        version: 2.1.0
       '@domglyph/primitives':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.1.0
+        version: 2.1.0
       '@domglyph/runtime':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.1.0
+        version: 2.1.0
       '@mdx-js/loader':
         specifier: ^3.1.1
         version: 3.1.1
@@ -461,20 +461,20 @@ packages:
   '@changesets/write@0.4.0':
     resolution: {integrity: sha512-CdTLvIOPiCNuH71pyDu3rA+Q0n65cmAbXnwWH84rKGiFumFzkmHNT8KHTMEchcxN+Kl8I54xGUhJ7l3E7X396Q==}
 
-  '@domglyph/ai-contract@2.0.0':
-    resolution: {integrity: sha512-TvnK+ZWNFQ5cWzS4ChbZ6BQaSG30aQ8pBA95OfKnUtX6FK2c+7Ywg3tgahbqvJvFt4baJMdLn52TB/rJi6LFAw==}
+  '@domglyph/ai-contract@2.1.0':
+    resolution: {integrity: sha512-1rw1x+1t/EQQ0PUHiTOmQx/IhohY05/x9fEYWqbEd6ZTE7MvtZsdfv3iusT/2Qz8SxQNHOF/RRxXjlQoLX4Nvw==}
 
-  '@domglyph/components@2.0.0':
-    resolution: {integrity: sha512-xvifDAjB3oaHPvYFSRuiUlEHAW985ovjyjACoQfvpHHaOR6G3UmtubbgcsbvEoCjHaiNYmx7Jj3CPai9QftRqQ==}
+  '@domglyph/components@2.1.0':
+    resolution: {integrity: sha512-z5zjzBZgWotagICPbZ5hv+Xlagb03o6nF3kvc42+ubDI6JFRXjiiwCJx9MsXJUfd4xhdt+qnQA4pztkWG/URkQ==}
 
-  '@domglyph/primitives@2.0.0':
-    resolution: {integrity: sha512-8so0n8r025ZVYDC6YgPyaODvkreXdf76FDAlEAMA9RoP1nHyQNrZm1e65/AWYhfucRZWujC0v5A/kBoyI7dhXg==}
+  '@domglyph/primitives@2.1.0':
+    resolution: {integrity: sha512-84o/JiLBseBD/WfcUQwyVX0OQqGjvOtJgOtVIoGxocaV57Vma0XHBYWASOLSRnf8uyL5OSDw1okcLw4CRtgpMw==}
 
-  '@domglyph/runtime@2.0.0':
-    resolution: {integrity: sha512-dpBTVFJUEeOMmefPmVIQB59F52TxjTJLl2TgKLPyyW4/Xbem443XaVjUp2/0T4f1btNt/SKNqHCpihI62LAYQQ==}
+  '@domglyph/runtime@2.1.0':
+    resolution: {integrity: sha512-WPpRRGDzangWUiLChhUqPtoWecTcQbJB2IrSqU0RSN8MVpTnsmxaAI58ErS5acmTaX8hrz2rGbynbya1n8VoOw==}
 
-  '@domglyph/tokens@2.0.0':
-    resolution: {integrity: sha512-GCrNQKXFef6MttXaTi7OG5UZlm6YViMh+JzLkHdjRDwpoYTIi7pF8ClTv3aGxykKp5ISKTKOjlOJnJ6KsrBNDg==}
+  '@domglyph/tokens@2.1.0':
+    resolution: {integrity: sha512-EeAZXqfRVffgEP5LRTKssjTEkSAejv33bIpa3Wf2iHyUXnUFeqQhkmW02Q5YZWthQch1ffqyStW1T68UExVLDA==}
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -3134,27 +3134,27 @@ snapshots:
       human-id: 4.1.3
       prettier: 2.8.8
 
-  '@domglyph/ai-contract@2.0.0': {}
+  '@domglyph/ai-contract@2.1.0': {}
 
-  '@domglyph/components@2.0.0':
+  '@domglyph/components@2.1.0':
     dependencies:
-      '@domglyph/ai-contract': 2.0.0
-      '@domglyph/primitives': 2.0.0
-      '@domglyph/tokens': 2.0.0
+      '@domglyph/ai-contract': 2.1.0
+      '@domglyph/primitives': 2.1.0
+      '@domglyph/tokens': 2.1.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@domglyph/primitives@2.0.0':
+  '@domglyph/primitives@2.1.0':
     dependencies:
-      '@domglyph/tokens': 2.0.0
+      '@domglyph/tokens': 2.1.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@domglyph/runtime@2.0.0':
+  '@domglyph/runtime@2.1.0':
     dependencies:
-      '@domglyph/ai-contract': 2.0.0
+      '@domglyph/ai-contract': 2.1.0
 
-  '@domglyph/tokens@2.0.0': {}
+  '@domglyph/tokens@2.1.0': {}
 
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
