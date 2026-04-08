@@ -67,8 +67,8 @@ Each package under `packages/` is independently versioned and published to npm u
 ### Clone and install
 
 ```bash
-git clone https://github.com/cortexui/cortexui.git
-cd cortexui
+git clone https://github.com/llcortex/DOMGlyph.git
+cd DOMGlyph
 pnpm install
 ```
 
@@ -364,7 +364,7 @@ Do not open issues for questions. Use GitHub Discussions instead.
 
 ## Questions
 
-Open a [GitHub Discussion](https://github.com/cortexui/cortexui/discussions) for any question that is not a bug report or a concrete feature request. This keeps issues focused and searchable.
+Open a [GitHub Discussion](https://github.com/cortexui/domglyph/discussions) for any question that is not a bug report or a concrete feature request. This keeps issues focused and searchable.
 
 ---
 
